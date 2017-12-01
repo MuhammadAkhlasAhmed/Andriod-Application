@@ -71,6 +71,7 @@ btn=(Button)findViewById(R.id.button2);
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(),"Hello",Toast.LENGTH_LONG).show();
                Intent i=new Intent(LogoutActivity.this,Main2Activity.class);
+                i.putExtra("Name",""+txt1.getText().toString());
                 startActivity(i);
             }
         });

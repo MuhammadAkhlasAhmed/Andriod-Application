@@ -91,7 +91,7 @@ Log.d("total movie",""+i);
                                data=jobj.getJSONArray("data");
                                JSONObject jboj1=new JSONObject();
 
-                              for(int k=0;k<i;k++) {
+                              for(int k=0;k<i-1;k++) {
                                   String moviename=(String)data.getJSONObject(k).getJSONObject("data").getJSONObject("movie").get("title");
                                   Log.d("Json", "" +moviename);
                                 as.add(k,moviename); //ading to my list so then we send it to FIREBASE AT LAST
@@ -103,7 +103,7 @@ Log.d("checking list",""+as.get(0));
                                DatabaseReference mRef = mDatabase.getRef();
 
                                mRef.push().setValue(as);
-
+Log.d("Nahi Jarae","xx");
 
 
 

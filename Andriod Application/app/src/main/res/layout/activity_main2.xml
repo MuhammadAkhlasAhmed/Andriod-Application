@@ -10,17 +10,10 @@
     android:paddingTop="10dp"
     tools:context="com.example.muhammadikhlas.myapplication.Main2Activity">
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Fetching countries data"
-        android:id="@+id/btnSubmit"
-        />
-
     <ListView
         android:id="@+id/android:list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btnSubmit"
+
         />
 </RelativeLayout>
