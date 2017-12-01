@@ -4,6 +4,7 @@ import java.util.List;
 
 public class IMDBMovie {
 	
+	private String title;
 	private Double rating;
 	private Double runtime;
 	private Double votes;
@@ -12,6 +13,20 @@ public class IMDBMovie {
 	
 	public IMDBMovie(){		
 	
+	}
+	
+	/**
+	 * @return the title
+	 */
+	public String getTitle() {
+		return title;
+	}
+
+	/**
+	 * @param title the title to set
+	 */
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	/**
