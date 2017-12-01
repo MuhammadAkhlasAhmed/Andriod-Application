@@ -77,7 +77,6 @@ public class AppServiceImpl implements IAppService{
 						    int index = 0; 
 						    for(char ch : chr) {
 						    	int i = ch;
-						    	System.out.println(i);
 						    	if(i!= 160 && i!=32) {
 						    		chr1[index] = ch;
 						    		index++;
