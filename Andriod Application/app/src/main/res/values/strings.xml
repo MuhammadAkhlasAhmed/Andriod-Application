@@ -1,4 +1,3 @@
 <resources>
-    <string name="app_name">Recommendation System</string>
-    <string name="facebook_app_id">241001643025085</string>
+    <string name="app_name">My Application</string>
 </resources>
