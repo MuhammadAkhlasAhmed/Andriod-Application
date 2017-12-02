@@ -4,9 +4,7 @@ import java.util.List;
 
 public interface IAppService {
 	
-	
 	public  List<String> getFireBaseMovies();
-	public int getMoviesCount(String Name);
 	
-
+	public int getMoviesCount(String Name);
 }

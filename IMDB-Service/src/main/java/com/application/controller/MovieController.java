@@ -18,7 +18,7 @@ import com.application.util.MovieUtils;
  *
  */
 @RestController
-@RequestMapping("api/v1/movies")
+@RequestMapping("api/v1")
 public class MovieController {
 	
 	@Autowired
@@ -39,5 +39,10 @@ public class MovieController {
 //	public List<Movie> findByMovieByGenre(@PathVariable String genre) {
 //		return movieService.findByMovieByGenre(genre);
 //	}
+	
+	@GetMapping("/movie/{name}")
+	public Movie getMovieByName(@PathVariable String name){
+		return movieService.findMovieByName(name);
+	}
 	
 }

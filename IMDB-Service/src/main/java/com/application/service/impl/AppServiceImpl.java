@@ -7,17 +7,26 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.application.dto.IMDBMovieDTO;
+import com.application.dto.MovieDTO;
 import com.application.model.IMDBMovie;
+import com.application.model.Movie;
 import com.application.service.IAppService;
+import com.application.service.IMovieService;
+import com.application.util.MovieUtils;
 
 @Service
 public class AppServiceImpl implements IAppService{
+	
+	@Autowired
+	private IMovieService iMovieService;
 	  
 	@SuppressWarnings("unused")
 	@Override
@@ -114,5 +123,57 @@ public class AppServiceImpl implements IAppService{
 			IMDBMovie ImdbMovie = new IMDBMovie();
 			return ImdbMovie;
 		}
+	}
+
+	@Override
+	public List<MovieDTO> getMovieGenresFromIMDB(String name) {
+		IMDBMovieDTO movie = new IMDBMovieDTO();
+			try {
+				URL url = new URL(
+						"http://api.myapifilms.com/imdb/idIMDB?title="+name+"&&token=260407a8-26de-4f38-a226-17cfe4841e1d");
+				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+				conn.setRequestMethod("GET");
+				conn.setRequestProperty("Accept", "application/json");
+				if (conn.getResponseCode() != 200) {
+					throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
+				}
+				BufferedReader br = new BufferedReader(new InputStreamReader(
+						(conn.getInputStream())));
+				String output;
+				while ((output = br.readLine()) != null) {
+					try {
+						JSONObject jsonObject = new JSONObject(output);
+					    JSONObject myResponse = jsonObject.getJSONObject("data");
+					    JSONArray array = myResponse.getJSONArray("movies");
+					    JSONObject obj1 = array.getJSONObject(0);
+					    JSONArray genresArray = obj1.getJSONArray("genres");
+					    ArrayList<String> list=new ArrayList<String>();
+					    for(int i=0;i<genresArray.length();i++) {
+					    list.add(genresArray.get(i).toString());
+					    }
+					    movie.setGenres(list);
+						}
+						catch (Exception e) {
+							System.out.println("Exception "+e);
+						}
+				}
+				conn.disconnect();
+			} catch (MalformedURLException e) {
+				System.out.println("MalformedURLException"+e);
+			} catch (IOException e) {
+				System.out.println("IOException"+e);
+			}
+			if(movie!=null) {
+				List<Movie> listOfMovies = iMovieService.findByMovieByGenre(movie.getGenres().get(0));
+				return  MovieUtils.convertMovieToMovieDto(listOfMovies);
+				
+		
+			}
+			
+			else {
+				IMDBMovieDTO ImdbMovie = new IMDBMovieDTO();
+				List<Movie> movieList = new ArrayList<Movie>();
+				return MovieUtils.convertMovieToMovieDto(movieList);
+			}
 	}
 }
