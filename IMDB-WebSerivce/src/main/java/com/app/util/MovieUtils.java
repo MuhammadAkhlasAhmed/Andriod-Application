@@ -71,12 +71,10 @@ public class MovieUtils {
 	 */
 	public static void ContentBasedFiltering(List<MovieDTO> listOFMovieDTO, MovieDTO movieDTO){
 	
-		BigInteger revenue = movieDTO.getRevenue();
 		double popularity = movieDTO.getPopularity();
 		int runtime = movieDTO.getRuntime();
 		double voteaverage = movieDTO.getVoteAverage();
 		int votecount = movieDTO.getVoteCount();
-		BigInteger budget = movieDTO.getBudget();
 		HashMap<String,MovieFilterDTO> map = new HashMap<String, MovieFilterDTO>();
 		HashMap<String,Double> moviesWithDistance = new HashMap<String,Double>();
 		for(MovieDTO movie : listOFMovieDTO) {
