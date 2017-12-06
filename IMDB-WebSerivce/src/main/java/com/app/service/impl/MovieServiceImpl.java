@@ -40,5 +40,11 @@ public class MovieServiceImpl implements MovieService{
 		Pageable toptwenty = new PageRequest(0, 20);
 		return movieRepository.findMovie(runtime, revenue, voteAverage, voteCount, popularity, budget, toptwenty);
 	}
+
+	@Override
+	public MovieDTO getMovieByName(String name) {
+		Movie movie = movieRepository.findMovieByName(name);
+		return MovieUtils.MovieToMovieDTO(movie);
+	}
 	
 }

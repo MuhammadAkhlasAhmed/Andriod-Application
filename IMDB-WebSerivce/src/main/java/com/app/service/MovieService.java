@@ -12,6 +12,8 @@ import com.app.model.Movie;
 public interface MovieService {
 	
 	public MovieDTO getMovieByGenre(String genreName);
+
+	public MovieDTO getMovieByName(String name);
 	
 	public List<Movie> getListOfMovies(String genreName);
 	

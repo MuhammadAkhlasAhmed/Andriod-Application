@@ -47,6 +47,22 @@ public class MovieUtils {
 	}
 	
 	/**
+	 * The method that return MovieDTO.
+	 */
+	public static MovieDTO MovieToMovieDTO(Movie movie) {
+		
+		MovieDTO movieDTO = new MovieDTO();
+		movieDTO.setName(movie.getName());
+		movieDTO.setRuntime(movie.getRuntime());
+		movieDTO.setRevenue(movie.getRevenue());
+		movieDTO.setVoteAverage(movie.getVoteAverage());
+		movieDTO.setVoteCount(movie.getVoteCount());
+		movieDTO.setPopularity(movie.getPopularity());
+		movieDTO.setBudget(movie.getBudget());
+		return movieDTO;
+	}
+	
+	/**
 	 * The method that return List of MovieDTO.
 	 */
 	public static List<MovieDTO> getListOfMovieDTO(List<Movie> listOfMovie){

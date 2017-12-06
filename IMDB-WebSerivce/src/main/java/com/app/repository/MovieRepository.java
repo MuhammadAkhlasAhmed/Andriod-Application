@@ -22,4 +22,6 @@ public interface MovieRepository extends JpaRepository<Movie, Long>{
 	@Query("select m from Movie m where m.runtime=? or m.revenue=? or m.voteAverage=? or m.voteCount=? or m.popularity=? or m.budget=?")
 	public List<Movie> findMovie(int runtime, BigInteger revenue, double voteAverage, int voteCount, double popularity, BigInteger budget, Pageable pageable);
 
+	public Movie findMovieByName(String name);
+	
 }
