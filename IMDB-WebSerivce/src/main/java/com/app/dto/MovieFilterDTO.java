@@ -4,8 +4,6 @@ import java.math.BigInteger;
 
 public class MovieFilterDTO {
 	
-
-	
 	/** The runtime. */
 	public int runtime;
 	
@@ -27,13 +25,11 @@ public class MovieFilterDTO {
 	
 	public MovieFilterDTO(int runtime,BigInteger revenue,double voteaverage,int votecount,double popularity,BigInteger budget)
 	{
-
 	this.runtime=runtime;
 	this.revenue=revenue;
 	this.voteAverage=voteaverage;
 	this.voteCount=votecount;
 	this.popularity=popularity;
 	this.budget=budget;
-	
 	}
 }
