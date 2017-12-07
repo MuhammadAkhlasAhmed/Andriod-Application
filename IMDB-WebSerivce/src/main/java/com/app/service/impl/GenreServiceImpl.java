@@ -30,7 +30,7 @@ public class GenreServiceImpl implements GenreService {
 		if (genreDTO != null) {
 			List<String> listOfGenre = genreDTO.getGenres();
 			String genre = GenreUtils.getGenre(listOfGenre);
-			//Movie movieDTO = movieService.getMovieByName(name);
+			MovieDTO userGivenMovie = movieService.getMovieByName(name);
 			MovieDTO movieDTO = movieService.getMovieByGenre(genre);
 			int runtime = movieDTO.getRuntime();
 			BigInteger revenue = movieDTO.getRevenue();
@@ -39,7 +39,7 @@ public class GenreServiceImpl implements GenreService {
 			double popularity = movieDTO.getPopularity();
 			BigInteger budget = movieDTO.getBudget();
 			List<Movie> listOFMovies = movieService.findMovie(runtime, revenue, voteAverage, voteCount, popularity, budget);
-			MovieUtils.ContentBasedFiltering(MovieUtils.getListOfMovieDTO(listOFMovies), movieDTO);
+			MovieUtils.ContentBasedFiltering(MovieUtils.getListOfMovieDTO(listOFMovies), userGivenMovie);
 			return MovieUtils.getListOfMovieDTO(listOFMovies);
 		}
 		else {
