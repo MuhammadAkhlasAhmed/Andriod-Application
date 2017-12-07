@@ -30,7 +30,8 @@ public class GenreServiceImpl implements GenreService {
 		if (genreDTO != null) {
 			List<String> listOfGenre = genreDTO.getGenres();
 			String genre = GenreUtils.getGenre(listOfGenre);
-			MovieDTO userGivenMovie = movieService.getMovieByName(name);
+			String originalMovieTile = GenreUtils.getOriginalMovieTitle(name);
+			MovieDTO userGivenMovie = movieService.getMovieByName(originalMovieTile);
 			MovieDTO movieDTO = movieService.getMovieByGenre(genre);
 			int runtime = movieDTO.getRuntime();
 			BigInteger revenue = movieDTO.getRevenue();

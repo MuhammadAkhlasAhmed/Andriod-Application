@@ -44,6 +44,9 @@ public class MovieServiceImpl implements MovieService{
 	@Override
 	public MovieDTO getMovieByName(String name) {
 		Movie movie = movieRepository.findMovieByName(name);
+		if(movie == null) {
+			
+		}
 		return MovieUtils.MovieToMovieDTO(movie);
 	}
 	
