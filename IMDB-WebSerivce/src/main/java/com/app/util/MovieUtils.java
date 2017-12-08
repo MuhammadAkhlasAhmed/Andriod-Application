@@ -2,8 +2,19 @@ package com.app.util;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 import com.app.dto.MovieDTO;
 import com.app.dto.MovieFilterDTO;
@@ -205,7 +216,22 @@ public class MovieUtils {
 		}	
 	}
 	moviesWithDistance.put(k,distance);
-	});
-		moviesWithDistance.forEach((k,v)->{System.out.println("key "+k+" distance "+v);});
-}
+
+		
+		});
+	//	moviesWithDistance.forEach((k,v)->{System.out.println("key "+k+" distance "+v);});
+		//moviesWithDistance.forEach((k,v)->{});
+		Set<Entry<String, Double>> set = moviesWithDistance.entrySet();
+		List<Entry<String, Double>> list = new ArrayList<Entry<String,Double>>(set);
+		Collections.sort(list, new Comparator<Map.Entry<String,Double>>() {
+			public int compare(Map.Entry<String,Double> o1, Map.Entry<String,Double> o2) {
+				return (o2.getValue()).compareTo(o1.getValue());
+			}
+		});
+		Map<String, Double> aMap2 = new LinkedHashMap<String, Double>();
+		for (Entry<String,Double> entry : list) {
+			aMap2.put(entry.getKey(), entry.getValue());
+		}
+		aMap2.forEach((k,v)->{System.out.println("Keys\t"+k+"\tvalues\t"+v);});
+	}
 }
