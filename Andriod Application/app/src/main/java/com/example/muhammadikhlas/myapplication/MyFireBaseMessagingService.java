@@ -7,8 +7,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.IBinder;
-import android.support.v7.app.NotificationCompat;
+
+import android.support.v4.app.NotificationCompat;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
@@ -23,6 +25,7 @@ public class MyFireBaseMessagingService extends FirebaseMessagingService {
         super.onMessageReceived(remoteMessage);
         ikhlasnotification(remoteMessage.getNotification().getBody());
     }
+
 
 private void ikhlasnotification(String msg){
 

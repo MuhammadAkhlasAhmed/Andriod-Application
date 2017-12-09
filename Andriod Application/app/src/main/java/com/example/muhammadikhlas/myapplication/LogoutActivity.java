@@ -5,7 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.tv.TvInputService;
 import android.os.AsyncTask;
-import android.support.v7.app.ActionBarActivity;
+
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -36,7 +36,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
@@ -54,6 +58,7 @@ int a;
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -66,14 +71,20 @@ int a;
 txt1=(TextView)findViewById(R.id.nama);
 btn=(Button)findViewById(R.id.button2);
 
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(),"Hello",Toast.LENGTH_LONG).show();
-               Intent i=new Intent(LogoutActivity.this,Main2Activity.class);
-                i.putExtra("Name",""+txt1.getText().toString());
-                startActivity(i);
-            }
+String[] infos=new String[5];
+                infos[0]=txt1.getText().toString();
+
+                //PassingandgettingfromIMDB oop=new PassingandgettingfromIMDB();
+                //oop.view(txt1.getText().toString());
+new PassingandgettingfromIMDB(getApplicationContext()).execute(new String[]{txt1.getText().toString()});
+
+         /*
+            */}
         });
 
         // fetching facebook's profile picture

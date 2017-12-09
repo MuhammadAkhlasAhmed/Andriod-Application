@@ -37,6 +37,7 @@ public class Main2Activity extends Activity {
     Activity activity;
     private ProgressDialog progressDialog;
     ListView listView;
+    StringBuffer responce;
 
 
     @Override
@@ -50,7 +51,32 @@ public class Main2Activity extends Activity {
         Toast.makeText(this,""+Name,Toast.LENGTH_LONG).show();
         listView = (ListView) findViewById(android.R.id.list);
                 //Call WebService
-PassingandgettingfromIMDB p=new PassingandgettingfromIMDB();
+
+
+
+
+        String path = "http://192.168.0.106:8080/api/v1/imdb/Inception";
+
+        URL url;
+        String Responcetext;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     }
