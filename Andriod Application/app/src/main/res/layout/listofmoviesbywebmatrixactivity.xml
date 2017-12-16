@@ -8,7 +8,9 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="10dp"
-    tools:context="com.example.muhammadikhlas.myapplication.Main2Activity">
+    tools:context="com.example.muhammadikhlas.myapplication.ListOfMoviesByWebMatrixActivity"
+    android:background="@drawable/tech"
+    >
 
     <ListView
         android:id="@+id/android:list"

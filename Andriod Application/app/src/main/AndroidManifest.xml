@@ -30,8 +30,7 @@
             android:value="@string/facebook_app_id" />
 
         <activity android:name=".LogoutActivity" />
-        <activity android:name=".myactivity" />
-        <activity android:name=".Main2Activity" />
+        <activity android:name=".ListOfMoviesByWebMatrixActivity" />
 
         <service
             android:name=".MyFireBaseMessagingService"
@@ -46,7 +45,7 @@
 
         </service>
 
-        <activity android:name=".IkhlasServiceWali"></activity>
+        <activity android:name=".FirebaseNotificationResultActivity"></activity>
     </application>
 
 </manifest>
