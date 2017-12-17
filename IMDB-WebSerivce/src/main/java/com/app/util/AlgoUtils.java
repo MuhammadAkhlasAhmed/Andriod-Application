@@ -28,12 +28,16 @@ public class AlgoUtils {
 	static BigInteger valuerevenue;
 	static BigInteger valuebudgetafterdivision;
 	static BigInteger valuerevenueafterdivision;
-	double popularity_Max = 875.581305;
-	double popularity_Min = 1;
+	static double max_Popularity = 875.581305;
+	static int max_Votecount = 13752;
+	static int max_Runtime = 338;
 	static double[][] xMatrix;
 	static double[][] yMatrix;
 	static double[] zMatrix = new double[6];
 	
+	/**
+	 * The method that perform web matrix factorization technique.
+	 */
 	public static HashMap<String, Object> WebMatrixFactorizationTechnique(List<MovieRecordDTO> historicalMoviesList) {
 		// Web Matrix
 		// (x^t * x)^-1 * x^t * y
@@ -43,21 +47,17 @@ public class AlgoUtils {
 		for (int i = 0; i < historicalMoviesList.size() - 1; i++) {
 			for (int k = i; k <= i; k++) {
 				zMatrix[0] = 1;
-				zMatrix[1] = (double) historicalMoviesList.get(k).popularity/875.581305;
-				zMatrix[2] = (double) historicalMoviesList.get(k).voteCount/13752;
-				zMatrix[3] = (double) historicalMoviesList.get(k).runtime/338;
+				zMatrix[1] = (double) historicalMoviesList.get(k).popularity/max_Popularity;
+				zMatrix[2] = (double) historicalMoviesList.get(k).voteCount/max_Votecount;
+				zMatrix[3] = (double) historicalMoviesList.get(k).runtime/max_Runtime;
 				valuebudget = new BigInteger(historicalMoviesList.get(k).budget.toString());
 				valuerevenue = new BigInteger(historicalMoviesList.get(k).revenue.toString());
 				double d = valuebudget.doubleValue() / max_Budget.doubleValue();
 				double d1 = valuerevenue.doubleValue() / max_Revenue.doubleValue();
-				
 				zMatrix[4] = (double) d;
 				zMatrix[5] = (double) d1;
-	
-				//y1Matrix[0] = (double) historicalMoviesList.get(k).rating;
 				yMatrix[i][0] = (double) historicalMoviesList.get(k).rating;
 			}
-			
 			for (int j = 0; j < zMatrix.length; j++) {
 				xMatrix[i][j] = zMatrix[j];
 			}
@@ -68,9 +68,7 @@ public class AlgoUtils {
 			}
 			System.out.println();
 		}
-		
 		System.out.println("YMatrix");
-		
 		for (int i = 0; i < yMatrix.length; i++) {
 			for (int j = 0; j < yMatrix[i].length; j++) {
 				System.out.print(yMatrix[i][j] + " ");
@@ -93,10 +91,6 @@ public class AlgoUtils {
 		
 		 // Multipy
 		 double[][] mul = multiply(cofactor, tranposeMatrix);
-		System.out.println("khaniaaaa");
-		System.out.println("uncle majborr");
-		System.out.println("sheri arhi hai ");
-		System.out.println("rabiaaaaaa please mujhe chor ");
 		 // Multiply by Y (multiply by deter)
 		 double[][] mul2 = multiply(mul, yMatrix);
 			for (int i = 0; i < mul2.length; i++) {
@@ -108,6 +102,9 @@ public class AlgoUtils {
 		return null;
 	}
 
+	/**
+	 * The method that roundOff the values.
+	 */
 	public static double roundOff(double value, int places) {
 		if (places < 0)
 			throw new IllegalArgumentException();
@@ -117,6 +114,9 @@ public class AlgoUtils {
 		return (double) tmp / factor;
 	}
 
+	/**
+	 * The method that transpose matrix.
+	 */
 	public static double[][] transposeIntArray(double[][] a) {
 		int m = a.length;
 		int n = a[0].length;
@@ -127,6 +127,9 @@ public class AlgoUtils {
 		return b;
 	}
 
+	/**
+	 * The method that multiply two matrix.
+	 */
 	public static double[][] multiply(double[][] a, double[][] b) {
 		int m1 = a.length;
 		double n1 = a[0].length;
@@ -142,6 +145,9 @@ public class AlgoUtils {
 		return c;
 	}
 
+	/**
+	 * The method that calculate determinant.
+	 */
 	public static double determinant(double A[][], int N) {
 		double det = 0;
 		if (N == 1) {
@@ -170,6 +176,9 @@ public class AlgoUtils {
 		return roundOff(det, 2);
 	}
 
+	/**
+	 * The method that calculate cofactor.
+	 */
 	public static double[][] cofactor(double[][] matrix, int rows, int cols) {
 		double[][] result = new double[rows][cols];
 		for (int i = 0; i < rows; i++) {
@@ -181,6 +190,9 @@ public class AlgoUtils {
 		return result;
 	}
 
+	/**
+	 * The method that return array that remove row and column.
+	 */
 	public static double[][] removeRowCol(double[][] matrix, int rows, int cols, int row, int col) {
 		double[][] result = new double[rows - 1][cols - 1];
 		int k = 0, l = 0;
