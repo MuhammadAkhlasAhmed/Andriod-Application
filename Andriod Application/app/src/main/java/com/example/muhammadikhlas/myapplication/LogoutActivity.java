@@ -79,9 +79,18 @@ btn=(Button)findViewById(R.id.button2);
 String[] infos=new String[5];
                 infos[0]=txt1.getText().toString();
 
+
+                Intent listofmovies=new Intent(LogoutActivity.this,ListOfMoviesByWebMatrixActivity.class);
+                startActivity(listofmovies);
+
+
                 //PassingandgettingfromIMDB oop=new PassingandgettingfromIMDB();
                 //oop.view(txt1.getText().toString());
-new PassingandgettingfromIMDB(getApplicationContext()).execute(new String[]{txt1.getText().toString()});
+//new PassingandgettingfromIMDB(getApplicationContext()).execute(new String[]{txt1.getText().toString()});
+
+
+
+
 
          /*
             */}

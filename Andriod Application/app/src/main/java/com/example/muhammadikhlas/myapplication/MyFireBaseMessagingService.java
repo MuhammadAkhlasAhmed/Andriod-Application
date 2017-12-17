@@ -2,13 +2,10 @@ package com.example.muhammadikhlas.myapplication;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
-import android.os.Build;
-import android.os.IBinder;
 
 import android.support.v4.app.NotificationCompat;
 
@@ -29,7 +26,7 @@ public class MyFireBaseMessagingService extends FirebaseMessagingService {
 
 private void ikhlasnotification(String msg){
 
-Intent intent =new Intent(this,IkhlasServiceWali.class);
+Intent intent =new Intent(this,FirebaseNotificationResultActivity.class);
     intent.putExtra("Moviename",msg);
     intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
     //Ye pending ager activity bund hogi tw khol dega

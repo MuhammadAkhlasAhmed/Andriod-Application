@@ -94,7 +94,7 @@ public class PassingandgettingfromIMDB extends AsyncTask<String,Void,String>  {
     @Override
     protected void onPostExecute(String result) {
 Log.d("Here is",""+result);
-     //   context.startActivity(new Intent(context, Main2Activity.class));
+     //   context.startActivity(new Intent(context, ListOfMoviesByWebMatrixActivity.class));
 
 
       //  i.putExtra("Name",""+txt1.getText().toString());
