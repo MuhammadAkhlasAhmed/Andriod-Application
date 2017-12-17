@@ -19,4 +19,5 @@ public interface MovieService {
 	
 	public List<Movie> findMovie(int runtime, BigInteger revenue, double voteAverage, int voteCount, double popularity, BigInteger budget);
 	
+	public List<Movie> findAllMovie(int runtime, BigInteger revenue, double voteAverage, int voteCount, double popularity, BigInteger budget);
 }

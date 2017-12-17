@@ -13,6 +13,7 @@ import java.util.Set;
 
 import com.app.dto.MovieDTO;
 import com.app.dto.MovieFilterDTO;
+import com.app.dto.MovieRecordDTO;
 import com.app.model.Movie;
 
 /**
@@ -87,6 +88,26 @@ public class MovieUtils {
 		}
 		return listOfMovieDTO;
 	}
+	
+	/**
+	 * The method that return List of MovieRecordDTO.
+	 */
+	public static List<MovieRecordDTO> getListOfMovieRecordDTO(List<Movie> listOfMovie){
+	
+		List<MovieRecordDTO> listOfMovieRecordDTO = new ArrayList<MovieRecordDTO>();
+		for (Movie movielist : listOfMovie) {
+			MovieRecordDTO movieRecordDTO = new MovieRecordDTO();
+			movieRecordDTO.setBudget(movielist.getBudget());
+			movieRecordDTO.setPopularity(movielist.getPopularity());
+			movieRecordDTO.setRating(movielist.getVoteAverage());
+			movieRecordDTO.setRevenue(movielist.getRevenue());
+			movieRecordDTO.setRuntime(movielist.getRuntime());
+			movieRecordDTO.setVoteCount(movielist.getVoteCount());
+			listOfMovieRecordDTO.add(movieRecordDTO);
+		}
+		return listOfMovieRecordDTO;
+	}
+
 
 	/**
 	 * The method that perform filtering and calculate distance for each movie.

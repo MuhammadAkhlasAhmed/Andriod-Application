@@ -49,5 +49,12 @@ public class MovieServiceImpl implements MovieService{
 		}
 		return MovieUtils.MovieToMovieDTO(movie);
 	}
+
+	@Override
+	public List<Movie> findAllMovie(int runtime, BigInteger revenue, double voteAverage, int voteCount,
+			double popularity, BigInteger budget) {
+		Pageable topthreehundred = new PageRequest(0, 300);
+		return movieRepository.findMovie(runtime, revenue, voteAverage, voteCount, popularity, budget, topthreehundred);
+	}
 	
 }

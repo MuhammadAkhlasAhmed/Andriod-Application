@@ -12,6 +12,7 @@ import com.app.dto.MovieDTO;
 import com.app.model.Movie;
 import com.app.service.GenreService;
 import com.app.service.MovieService;
+import com.app.util.AlgoUtils;
 import com.app.util.GenreUtils;
 import com.app.util.MovieUtils;
 
@@ -40,7 +41,9 @@ public class GenreServiceImpl implements GenreService {
 			double popularity = movieDTO.getPopularity();
 			BigInteger budget = movieDTO.getBudget();
 			List<Movie> listOFMovies = movieService.findMovie(runtime, revenue, voteAverage, voteCount, popularity, budget);
+			List<Movie> findAllMovie = movieService.findAllMovie(runtime, revenue, voteAverage, voteCount, popularity, budget);
 			MovieUtils.ContentBasedFiltering(MovieUtils.getListOfMovieDTO(listOFMovies), userGivenMovie);
+			AlgoUtils.WebMatrixFactorizationTechnique(MovieUtils.getListOfMovieRecordDTO(findAllMovie));
 			return MovieUtils.getListOfMovieDTO(listOFMovies);
 		}
 		else {
