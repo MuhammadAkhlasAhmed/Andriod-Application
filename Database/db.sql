@@ -1,4 +1,3 @@
-
 /*
 SQLyog Enterprise Trial - MySQL GUI v7.11 
 MySQL - 5.7.17-log : Database - moviesrecommendation
