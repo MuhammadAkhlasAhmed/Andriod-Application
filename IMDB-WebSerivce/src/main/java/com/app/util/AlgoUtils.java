@@ -1,12 +1,15 @@
 package com.app.util;
 
 import java.math.BigInteger;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
 
+import com.app.dto.FinalMovieDto;
 import com.app.dto.MovieRecordDTO;
+import com.app.model.Movie;
 
 public class AlgoUtils {
+	
 	/** The runtime. */
 	public static int runtime;
 	/** The revenue. */
@@ -19,6 +22,7 @@ public class AlgoUtils {
 	public static double popularity;
 	/** The budget. */
 	public static BigInteger budget;
+	
 	// they are used for normalize the value by using formula x-min(x)/max(x)-min(x)
 	static BigInteger max_Revenue = new BigInteger("2787965087");
 	static BigInteger min_Revenue = new BigInteger("1000000");
@@ -34,11 +38,14 @@ public class AlgoUtils {
 	static double[][] xMatrix;
 	static double[][] yMatrix;
 	static double[] zMatrix = new double[6];
+	static double[][] weights = new double[6][1];
+	static double  finalEquation;
+	static List<FinalMovieDto> listOfRecommendedMovie = new ArrayList<FinalMovieDto>();
 	
 	/**
 	 * The method that perform web matrix factorization technique.
 	 */
-	public static HashMap<String, Object> WebMatrixFactorizationTechnique(List<MovieRecordDTO> historicalMoviesList) {
+	public static List<FinalMovieDto> WebMatrixFactorizationTechnique(List<MovieRecordDTO> historicalMoviesList, List<Movie>  listOfFirstFiveMovieObject) {
 		// Web Matrix
 		// (x^t * x)^-1 * x^t * y
 		// y = W0+W1X1+W2X2.....WnXn;
@@ -62,19 +69,6 @@ public class AlgoUtils {
 				xMatrix[i][j] = zMatrix[j];
 			}
 		}
-		for (int i = 0; i < xMatrix.length; i++) {
-			for (int j = 0; j < xMatrix[i].length; j++) {
-				System.out.print(xMatrix[i][j] + " ");
-			}
-			System.out.println();
-		}
-		System.out.println("YMatrix");
-		for (int i = 0; i < yMatrix.length; i++) {
-			for (int j = 0; j < yMatrix[i].length; j++) {
-				System.out.print(yMatrix[i][j] + " ");
-			}
-			System.out.println();
-		}
 		 // Transpose Matrix
 		 double[][] tranposeMatrix = transposeIntArray(xMatrix);
 		
@@ -95,11 +89,26 @@ public class AlgoUtils {
 		 double[][] mul2 = multiply(mul, yMatrix);
 			for (int i = 0; i < mul2.length; i++) {
 			    for (int j = 0; j < mul2[i].length; j++) {
-			        System.out.print("W"+i+"\t: "+roundOff((mul2[i][j])*a, 2)  + " ");
+			    weights[i][0]=roundOff((mul2[i][j])*a, 2);
 			    }
-			    System.out.println();
 			}
-		return null;
+			List<Movie> list = listOfFirstFiveMovieObject;
+			for (Movie movie : list) {
+				FinalMovieDto finalMovieDto = new FinalMovieDto();
+				double popularity = movie.getPopularity()/max_Popularity;
+				double votecount = movie.getVoteCount()/max_Votecount;
+				double runtime = movie.getRuntime()/max_Runtime;
+				BigInteger valueBudget = new BigInteger(movie.getBudget().toString());
+				BigInteger valueRevenue = new BigInteger(movie.getRevenue().toString());
+				double finalBudgetValue = valueBudget.doubleValue() / max_Budget.doubleValue();
+				double finalRevenueValue = valueRevenue.doubleValue() / max_Revenue.doubleValue();
+				finalEquation = roundOff((weights[0][0])+(weights[1][0]*popularity)+(weights[2][0]*votecount)+(weights[3][0]*runtime)+(weights[4][0]*finalBudgetValue)+(weights[5][0]*finalRevenueValue), 1);
+				finalMovieDto.setName(movie.getName());
+				finalMovieDto.setRating(finalEquation);
+				finalMovieDto.setTagline(movie.getTagline());
+				listOfRecommendedMovie.add(finalMovieDto);
+			}
+			return listOfRecommendedMovie;
 	}
 
 	/**

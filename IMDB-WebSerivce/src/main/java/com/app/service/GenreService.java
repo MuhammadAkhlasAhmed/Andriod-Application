@@ -2,13 +2,13 @@ package com.app.service;
 
 import java.util.List;
 
-import com.app.dto.MovieDTO;
+import com.app.dto.FinalMovieDto;
 
 /**
  * The Interface GenreService.
  */
 public interface GenreService {
 	
-	public List<MovieDTO> getMovieGenreFromIMDB(String name);
+	public List<FinalMovieDto> getMovieGenreFromIMDB(String name);
 	
 }

@@ -45,7 +45,7 @@ public class MovieServiceImpl implements MovieService{
 	public MovieDTO getMovieByName(String name) {
 		Movie movie = movieRepository.findMovieByName(name);
 		if(movie == null) {
-			
+			return new MovieDTO();
 		}
 		return MovieUtils.MovieToMovieDTO(movie);
 	}
@@ -55,6 +55,12 @@ public class MovieServiceImpl implements MovieService{
 			double popularity, BigInteger budget) {
 		Pageable topthreehundred = new PageRequest(0, 300);
 		return movieRepository.findMovie(runtime, revenue, voteAverage, voteCount, popularity, budget, topthreehundred);
+	}
+
+	@Override
+	public Movie getMovieByItsName(String movieName) {
+		return movieRepository.findMovieByName(movieName);
+		
 	}
 	
 }

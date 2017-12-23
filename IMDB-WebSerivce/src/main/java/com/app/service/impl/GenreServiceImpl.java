@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.app.dto.FinalMovieDto;
 import com.app.dto.GenreDTO;
 import com.app.dto.MovieDTO;
 import com.app.model.Movie;
@@ -26,7 +27,7 @@ public class GenreServiceImpl implements GenreService {
 	private MovieService movieService;
 	
 	@Override
-	public List<MovieDTO> getMovieGenreFromIMDB(String name) {
+	public List<FinalMovieDto> getMovieGenreFromIMDB(String name) {
 		GenreDTO genreDTO = GenreUtils.getMovieGenre(name);
 		if (genreDTO != null) {
 			List<String> listOfGenre = genreDTO.getGenres();
@@ -42,12 +43,17 @@ public class GenreServiceImpl implements GenreService {
 			BigInteger budget = movieDTO.getBudget();
 			List<Movie> listOFMovies = movieService.findMovie(runtime, revenue, voteAverage, voteCount, popularity, budget);
 			List<Movie> findAllMovie = movieService.findAllMovie(runtime, revenue, voteAverage, voteCount, popularity, budget);
-			MovieUtils.ContentBasedFiltering(MovieUtils.getListOfMovieDTO(listOFMovies), userGivenMovie);
-			AlgoUtils.WebMatrixFactorizationTechnique(MovieUtils.getListOfMovieRecordDTO(findAllMovie));
-			return MovieUtils.getListOfMovieDTO(listOFMovies);
+			List<String> moviesWithDistance =	MovieUtils.ContentBasedFiltering(MovieUtils.getListOfMovieDTO(listOFMovies), userGivenMovie);
+			List<String> listOfFirstFiveMovieName =	MovieUtils.getFirstFiveMovieName(moviesWithDistance);
+			List<Movie>  listOfFirstFiveMovieObject = new ArrayList<Movie>();
+			for (String eachMovie : listOfFirstFiveMovieName) {
+				Movie movie = movieService.getMovieByItsName(eachMovie);
+				listOfFirstFiveMovieObject.add(movie);
+			}
+			return AlgoUtils.WebMatrixFactorizationTechnique(MovieUtils.getListOfMovieRecordDTO(findAllMovie), listOfFirstFiveMovieObject);
 		}
 		else {
-			List<MovieDTO> list = new ArrayList<MovieDTO>();
+			List<FinalMovieDto> list = new ArrayList<FinalMovieDto>();
 			return list;
 		}
 	}

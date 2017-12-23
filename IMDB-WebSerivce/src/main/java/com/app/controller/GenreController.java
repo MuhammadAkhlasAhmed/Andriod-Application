@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.dto.MovieDTO;
+import com.app.dto.FinalMovieDto;
 import com.app.service.GenreService;
 
 /**
@@ -22,7 +22,7 @@ public class GenreController {
 	private GenreService genreService; 
 	
 	@GetMapping("/movie/{movieName}")
-	public List<MovieDTO> getMovieGenreFromIMDB(@PathVariable String movieName) {
+	public List<FinalMovieDto> getMovieGenreFromIMDB(@PathVariable String movieName) {
 		return genreService.getMovieGenreFromIMDB(movieName);
 	}
 
