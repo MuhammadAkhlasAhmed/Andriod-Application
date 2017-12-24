@@ -5,11 +5,11 @@ package com.example.muhammadikhlas.myapplication;
  */
 
 public class MoviePojo {
-    String rating;
+    int rating;
     String tagline;
     String name;
 
-    public  MoviePojo(String rating,String tagline,String name){
+    public  MoviePojo(int rating,String tagline,String name){
 
         this.rating=rating;
         this.tagline=tagline;

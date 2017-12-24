@@ -13,8 +13,6 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
@@ -24,8 +22,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -35,18 +31,25 @@ import javax.net.ssl.HttpsURLConnection;
 
 
 
-public class TakeDataFromServiceAfterPassingMovieName extends AsyncTask<String,Void,String>  {
-
-    public AsyncResponse delegate = null;
-
-    List<MoviePojo>  movie=new ArrayList<MoviePojo>();
-
+public class PassingandgettingfromIMDB extends AsyncTask<String,Void,String>  {
     HttpURLConnection urlConnection = null;
     URL url = null;
     JSONObject object = null;
     InputStream inStream = null;
-    String   urlString="http://192.168.1.104:8080/api/v1/movie/";
+    String   urlString="http://192.168.0.112:8080/api/v1/movie/";
     String temp, response = "";
+
+
+
+
+
+
+    Context context;
+    public PassingandgettingfromIMDB(Context context) {
+        this.context = context;
+    }
+
+
 
     @Override
     protected String doInBackground(String... strings) {
@@ -66,11 +69,22 @@ public class TakeDataFromServiceAfterPassingMovieName extends AsyncTask<String,V
                 response += temp;
             }
             //object = (JSONObject) new JSONTokener(response).nextValue();
-
+            Log.d("Theres",response);
 
         } catch (Exception e) {
             Log.d("Exception",""+e.toString());
         }
+
+
+
+
+
+
+
+        Log.d("Chal rae","hai");
+
+
+
 
 
         return response;
@@ -78,41 +92,14 @@ public class TakeDataFromServiceAfterPassingMovieName extends AsyncTask<String,V
 
 
     @Override
-    protected void onPostExecute(String x) {
-
-
-
-        try {
-            JSONArray a=new JSONArray(x);
-
-            for(int i=0;i<a.length();i++) {
-             JSONObject obj=a.getJSONObject(i);
-
-             MoviePojo movieslist=new MoviePojo(obj.getString("rating"),obj.getString("tagline"),obj.getString("name"));
-
-                movie.add(movieslist);
-
-
-                Log.d("Size of List ", String.valueOf(movie.size()));
-            }
-
-            delegate.processFinish(movie);
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-
-
-
-        //   context.startActivity(new Intent(context, ListOfMoviesByWebMatrixActivity.class));
+    protected void onPostExecute(String result) {
+Log.d("Here is",""+result);
+     //   context.startActivity(new Intent(context, ListOfMoviesByWebMatrixActivity.class));
 
 
       //  i.putExtra("Name",""+txt1.getText().toString());
 
     }
-
-
 
 
 

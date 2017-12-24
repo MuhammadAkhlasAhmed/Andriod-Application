@@ -81,13 +81,12 @@ String[] infos=new String[5];
 
 
                 Intent listofmovies=new Intent(LogoutActivity.this,ListOfMoviesByWebMatrixActivity.class);
-                listofmovies.putExtra("MovieName",infos[0]);
                 startActivity(listofmovies);
 
 
-                //TakeDataFromServiceAfterPassingMovieName oop=new TakeDataFromServiceAfterPassingMovieName();
+                //PassingandgettingfromIMDB oop=new PassingandgettingfromIMDB();
                 //oop.view(txt1.getText().toString());
-//new TakeDataFromServiceAfterPassingMovieName(getApplicationContext()).execute(new String[]{txt1.getText().toString()});
+//new PassingandgettingfromIMDB(getApplicationContext()).execute(new String[]{txt1.getText().toString()});
 
 
 
