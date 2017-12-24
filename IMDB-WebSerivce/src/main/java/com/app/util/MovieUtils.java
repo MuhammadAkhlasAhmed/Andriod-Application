@@ -9,17 +9,19 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+
 import java.util.Set;
 
 import com.app.dto.MovieDTO;
 import com.app.dto.MovieFilterDTO;
+import com.app.dto.MovieRecordDTO;
 import com.app.model.Movie;
 
 /**
  * The Class MovieUtils.
  */
 public class MovieUtils {
-	
+
 	/**
 	 * The Default Distance.
 	 */
@@ -87,11 +89,31 @@ public class MovieUtils {
 		}
 		return listOfMovieDTO;
 	}
+	
+	/**
+	 * The method that return List of MovieRecordDTO.
+	 */
+	public static List<MovieRecordDTO> getListOfMovieRecordDTO(List<Movie> listOfMovie){
+	
+		List<MovieRecordDTO> listOfMovieRecordDTO = new ArrayList<MovieRecordDTO>();
+		for (Movie movielist : listOfMovie) {
+			MovieRecordDTO movieRecordDTO = new MovieRecordDTO();
+			movieRecordDTO.setBudget(movielist.getBudget());
+			movieRecordDTO.setPopularity(movielist.getPopularity());
+			movieRecordDTO.setRating(movielist.getVoteAverage());
+			movieRecordDTO.setRevenue(movielist.getRevenue());
+			movieRecordDTO.setRuntime(movielist.getRuntime());
+			movieRecordDTO.setVoteCount(movielist.getVoteCount());
+			listOfMovieRecordDTO.add(movieRecordDTO);
+		}
+		return listOfMovieRecordDTO;
+	}
+
 
 	/**
 	 * The method that perform filtering and calculate distance for each movie.
 	 */
-	public static void ContentBasedFiltering(List<MovieDTO> listOFMovieDTO, MovieDTO movieDTO){
+	public static List<String> ContentBasedFiltering(List<MovieDTO> listOFMovieDTO, MovieDTO movieDTO){
 	
 		double popularity = movieDTO.getPopularity();//875.581305
 		int runtime = movieDTO.getRuntime();//91
@@ -214,8 +236,6 @@ public class MovieUtils {
 
 		
 		});
-	//	moviesWithDistance.forEach((k,v)->{System.out.println("key "+k+" distance "+v);});
-		//moviesWithDistance.forEach((k,v)->{});
 		Set<Entry<String, Double>> set = moviesWithDistance.entrySet();
 		List<Entry<String, Double>> list = new ArrayList<Entry<String,Double>>(set);
 		Collections.sort(list, new Comparator<Map.Entry<String,Double>>() {
@@ -223,10 +243,35 @@ public class MovieUtils {
 				return (o2.getValue()).compareTo(o1.getValue());
 			}
 		});
+		List<String> moviesWithDist = new ArrayList<String>();
 		Map<String, Double> aMap2 = new LinkedHashMap<String, Double>();
 		for (Entry<String,Double> entry : list) {
 			aMap2.put(entry.getKey(), entry.getValue());
 		}
-		aMap2.forEach((k,v)->{System.out.println("Keys\t"+k+"\tvalues\t"+v);});
+		
+		aMap2.forEach((k,v)->{
+			moviesWithDist.add(k);
+			});
+		return moviesWithDist;
+	}
+	
+	/**
+	 * The method that return list of first five movie name.
+	 */
+	public static List<String> getFirstFiveMovieName(List<String> moviesWithDistance){
+		
+		int counter = 0;
+		List<String> listOfFirstFiveMovieName = new ArrayList<String>();
+		for (String eachMovie : moviesWithDistance) {
+			if(counter == 5) {
+				break;
+			}
+		else {
+			listOfFirstFiveMovieName.add(eachMovie);
+		}
+			counter++;
+		}
+		return listOfFirstFiveMovieName;
+		
 	}
 }
