@@ -86,7 +86,7 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
 
                 progressDialog = new ProgressDialog(MainActivity.this);
-                progressDialog.setMessage("Ikhlas Loading...");
+                progressDialog.setMessage("Loading...");
                 progressDialog.show();
 
                 loginButton.performClick();

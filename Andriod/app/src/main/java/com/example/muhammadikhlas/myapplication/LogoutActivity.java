@@ -1,5 +1,6 @@
 package com.example.muhammadikhlas.myapplication;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -49,6 +50,7 @@ import java.util.Arrays;
 public class LogoutActivity extends Activity {
 
     private TextView btnLogout,textView,txt1;
+    private ProgressDialog progressDialog;
     public User user;
     private ImageView profileImage;
     Bitmap bitmap;
@@ -68,14 +70,16 @@ int a;
         user=PrefUtils.getCurrentUser(LogoutActivity.this);
         profileImage= (ImageView) findViewById(R.id.profileImage);
         textView=(TextView)findViewById(R.id.hi);
-txt1=(TextView)findViewById(R.id.nama);
-btn=(Button)findViewById(R.id.button2);
+        txt1=(TextView)findViewById(R.id.nama);
+        btn=(Button)findViewById(R.id.button2);
 
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(),"Hello",Toast.LENGTH_LONG).show();
+                progressDialog = new ProgressDialog(LogoutActivity.this);
+                progressDialog.setMessage("Please wait...");
+                progressDialog.show();
 
                 String[] infos=new String[5];
                 infos[0]=txt1.getText().toString();
