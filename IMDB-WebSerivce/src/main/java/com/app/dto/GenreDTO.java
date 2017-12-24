@@ -1,16 +1,16 @@
 package com.app.dto;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * The Class GenreDTO.
  */
-public class GenreDTO {
+public class GenreDTO implements Serializable {
 	
-	public GenreDTO() {
-		
-	}
-
+	/** The Constant serialVersionUID. */
+	private static final long serialVersionUID = 1L;
+	
 	/**  The list of genres. */
 	private List<String> genres;
 

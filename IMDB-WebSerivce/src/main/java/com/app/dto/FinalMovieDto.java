@@ -1,13 +1,14 @@
 package com.app.dto;
 
+import java.io.Serializable;
+
 /**
  * The Class FinalMovieDto.
  */
-public class FinalMovieDto {
-
-	public FinalMovieDto() {
-		
-	}
+public class FinalMovieDto implements Serializable {
+	
+	/** The Constant serialVersionUID. */
+	private static final long serialVersionUID = 1L;
 
 	/** The name. */
 	private String name;
