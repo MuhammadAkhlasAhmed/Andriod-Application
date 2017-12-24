@@ -76,17 +76,23 @@ btn=(Button)findViewById(R.id.button2);
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(),"Hello",Toast.LENGTH_LONG).show();
-String[] infos=new String[5];
+
+                String[] infos=new String[5];
                 infos[0]=txt1.getText().toString();
 
 
-                Intent listofmovies=new Intent(LogoutActivity.this,ListOfMoviesByWebMatrixActivity.class);
-                startActivity(listofmovies);
+                new TakeDataFromServiceAfterPassingMovieName(LogoutActivity.this).execute(infos);
 
 
-                //PassingandgettingfromIMDB oop=new PassingandgettingfromIMDB();
+
+              //  Intent listofmovies=new Intent(LogoutActivity.this,ListOfMoviesByWebMatrixActivity.class);
+                //listofmovies.putExtra("MovieName",infos[0]);
+                //startActivity(listofmovies);
+
+
+                //TakeDataFromServiceAfterPassingMovieName oop=new TakeDataFromServiceAfterPassingMovieName();
                 //oop.view(txt1.getText().toString());
-//new PassingandgettingfromIMDB(getApplicationContext()).execute(new String[]{txt1.getText().toString()});
+//new TakeDataFromServiceAfterPassingMovieName(getApplicationContext()).execute(new String[]{txt1.getText().toString()});
 
 
 

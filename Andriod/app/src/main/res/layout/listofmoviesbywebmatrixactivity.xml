@@ -9,8 +9,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="10dp"
     tools:context="com.example.muhammadikhlas.myapplication.ListOfMoviesByWebMatrixActivity"
-    android:background="@drawable/tech"
+    android:background="@drawable/z1"
     >
 
-    <ListView android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/list"/>
+    <ListView android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/list" />
 </RelativeLayout>

@@ -5,6 +5,9 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -22,37 +25,30 @@ public class ListOfMoviesByWebMatrixActivity extends Activity {
     private ProgressDialog progressDialog;
     ListView listView;
     StringBuffer responce;
+String name;
 
+    List<MoviePojo>   rowItems ;
 
-    int[] rating= new int[5];
-    String[] moviename=new String[5];
-    String[] tagline=new String[5];
-    List<MoviePojo> rowItems;
     ListView mylistview;
-
+    TakeDataFromServiceAfterPassingMovieName iop=new TakeDataFromServiceAfterPassingMovieName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.listofmoviesbywebmatrixactivity);
-        activity = this;
-rating[0]=1;
-moviename[0]="Herculas";
-        tagline[0]="A big man with meow";
 
-        rating[1]=1;
-        moviename[1]="Herculas";
-        tagline[1]="A big man with meow";
+        setContentView(R.layout.listofmoviesbywebmatrixactivity);
+
+        //iop.delegate=this;
 
         rowItems = new ArrayList<MoviePojo>();
 
+       Intent i=getIntent();
+rowItems=(List<MoviePojo>) i.getSerializableExtra("LIST");
 
-            MoviePojo item = new MoviePojo(rating[0],tagline[0],moviename[0]);
-        MoviePojo item1 = new MoviePojo(rating[1],tagline[1],moviename[1]);
-            rowItems.add(item);
-            rowItems.add(item1);
+Log.d("NAME", String.valueOf(rowItems.size()));
+
 
         mylistview = (ListView) findViewById(R.id.list);
-        mylistview.setBackgroundColor(Color.BLACK);
+     //   mylistview.setBackgroundColor(Color.BLACK);
         CustomAdapter adapter = new CustomAdapter(this, rowItems);
         mylistview.setAdapter(adapter);
 
@@ -60,29 +56,7 @@ moviename[0]="Herculas";
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
-
-
-
-
-
-
-
-
 
 
 
