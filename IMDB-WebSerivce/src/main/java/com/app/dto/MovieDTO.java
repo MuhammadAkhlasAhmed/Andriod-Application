@@ -1,15 +1,15 @@
 package com.app.dto;
 
+import java.io.Serializable;
 import java.math.BigInteger;
 
 /**
  * The Class MovieDTO.
  */
-public class MovieDTO {
+public class MovieDTO implements Serializable {
 	
-	public MovieDTO() {
-		
-	}
+	/** The Constant serialVersionUID. */
+	private static final long serialVersionUID = 1L;
 	
 	/** The name. */
 	private String name;

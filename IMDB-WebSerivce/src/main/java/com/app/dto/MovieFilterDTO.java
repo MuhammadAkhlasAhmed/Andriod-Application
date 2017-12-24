@@ -1,8 +1,12 @@
 package com.app.dto;
 
+import java.io.Serializable;
 import java.math.BigInteger;
 
-public class MovieFilterDTO {
+public class MovieFilterDTO implements Serializable {
+	
+	/** The Constant serialVersionUID. */
+	private static final long serialVersionUID = 1L;
 	
 	/** The runtime. */
 	public int runtime;

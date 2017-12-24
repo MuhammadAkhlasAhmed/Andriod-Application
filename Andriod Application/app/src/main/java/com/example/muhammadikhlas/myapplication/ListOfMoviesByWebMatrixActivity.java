@@ -39,11 +39,17 @@ rating[0]=1;
 moviename[0]="Herculas";
         tagline[0]="A big man with meow";
 
+        rating[1]=1;
+        moviename[1]="Herculas";
+        tagline[1]="A big man with meow";
+
         rowItems = new ArrayList<MoviePojo>();
 
 
             MoviePojo item = new MoviePojo(rating[0],tagline[0],moviename[0]);
+        MoviePojo item1 = new MoviePojo(rating[1],tagline[1],moviename[1]);
             rowItems.add(item);
+            rowItems.add(item1);
 
         mylistview = (ListView) findViewById(R.id.list);
         mylistview.setBackgroundColor(Color.BLACK);
