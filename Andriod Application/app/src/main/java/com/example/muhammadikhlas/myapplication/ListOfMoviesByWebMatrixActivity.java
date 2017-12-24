@@ -24,10 +24,10 @@ public class ListOfMoviesByWebMatrixActivity extends Activity {
     StringBuffer responce;
 
 
-    String[] member_names= new String[5];
-    String[] statues=new String[5];
-    String[] contactType=new String[5];
-    List<RowItem> rowItems;
+    int[] rating= new int[5];
+    String[] moviename=new String[5];
+    String[] tagline=new String[5];
+    List<MoviePojo> rowItems;
     ListView mylistview;
 
     @Override
@@ -35,14 +35,14 @@ public class ListOfMoviesByWebMatrixActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listofmoviesbywebmatrixactivity);
         activity = this;
-member_names[0]="Hello";
-statues[0]="1";
-        contactType[0]="111";
+rating[0]=1;
+moviename[0]="Herculas";
+        tagline[0]="A big man with meow";
 
-        rowItems = new ArrayList<RowItem>();
+        rowItems = new ArrayList<MoviePojo>();
 
 
-            RowItem item = new RowItem(member_names[0],statues[0],contactType[0]);
+            MoviePojo item = new MoviePojo(rating[0],tagline[0],moviename[0]);
             rowItems.add(item);
 
         mylistview = (ListView) findViewById(R.id.list);

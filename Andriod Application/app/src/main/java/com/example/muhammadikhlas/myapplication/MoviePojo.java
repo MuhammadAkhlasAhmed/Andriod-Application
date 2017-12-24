@@ -17,4 +17,28 @@ public class MoviePojo {
     }
 
 
+
+    public String getname() {
+        return name;
+    }
+
+
+
+
+    public String gettagline() {
+        return tagline;
+    }
+
+
+
+    public String getrating() {
+        return String.valueOf(rating);
+    }
+
+
+
+
+
+
+
 }

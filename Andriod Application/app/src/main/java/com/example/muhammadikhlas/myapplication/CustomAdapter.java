@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -14,9 +13,9 @@ import java.util.List;
 public class CustomAdapter extends BaseAdapter {
 
 	Context context;
-	List<RowItem> rowItems;
+	List<MoviePojo> rowItems;
 
-	CustomAdapter(Context context, List<RowItem> rowItems) {
+	CustomAdapter(Context context, List<MoviePojo> rowItems) {
 		this.context = context;
 		this.rowItems = rowItems;
 	}
@@ -38,9 +37,9 @@ public class CustomAdapter extends BaseAdapter {
 
 	/* private view holder class */
 	private class ViewHolder {
-		TextView member_name;
-		TextView status;
-		TextView contactType;
+		TextView names;
+		TextView tags;
+		TextView ratings;
 	}
 
 	@Override
@@ -54,17 +53,17 @@ public class CustomAdapter extends BaseAdapter {
 			convertView = mInflater.inflate(R.layout.list_item, null);
 			holder = new ViewHolder();
 
-			holder.member_name = (TextView) convertView
-					.findViewById(R.id.member_name);
-			holder.status = (TextView) convertView.findViewById(R.id.status);
-			holder.contactType = (TextView) convertView
-					.findViewById(R.id.contact_type);
+			holder.names = (TextView) convertView
+					.findViewById(R.id.moviename);
+			holder.tags = (TextView) convertView.findViewById(R.id.tagline);
+			holder.ratings = (TextView) convertView
+					.findViewById(R.id.rating);
 
-			RowItem row_pos = rowItems.get(position);
+			MoviePojo row_pos = rowItems.get(position);
 
-			holder.member_name.setText(row_pos.getMember_name());
-			holder.status.setText(row_pos.getStatus());
-			holder.contactType.setText(row_pos.getContactType());
+			holder.names.setText(row_pos.getname());
+			holder.tags.setText(row_pos.gettagline());
+			holder.ratings.setText(row_pos.getrating());
 
 			convertView.setTag(holder);
 		} else {
