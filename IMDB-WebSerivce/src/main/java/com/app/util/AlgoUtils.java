@@ -40,7 +40,8 @@ public class AlgoUtils {
 	static double[] zMatrix = new double[6];
 	static double[][] weights = new double[6][1];
 	static double  finalEquation;
-	static List<FinalMovieDto> listOfRecommendedMovie = new ArrayList<FinalMovieDto>();
+  //static List<FinalMovieDto> listOfRecommendedMovie = new ArrayList<FinalMovieDto>();
+	static List<FinalMovieDto> listOfRecommendedMovie;
 	
 	/**
 	 * The method that perform web matrix factorization technique.
@@ -93,6 +94,7 @@ public class AlgoUtils {
 			    }
 			}
 			List<Movie> list = listOfFirstFiveMovieObject;
+			listOfRecommendedMovie = new ArrayList<FinalMovieDto>();
 			for (Movie movie : list) {
 				FinalMovieDto finalMovieDto = new FinalMovieDto();
 				double popularity = movie.getPopularity()/max_Popularity;
