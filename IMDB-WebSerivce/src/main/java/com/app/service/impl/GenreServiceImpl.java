@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import com.app.dto.FinalMovieDto;
@@ -30,7 +29,7 @@ public class GenreServiceImpl implements GenreService {
 	@Override
 	public List<FinalMovieDto> getMovieGenreFromIMDB(String name) {
 		GenreDTO genreDTO = GenreUtils.getMovieGenre(name);
-		if (genreDTO != null) {
+		if (genreDTO.getGenres() != null) {
 			List<String> listOfGenre = genreDTO.getGenres();
 			String genre = GenreUtils.getGenre(listOfGenre);
 			String originalMovieTile = GenreUtils.getOriginalMovieTitle(name);

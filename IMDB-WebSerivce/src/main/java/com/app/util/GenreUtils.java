@@ -9,6 +9,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.annotations.common.util.impl.LoggerFactory;
+import org.jboss.logging.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -18,6 +20,9 @@ import com.app.dto.GenreDTO;
  * The Class GenreUtils.
  */
 public class GenreUtils {
+	
+	/** The Constant logger. */
+	static final Logger logger = LoggerFactory.logger(GenreUtils.class);
 	
 	public static String getGenre(List<String> listOfGenre) {
 		List<String> list  = listOfGenre;
@@ -50,14 +55,14 @@ public class GenreUtils {
 					}
 					genreDTO.setGenres(list);
 				} catch (Exception e) {
-					System.out.println("Exception " + e);
+					logger.info("Not Found");
 				}
 			}
 			conn.disconnect();
 		} catch (MalformedURLException e) {
-			System.out.println("MalformedURLException" + e);
+			logger.info("MalformedURLException");
 		} catch (IOException e) {
-			System.out.println("IOException" + e);
+			logger.info("IOException");
 		}
 		return genreDTO;
 	}
@@ -83,14 +88,14 @@ public class GenreUtils {
 					JSONObject obj1 = array.getJSONObject(0);
 					movieTitle = obj1.getString("title");
 				} catch (Exception e) {
-					System.out.println("Exception " + e);
+					logger.info("Not Found");
 				}
 			}
 			conn.disconnect();
 		} catch (MalformedURLException e) {
-			System.out.println("MalformedURLException" + e);
+			logger.info("MalformedURLException");
 		} catch (IOException e) {
-			System.out.println("IOException" + e);
+			logger.info("IOException");
 		}
 		return movieTitle;
 	}

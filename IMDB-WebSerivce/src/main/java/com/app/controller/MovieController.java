@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.MovieDTO;
+import com.app.dto.ResponseDTO;
 import com.app.service.MovieService;
 
 /**
@@ -20,8 +21,14 @@ public class MovieController {
 	private MovieService movieService; 
 	
 	@GetMapping("/genre/{genreName}")
-	public MovieDTO getMovieByGenre(@PathVariable String genreName) {
-		return movieService.getMovieByGenre(genreName);
+	public ResponseDTO<MovieDTO> getMovieByGenre(@PathVariable String genreName) {
+		MovieDTO movieDTO = movieService.getMovieByGenre(genreName);
+		if(movieDTO == null) {
+			return new ResponseDTO<MovieDTO>("failure", movieDTO);
+		}
+		else {
+			return new ResponseDTO<MovieDTO>("sucess", movieDTO);
+		}
 	}
 	
 }
