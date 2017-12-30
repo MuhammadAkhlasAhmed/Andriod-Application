@@ -23,6 +23,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @NamedQuery(name="Genre.findAll", query="SELECT g FROM Genre g")
 @JsonIgnoreProperties({"movies"})
 public class Genre implements Serializable {
+	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
 	/** The id. */
@@ -38,9 +40,6 @@ public class Genre implements Serializable {
 	@ManyToMany(mappedBy="genres",cascade = CascadeType.ALL)
 	private List<Movie> movies;
 	
-	public Genre() {
-	}
-
 	/**
 	 * @return the id
 	 */

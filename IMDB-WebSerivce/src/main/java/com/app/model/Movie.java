@@ -14,6 +14,8 @@ import java.util.List;
 @Table(name="movies")
 @NamedQuery(name="Movie.findAll", query="SELECT m FROM Movie m")
 public class Movie implements Serializable {
+	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
 	/** The id. */
@@ -63,9 +65,6 @@ public class Movie implements Serializable {
 			joinColumns={@JoinColumn(name="movie_id")}, 
 			inverseJoinColumns={@JoinColumn(name="genre_id")})
 	private List<Genre> genres;
-
-	public Movie() {
-	}
 
 	/**
 	 * @return the id
