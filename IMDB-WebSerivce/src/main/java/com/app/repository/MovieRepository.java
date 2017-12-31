@@ -17,6 +17,7 @@ import com.app.model.Movie;
 @Repository
 public interface MovieRepository extends JpaRepository<Movie, Long>{
 	
+	@Transactional
 	@Query("select m from Movie m JOIN m.genres mg where mg.genre=?")
 	public List<Movie> findByMovieByGenre(String name);
 	

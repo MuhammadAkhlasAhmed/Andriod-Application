@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.app.dto.FinalMovieDto;
+import com.app.dto.FinalMovieNameDTO;
 import com.app.dto.GenreDTO;
 import com.app.dto.MovieDTO;
 import com.app.model.Movie;
@@ -50,6 +51,15 @@ public class GenreServiceImpl implements GenreService {
 				Movie movie = movieService.getMovieByItsName(eachMovie);
 				listOfFirstFiveMovieObject.add(movie);
 			}
+			List<FinalMovieDto> listOfFinalMovieDTO = AlgoUtils.WebMatrixFactorizationTechnique(MovieUtils.getListOfMovieRecordDTO(findAllMovie), listOfFirstFiveMovieObject);
+			List<FinalMovieNameDTO> listOfFinalMovieName = new ArrayList<FinalMovieNameDTO>();
+			for (FinalMovieDto finalMovieDto : listOfFinalMovieDTO) {
+				FinalMovieNameDTO finalMovieNameDTO = new FinalMovieNameDTO();
+				finalMovieNameDTO.setName(finalMovieDto.getName());
+				listOfFinalMovieName.add(finalMovieNameDTO);
+			}
+			
+			
 			return AlgoUtils.WebMatrixFactorizationTechnique(MovieUtils.getListOfMovieRecordDTO(findAllMovie), listOfFirstFiveMovieObject);
 		}
 		else {
