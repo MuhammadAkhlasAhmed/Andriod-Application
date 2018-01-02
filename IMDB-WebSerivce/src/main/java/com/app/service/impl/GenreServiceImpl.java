@@ -58,8 +58,6 @@ public class GenreServiceImpl implements GenreService {
 				finalMovieNameDTO.setName(finalMovieDto.getName());
 				listOfFinalMovieName.add(finalMovieNameDTO);
 			}
-			
-			
 			return AlgoUtils.WebMatrixFactorizationTechnique(MovieUtils.getListOfMovieRecordDTO(findAllMovie), listOfFirstFiveMovieObject);
 		}
 		else {
