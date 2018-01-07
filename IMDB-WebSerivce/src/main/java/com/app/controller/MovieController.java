@@ -27,7 +27,7 @@ public class MovieController {
 			return new ResponseDTO<MovieDTO>("failure", movieDTO);
 		}
 		else {
-			return new ResponseDTO<MovieDTO>("sucess", movieDTO);
+			return new ResponseDTO<MovieDTO>("success", movieDTO);
 		}
 	}
 	

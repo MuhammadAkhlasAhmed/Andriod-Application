@@ -11,15 +11,15 @@ import com.app.model.Movie;
  */
 public interface MovieService {
 	
-	public MovieDTO getMovieByGenre(String genreName);
+	MovieDTO getMovieByGenre(String genreName);
 
-	public MovieDTO getMovieByName(String name);
+	MovieDTO getMovieByName(String name);
 	
-	public Movie getMovieByItsName(String movieName);
+	Movie getMovieByItsName(String movieName);
 	
-	public List<Movie> getListOfMovies(String genreName);
+	List<Movie> getListOfMovies(String genreName);
 	
-	public List<Movie> findMovie(int runtime, BigInteger revenue, double voteAverage, int voteCount, double popularity, BigInteger budget);
+	List<Movie> findMovie(int runtime, BigInteger revenue, double voteAverage, int voteCount, double popularity, BigInteger budget);
 	
-	public List<Movie> findAllMovie(int runtime, BigInteger revenue, double voteAverage, int voteCount, double popularity, BigInteger budget);
+	List<Movie> findAllMovie(int runtime, BigInteger revenue, double voteAverage, int voteCount, double popularity, BigInteger budget);
 }

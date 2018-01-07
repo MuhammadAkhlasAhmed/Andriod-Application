@@ -1,0 +1,7 @@
+com\app\service\impl\ItemReviewServiceImpl.class
+com\app\service\ItemReviewService.class
+com\app\SpringBootJdbcApplication.class
+com\app\dao\ItemReviewDao.class
+com\app\dao\impl\ItemReviewDaoImpl.class
+com\app\model\ItemReview.class
+com\app\controller\ItemReviewController.class
