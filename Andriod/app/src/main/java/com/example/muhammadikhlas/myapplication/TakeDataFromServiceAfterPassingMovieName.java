@@ -48,7 +48,7 @@ public class TakeDataFromServiceAfterPassingMovieName extends AsyncTask<String,V
     URL url = null;
     JSONObject object = null;
     InputStream inStream = null;
-    String   urlString="http://192.168.8.103:8080/api/v1/movie/";
+    String   urlString="http://192.168.0.101:8080/api/v1/movie/";
     String temp, response = "";
 
 
