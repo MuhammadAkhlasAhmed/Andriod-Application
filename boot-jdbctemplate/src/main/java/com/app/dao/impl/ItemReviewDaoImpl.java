@@ -63,7 +63,7 @@ public class ItemReviewDaoImpl extends JdbcDaoSupport implements ItemReviewDao{
 	public List<ItemReview> getRowAgainsGenres(List<String> list) {
 		
 		if(list.size() == 1) {
-			String sql = "SELECT * FROM item_review where ("+list.get(0).toLowerCase()+"='like' and "+list.get(1).toLowerCase()+"='like') or ("+list.get(2).toLowerCase()+") ";	
+			String sql = "SELECT * FROM item_review where ("+list.get(0).toLowerCase()+"='1' and "+list.get(1).toLowerCase()+"='1') or ("+list.get(2).toLowerCase()+") ";	
 			List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
 			resultSet = new ArrayList<ItemReview>();
 			for(Map<String, Object> row : rows){
@@ -92,7 +92,7 @@ public class ItemReviewDaoImpl extends JdbcDaoSupport implements ItemReviewDao{
 
 		
 		if(list.size() == 2) {
-	String sql = "SELECT * FROM item_review where "+list.get(0).toLowerCase()+"='like' and "+list.get(1).toLowerCase()+"='like'";	
+	String sql = "SELECT * FROM item_review where "+list.get(0).toLowerCase()+"='1' and "+list.get(1).toLowerCase()+"='1'";	
 	List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
 	resultSet = new ArrayList<ItemReview>();
 	for(Map<String, Object> row : rows){
@@ -121,7 +121,7 @@ public class ItemReviewDaoImpl extends JdbcDaoSupport implements ItemReviewDao{
 		
 
 		if(list.size() == 3) {
-			String sql = "SELECT * FROM item_review where ("+list.get(0).toLowerCase()+"='like' and "+list.get(1).toLowerCase()+"='like') or ("+list.get(2).toLowerCase()+"='like') ";	
+			String sql = "SELECT * FROM item_review where ("+list.get(0).toLowerCase()+"='1' and "+list.get(1).toLowerCase()+"='1') or ("+list.get(2).toLowerCase()+"='1') ";	
 			List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
 			resultSet = new ArrayList<ItemReview>();
 			for(Map<String, Object> row : rows){
@@ -149,7 +149,7 @@ public class ItemReviewDaoImpl extends JdbcDaoSupport implements ItemReviewDao{
 		}
 		
 		if(list.size() == 4) {
-			String sql = "SELECT * FROM item_review where ("+list.get(0).toLowerCase()+"='like' and "+list.get(1).toLowerCase()+"='like') or ("+list.get(2).toLowerCase()+"='like' and "+list.get(3).toLowerCase()+"='like')";	
+			String sql = "SELECT * FROM item_review where ("+list.get(0).toLowerCase()+"='1' and "+list.get(1).toLowerCase()+"='1') or ("+list.get(2).toLowerCase()+"='1' and "+list.get(3).toLowerCase()+"='1')";	
 			List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
 			resultSet = new ArrayList<ItemReview>();
 			for(Map<String, Object> row : rows){
@@ -177,7 +177,7 @@ public class ItemReviewDaoImpl extends JdbcDaoSupport implements ItemReviewDao{
 		}
 
 		if(list.size() == 5) {
-			String sql = "SELECT * FROM item_review where ("+list.get(0).toLowerCase()+"='like' and "+list.get(1).toLowerCase()+"='like') or ("+list.get(2).toLowerCase()+"='like' and "+list.get(3).toLowerCase()+"='like') or ("+list.get(4).toLowerCase()+"='like')";	
+			String sql = "SELECT * FROM item_review where ("+list.get(0).toLowerCase()+"='1' and "+list.get(1).toLowerCase()+"='1') or ("+list.get(2).toLowerCase()+"='1' and "+list.get(3).toLowerCase()+"='1') or ("+list.get(4).toLowerCase()+"='1')";	
 			System.out.println(sql);
 			List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
 			resultSet = new ArrayList<ItemReview>();
