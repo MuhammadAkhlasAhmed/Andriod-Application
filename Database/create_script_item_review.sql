@@ -28,5 +28,5 @@ CREATE TABLE `item_review`(
    
    CREATE TABLE `movies_title`(
   `movie_id` INT NOT NULL,
-  `title` VARCHAR(15) NULL DEFAULT NULL,
-     PRIMARY KEY (`item_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `title` VARCHAR(500) NULL DEFAULT NULL,
+     PRIMARY KEY (`movie_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
