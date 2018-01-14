@@ -35,6 +35,7 @@ public class ItemReviewDaoImpl extends JdbcDaoSupport implements ItemReviewDao{
 		List<ItemReview> result = new ArrayList<ItemReview>();
 		for(Map<String, Object> row : rows){
 			ItemReview itemReview = new ItemReview();
+			itemReview.setId(Long.parseLong((row.get("item_id").toString())));
 			itemReview.setAction(row.get("action").toString());
 			itemReview.setAdventure(row.get("adventure").toString());
 			itemReview.setAnimation(row.get("animation").toString());
@@ -53,6 +54,7 @@ public class ItemReviewDaoImpl extends JdbcDaoSupport implements ItemReviewDao{
 			itemReview.setThriller(row.get("thriller").toString());
 			itemReview.setWar(row.get("war").toString());
 			itemReview.setWestern(row.get("western").toString());
+			itemReview.setFamily(row.get("family").toString());
 			result.add(itemReview);
 		}
 		
@@ -68,6 +70,7 @@ public class ItemReviewDaoImpl extends JdbcDaoSupport implements ItemReviewDao{
 			resultSet = new ArrayList<ItemReview>();
 			for(Map<String, Object> row : rows){
 				ItemReview itemReview = new ItemReview();
+				itemReview.setId(Long.parseLong((row.get("item_id").toString())));
 				itemReview.setAction(row.get("action").toString());
 				itemReview.setAdventure(row.get("adventure").toString());
 				itemReview.setAnimation(row.get("animation").toString());
@@ -86,17 +89,16 @@ public class ItemReviewDaoImpl extends JdbcDaoSupport implements ItemReviewDao{
 				itemReview.setThriller(row.get("thriller").toString());
 				itemReview.setWar(row.get("war").toString());
 				itemReview.setWestern(row.get("western").toString());
+				itemReview.setFamily(row.get("family").toString());
 				resultSet.add(itemReview);
 			}
-		}
-
-		
-		if(list.size() == 2) {
+		} if(list.size() == 2) {
 	String sql = "SELECT * FROM item_review where "+list.get(0).toLowerCase()+"='1' and "+list.get(1).toLowerCase()+"='1'";	
 	List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
 	resultSet = new ArrayList<ItemReview>();
 	for(Map<String, Object> row : rows){
 		ItemReview itemReview = new ItemReview();
+		itemReview.setId(Long.parseLong((row.get("item_id").toString())));
 		itemReview.setAction(row.get("action").toString());
 		itemReview.setAdventure(row.get("adventure").toString());
 		itemReview.setAnimation(row.get("animation").toString());
@@ -115,17 +117,16 @@ public class ItemReviewDaoImpl extends JdbcDaoSupport implements ItemReviewDao{
 		itemReview.setThriller(row.get("thriller").toString());
 		itemReview.setWar(row.get("war").toString());
 		itemReview.setWestern(row.get("western").toString());
+		itemReview.setFamily(row.get("family").toString());
 		resultSet.add(itemReview);
 	}
-		}
-		
-
-		if(list.size() == 3) {
+		} if(list.size() == 3) {
 			String sql = "SELECT * FROM item_review where ("+list.get(0).toLowerCase()+"='1' and "+list.get(1).toLowerCase()+"='1') or ("+list.get(2).toLowerCase()+"='1') ";	
 			List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
 			resultSet = new ArrayList<ItemReview>();
 			for(Map<String, Object> row : rows){
 				ItemReview itemReview = new ItemReview();
+				itemReview.setId(Long.parseLong((row.get("item_id").toString())));
 				itemReview.setAction(row.get("action").toString());
 				itemReview.setAdventure(row.get("adventure").toString());
 				itemReview.setAnimation(row.get("animation").toString());
@@ -144,16 +145,16 @@ public class ItemReviewDaoImpl extends JdbcDaoSupport implements ItemReviewDao{
 				itemReview.setThriller(row.get("thriller").toString());
 				itemReview.setWar(row.get("war").toString());
 				itemReview.setWestern(row.get("western").toString());
+				itemReview.setFamily(row.get("family").toString());
 				resultSet.add(itemReview);
 			}
-		}
-		
-		if(list.size() == 4) {
+		} if(list.size() == 4) {
 			String sql = "SELECT * FROM item_review where ("+list.get(0).toLowerCase()+"='1' and "+list.get(1).toLowerCase()+"='1') or ("+list.get(2).toLowerCase()+"='1' and "+list.get(3).toLowerCase()+"='1')";	
 			List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
 			resultSet = new ArrayList<ItemReview>();
 			for(Map<String, Object> row : rows){
 				ItemReview itemReview = new ItemReview();
+				itemReview.setId(Long.parseLong((row.get("item_id").toString())));
 				itemReview.setAction(row.get("action").toString());
 				itemReview.setAdventure(row.get("adventure").toString());
 				itemReview.setAnimation(row.get("animation").toString());
@@ -172,17 +173,16 @@ public class ItemReviewDaoImpl extends JdbcDaoSupport implements ItemReviewDao{
 				itemReview.setThriller(row.get("thriller").toString());
 				itemReview.setWar(row.get("war").toString());
 				itemReview.setWestern(row.get("western").toString());
+				itemReview.setFamily(row.get("family").toString());
 				resultSet.add(itemReview);
 			}
-		}
-
-		if(list.size() == 5) {
+		} if(list.size() == 5) {
 			String sql = "SELECT * FROM item_review where ("+list.get(0).toLowerCase()+"='1' and "+list.get(1).toLowerCase()+"='1') or ("+list.get(2).toLowerCase()+"='1' and "+list.get(3).toLowerCase()+"='1') or ("+list.get(4).toLowerCase()+"='1')";	
-			System.out.println(sql);
 			List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
 			resultSet = new ArrayList<ItemReview>();
 			for(Map<String, Object> row : rows){
 				ItemReview itemReview = new ItemReview();
+				itemReview.setId(Long.parseLong((row.get("item_id").toString())));
 				itemReview.setAction(row.get("action").toString());
 				itemReview.setAdventure(row.get("adventure").toString());
 				itemReview.setAnimation(row.get("animation").toString());
@@ -201,18 +201,12 @@ public class ItemReviewDaoImpl extends JdbcDaoSupport implements ItemReviewDao{
 				itemReview.setThriller(row.get("thriller").toString());
 				itemReview.setWar(row.get("war").toString());
 				itemReview.setWestern(row.get("western").toString());
+				itemReview.setFamily(row.get("family").toString());
 				resultSet.add(itemReview);
 			}
 		}
-
 		else {
-			
-			
-			
 		}
-		
 		return resultSet;
-		
 		}
 	}
-	

@@ -8,5 +8,5 @@ public interface ItemReviewService {
 	
 	List<ItemReview> getAllItemReviews();
 
-	List<ItemReview> performCollaborativeFiltering(List<String> listOfGenres);
+	List<String> performCollaborativeFiltering(List<String> listOfGenres);
 }

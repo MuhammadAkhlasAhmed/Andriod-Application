@@ -11,8 +11,8 @@ public class GenreRatingDTO implements Serializable{
 	/**  The list of genres. */
 	private List<String> genres;
 	
-	/** The rating. */
-	public double rating;
+//	/** The rating. */
+//	public double rating;
 
 	/**
 	 * @return the genres
@@ -28,17 +28,17 @@ public class GenreRatingDTO implements Serializable{
 		this.genres = genres;
 	}
 
-	/**
-	 * @return the rating
-	 */
-	public double getRating() {
-		return rating;
-	}
-
-	/**
-	 * @param rating the rating to set
-	 */
-	public void setRating(double rating) {
-		this.rating = rating;
-	}
+//	/**
+//	 * @return the rating
+//	 */
+//	public double getRating() {
+//		return rating;
+//	}
+//
+//	/**
+//	 * @param rating the rating to set
+//	 */
+//	public void setRating(double rating) {
+//		this.rating = rating;
+//	}
 }

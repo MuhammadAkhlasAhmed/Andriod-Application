@@ -6,6 +6,9 @@ public class ItemReview implements Serializable {
 	
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+	
+	/** The id. */
+	private Long item_id;
 
 	/** The action. */
 	private String action;
@@ -60,6 +63,23 @@ public class ItemReview implements Serializable {
 
 	/** The western. */
 	private String western;
+	
+	/** The family. */
+	private String family;
+
+	/**
+	 * @return the id
+	 */
+	public Long getId() {
+		return item_id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Long item_id) {
+		this.item_id = item_id;
+	}
 
 	/**
 	 * @return the action
@@ -311,5 +331,19 @@ public class ItemReview implements Serializable {
 	 */
 	public void setWestern(String western) {
 		this.western = western;
+	}
+
+	/**
+	 * @return the family
+	 */
+	public String getFamily() {
+		return family;
+	}
+
+	/**
+	 * @param family the family to set
+	 */
+	public void setFamily(String family) {
+		this.family = family;
 	}
 }

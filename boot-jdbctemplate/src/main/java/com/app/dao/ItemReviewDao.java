@@ -8,5 +8,4 @@ public interface ItemReviewDao {
 	
 	List<ItemReview> getAllItemReviews();
 	List<ItemReview> getRowAgainsGenres(List<String> list);
-	
 }

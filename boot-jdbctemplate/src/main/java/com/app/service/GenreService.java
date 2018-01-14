@@ -1,10 +1,10 @@
 package com.app.service;
 
-import com.app.dto.GenreRatingDTO;
+import java.util.List;
 
 public interface GenreService {
 	
-	GenreRatingDTO getMovieGenres(String name);
+	List<String> getMovieGenres(String name);
 	
 	
 }
