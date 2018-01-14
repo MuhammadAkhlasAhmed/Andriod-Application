@@ -66,6 +66,18 @@ public class ItemReview implements Serializable {
 	
 	/** The family. */
 	private String family;
+	
+	/** The history. */
+	private String history;
+	
+	/** The realityTv. */
+	private String realityTv;
+	
+	/** The music. */
+	private String music;
+	
+	/** The foreign. */
+	private String foreign;
 
 	/**
 	 * @return the id
@@ -345,5 +357,61 @@ public class ItemReview implements Serializable {
 	 */
 	public void setFamily(String family) {
 		this.family = family;
+	}
+
+	/**
+	 * @return the history
+	 */
+	public String getHistory() {
+		return history;
+	}
+
+	/**
+	 * @param history the history to set
+	 */
+	public void setHistory(String history) {
+		this.history = history;
+	}
+
+	/**
+	 * @return the realityTv
+	 */
+	public String getRealityTv() {
+		return realityTv;
+	}
+
+	/**
+	 * @param realityTv the realityTv to set
+	 */
+	public void setRealityTv(String realityTv) {
+		this.realityTv = realityTv;
+	}
+
+	/**
+	 * @return the music
+	 */
+	public String getMusic() {
+		return music;
+	}
+
+	/**
+	 * @param music the music to set
+	 */
+	public void setMusic(String music) {
+		this.music = music;
+	}
+
+	/**
+	 * @return the foreign
+	 */
+	public String getForeign() {
+		return foreign;
+	}
+
+	/**
+	 * @param foreign the foreign to set
+	 */
+	public void setForeign(String foreign) {
+		this.foreign = foreign;
 	}
 }

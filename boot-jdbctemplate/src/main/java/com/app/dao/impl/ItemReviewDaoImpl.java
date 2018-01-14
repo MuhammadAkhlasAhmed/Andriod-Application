@@ -55,6 +55,10 @@ public class ItemReviewDaoImpl extends JdbcDaoSupport implements ItemReviewDao{
 			itemReview.setWar(row.get("war").toString());
 			itemReview.setWestern(row.get("western").toString());
 			itemReview.setFamily(row.get("family").toString());
+			itemReview.setHistory(row.get("history").toString());
+			itemReview.setRealityTv(row.get("reality_tv").toString());
+			itemReview.setMusic(row.get("music").toString());
+			itemReview.setForeign(row.get("foreign").toString());
 			result.add(itemReview);
 		}
 		
@@ -65,7 +69,7 @@ public class ItemReviewDaoImpl extends JdbcDaoSupport implements ItemReviewDao{
 	public List<ItemReview> getRowAgainsGenres(List<String> list) {
 		
 		if(list.size() == 1) {
-			String sql = "SELECT * FROM item_review where ("+list.get(0).toLowerCase()+"='1' and "+list.get(1).toLowerCase()+"='1') or ("+list.get(2).toLowerCase()+") ";	
+			String sql = "SELECT * FROM item_review where ("+list.get(0).toLowerCase()+"='1')";	
 			List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
 			resultSet = new ArrayList<ItemReview>();
 			for(Map<String, Object> row : rows){
@@ -90,6 +94,10 @@ public class ItemReviewDaoImpl extends JdbcDaoSupport implements ItemReviewDao{
 				itemReview.setWar(row.get("war").toString());
 				itemReview.setWestern(row.get("western").toString());
 				itemReview.setFamily(row.get("family").toString());
+				itemReview.setHistory(row.get("history").toString());
+				itemReview.setRealityTv(row.get("reality_tv").toString());
+				itemReview.setMusic(row.get("music").toString());
+				itemReview.setForeign(row.get("foreign").toString());
 				resultSet.add(itemReview);
 			}
 		} if(list.size() == 2) {
@@ -118,6 +126,10 @@ public class ItemReviewDaoImpl extends JdbcDaoSupport implements ItemReviewDao{
 		itemReview.setWar(row.get("war").toString());
 		itemReview.setWestern(row.get("western").toString());
 		itemReview.setFamily(row.get("family").toString());
+		itemReview.setHistory(row.get("history").toString());
+		itemReview.setRealityTv(row.get("reality_tv").toString());
+		itemReview.setMusic(row.get("music").toString());
+		itemReview.setForeign(row.get("foreign").toString());
 		resultSet.add(itemReview);
 	}
 		} if(list.size() == 3) {
@@ -146,6 +158,10 @@ public class ItemReviewDaoImpl extends JdbcDaoSupport implements ItemReviewDao{
 				itemReview.setWar(row.get("war").toString());
 				itemReview.setWestern(row.get("western").toString());
 				itemReview.setFamily(row.get("family").toString());
+				itemReview.setHistory(row.get("history").toString());
+				itemReview.setRealityTv(row.get("reality_tv").toString());
+				itemReview.setMusic(row.get("music").toString());
+				itemReview.setForeign(row.get("foreign").toString());
 				resultSet.add(itemReview);
 			}
 		} if(list.size() == 4) {
@@ -174,6 +190,10 @@ public class ItemReviewDaoImpl extends JdbcDaoSupport implements ItemReviewDao{
 				itemReview.setWar(row.get("war").toString());
 				itemReview.setWestern(row.get("western").toString());
 				itemReview.setFamily(row.get("family").toString());
+				itemReview.setHistory(row.get("history").toString());
+				itemReview.setRealityTv(row.get("reality_tv").toString());
+				itemReview.setMusic(row.get("music").toString());
+				itemReview.setForeign(row.get("foreign").toString());
 				resultSet.add(itemReview);
 			}
 		} if(list.size() == 5) {
@@ -202,6 +222,10 @@ public class ItemReviewDaoImpl extends JdbcDaoSupport implements ItemReviewDao{
 				itemReview.setWar(row.get("war").toString());
 				itemReview.setWestern(row.get("western").toString());
 				itemReview.setFamily(row.get("family").toString());
+				itemReview.setHistory(row.get("history").toString());
+				itemReview.setRealityTv(row.get("reality_tv").toString());
+				itemReview.setMusic(row.get("music").toString());
+				itemReview.setForeign(row.get("foreign").toString());
 				resultSet.add(itemReview);
 			}
 		}
