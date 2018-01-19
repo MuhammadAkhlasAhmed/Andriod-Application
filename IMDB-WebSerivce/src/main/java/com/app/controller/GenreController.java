@@ -17,33 +17,23 @@ import com.app.service.GenreService;
 
 /**
  * The Class GenreController.
+ * @param <T>
  */
 @RestController
 @RequestMapping("api/v1")
-public class GenreController {
+public class GenreController<T> {
 	
 	@Autowired
 	private GenreService genreService; 
-	
-//	@GetMapping("/movie/{movieName}")
-//	public ResponseDTO<List<FinalMovieDto>> getMovieGenreFromIMDB(@PathVariable String movieName) {
-//		List<FinalMovieDto> list = genreService.getMovieGenreFromIMDB(movieName);
-//		if(list.isEmpty()) {
-//			return new ResponseDTO<List<FinalMovieDto>>("failure", new ArrayList<FinalMovieDto>());
-//		}
-//		else {
-//			return new ResponseDTO<List<FinalMovieDto>>("sucess", list);
-//		}
-//	}
-	
+
 	@GetMapping("/movie/{movieName}")
-	public ResponseEntity<List<FinalMovieDto>> getMovieGenreFromIMDB(@PathVariable String movieName) {
-		List<FinalMovieDto> list = genreService.getMovieGenreFromIMDB(movieName);
-		if(list.isEmpty()) {
-			return new ResponseEntity<List<FinalMovieDto>>(list, HttpStatus.NOT_FOUND);
-		}
-		else {
-			return new ResponseEntity<List<FinalMovieDto>>(list, HttpStatus.OK);
+	public ResponseEntity<T> getMovieGenreFromIMDB(@PathVariable String movieName) {
+		ResponseDTO responseDTO = genreService.getResponse(movieName) ;
+			if(responseDTO.getError() != null && responseDTO.getResponse() != null) {
+				return new ResponseEntity<T>((T) responseDTO, HttpStatus.NOT_FOUND);
+			} else {
+			List<FinalMovieDto> list = genreService.getMovieGenreFromIMDB(movieName);
+			return (ResponseEntity<T>) new ResponseEntity<List<FinalMovieDto>>(list, HttpStatus.OK);
 		}
 	}
 

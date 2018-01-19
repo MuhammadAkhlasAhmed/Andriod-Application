@@ -50,8 +50,10 @@ public class GenreUtils {
 		if (name.contains(" ")) {
 			String movie_name = GenreUtils.replacewith20(name);
 			try {
-				URL url = new URL("http://api.myapifilms.com/imdb/idIMDB?title=" + movie_name
-						+ "&&token=260407a8-26de-4f38-a226-17cfe4841e1d");
+//				URL url = new URL("http://api.myapifilms.com/imdb/idIMDB?title=" + movie_name
+//						+ "&&token=260407a8-26de-4f38-a226-17cfe4841e1d");
+				URL url = new URL("http://www.omdbapi.com/?t=" + movie_name
+						+ "&apikey=a4c03f2c");
 				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 				conn.setRequestMethod("GET");
 				conn.setRequestProperty("Accept", "application/json");
@@ -63,17 +65,29 @@ public class GenreUtils {
 				while ((output = br.readLine()) != null) {
 					try {
 						JSONObject jsonObject = new JSONObject(output);
-						JSONObject myResponse = jsonObject.getJSONObject("data");
-						JSONArray array = myResponse.getJSONArray("movies");
-						JSONObject obj1 = array.getJSONObject(0);
-						JSONArray genresArray = obj1.getJSONArray("genres");
+						
+						// this is only used for OMDB APIs
+//						JSONObject myResponse = jsonObject.getJSONObject("data");
+//						JSONArray array = myResponse.getJSONArray("movies");
+//						JSONObject obj1 = array.getJSONObject(0);
+//						JSONArray genresArray = obj1.getJSONArray("genres");
+//						ArrayList<String> list = new ArrayList<String>();
+//						for (int i = 0; i < genresArray.length(); i++) {
+//							list.add(genresArray.get(i).toString());
+//						}
+//						genreRatingDTO.setGenres(list);
+		
+//						 String rating = obj1.getString("rating");
+//						 genreRatingDTO.setRating(Double.parseDouble(rating)/2);
+
+						// this is only used for OMDB API
+						String genre = jsonObject.getString("Genre").toString();
+						String[] genreArray = genre.split(", ");
 						ArrayList<String> list = new ArrayList<String>();
-						for (int i = 0; i < genresArray.length(); i++) {
-							list.add(genresArray.get(i).toString());
+						for(int i=0; i<genreArray.length; i++) {
+							list.add(genreArray[i].toString());
 						}
 						genreRatingDTO.setGenres(list);
-						// String rating = obj1.getString("rating");
-						// genreRatingDTO.setRating(Double.parseDouble(rating)/2);
 					} catch (Exception e) {
 						System.out.println("Not Found " + e);
 					}
@@ -87,8 +101,10 @@ public class GenreUtils {
 			return genreRatingDTO;
 		} else {
 			try {
-				URL url = new URL("http://api.myapifilms.com/imdb/idIMDB?title=" + name
-						+ "&&token=260407a8-26de-4f38-a226-17cfe4841e1d");
+//				URL url = new URL("http://api.myapifilms.com/imdb/idIMDB?title=" + name
+//						+ "&&token=260407a8-26de-4f38-a226-17cfe4841e1d");
+				URL url = new URL("http://www.omdbapi.com/?t=" + name
+						+ "&apikey=a4c03f2c");
 				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 				conn.setRequestMethod("GET");
 				conn.setRequestProperty("Accept", "application/json");
@@ -100,17 +116,28 @@ public class GenreUtils {
 				while ((output = br.readLine()) != null) {
 					try {
 						JSONObject jsonObject = new JSONObject(output);
-						JSONObject myResponse = jsonObject.getJSONObject("data");
-						JSONArray array = myResponse.getJSONArray("movies");
-						JSONObject obj1 = array.getJSONObject(0);
-						JSONArray genresArray = obj1.getJSONArray("genres");
+						
+//						JSONObject myResponse = jsonObject.getJSONObject("data");
+//						JSONArray array = myResponse.getJSONArray("movies");
+//						JSONObject obj1 = array.getJSONObject(0);
+//						JSONArray genresArray = obj1.getJSONArray("genres");
+//						ArrayList<String> list = new ArrayList<String>();
+//						for (int i = 0; i < genresArray.length(); i++) {
+//							list.add(genresArray.get(i).toString());
+//						}
+//						genreRatingDTO.setGenres(list);
+						
+//						 String rating = obj1.getString("rating");
+//						 genreRatingDTO.setRating(Double.parseDouble(rating)/2);
+
+						// this is only used for OMDB API
+						String genre = jsonObject.getString("Genre").toString();
+						String[] genreArray = genre.split(", ");
 						ArrayList<String> list = new ArrayList<String>();
-						for (int i = 0; i < genresArray.length(); i++) {
-							list.add(genresArray.get(i).toString());
+						for(int i=0; i<genreArray.length; i++) {
+							list.add(genreArray[i].toString());
 						}
 						genreRatingDTO.setGenres(list);
-						// String rating = obj1.getString("rating");
-						// genreRatingDTO.setRating(Double.parseDouble(rating)/2);
 					} catch (Exception e) {
 						System.out.println("Not Found " + e);
 					}

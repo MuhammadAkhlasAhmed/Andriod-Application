@@ -1,13 +1,14 @@
 package com.app.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.MovieDTO;
-import com.app.dto.ResponseDTO;
 import com.app.service.MovieService;
 
 /**
@@ -21,13 +22,13 @@ public class MovieController {
 	private MovieService movieService; 
 	
 	@GetMapping("/genre/{genreName}")
-	public ResponseDTO<MovieDTO> getMovieByGenre(@PathVariable String genreName) {
+	public ResponseEntity<MovieDTO> getMovieByGenre(@PathVariable String genreName) {
 		MovieDTO movieDTO = movieService.getMovieByGenre(genreName);
 		if(movieDTO == null) {
-			return new ResponseDTO<MovieDTO>("failure", movieDTO);
+			return new ResponseEntity<MovieDTO>(movieDTO, HttpStatus.NOT_FOUND);
 		}
 		else {
-			return new ResponseDTO<MovieDTO>("success", movieDTO);
+			return new ResponseEntity<MovieDTO>(movieDTO, HttpStatus.OK);
 		}
 	}
 	

@@ -2,70 +2,42 @@ package com.app.dto;
 
 import java.io.Serializable;
 
-import org.springframework.http.HttpEntity;
-
-public class ResponseDTO<T> extends HttpEntity<T> implements Serializable{
+public class ResponseDTO implements Serializable{
 	
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 	
-	/** The Constant serialVersionUID. */
-	private String status;
+	/** The response. */
+	private String response;
 	
-	/** The dto object. */
-    private T dtoObject;
-    
-    /** The error message. */
-    private MessageDTO errorMessage;
+	/** The error. */
+	private String error;
 
-    public ResponseDTO(T dtoObject) {
-        this.dtoObject = dtoObject;
-    }
-
-    public ResponseDTO(String message,T dtoObject) {
-        this.dtoObject = dtoObject;
-        this.status = message;
-    }
-    
 	/**
-	 * @return the status
+	 * @return the response
 	 */
-	public String getStatus() {
-		return status;
+	public String getResponse() {
+		return response;
 	}
 
 	/**
-	 * @param status the status to set
+	 * @param response the response to set
 	 */
-	public void setStatus(String status) {
-		this.status = status;
+	public void setResponse(String response) {
+		this.response = response;
 	}
 
 	/**
-	 * @return the dtoObject
+	 * @return the error
 	 */
-	public T getDtoObject() {
-		return dtoObject;
+	public String getError() {
+		return error;
 	}
 
 	/**
-	 * @param dtoObject the dtoObject to set
+	 * @param error the error to set
 	 */
-	public void setDtoObject(T dtoObject) {
-		this.dtoObject = dtoObject;
-	}
-
-	/**
-	 * @return the errorMessage
-	 */
-	public MessageDTO getErrorMessage() {
-		return errorMessage;
-	}
-
-	/**
-	 * @param errorMessage the errorMessage to set
-	 */
-	public void setErrorMessage(MessageDTO errorMessage) {
-		this.errorMessage = errorMessage;
+	public void setError(String error) {
+		this.error = error;
 	}
 }

@@ -11,12 +11,14 @@ import com.app.dto.FinalMovieDto;
 import com.app.dto.FinalMovieNameDTO;
 import com.app.dto.GenreDTO;
 import com.app.dto.MovieDTO;
+import com.app.dto.ResponseDTO;
 import com.app.model.Movie;
 import com.app.service.GenreService;
 import com.app.service.MovieService;
 import com.app.util.AlgoUtils;
 import com.app.util.GenreUtils;
 import com.app.util.MovieUtils;
+import com.app.util.ResponseUtils;
 
 /**
  * The Class GenreServiceImpl.
@@ -64,5 +66,10 @@ public class GenreServiceImpl implements GenreService {
 			List<FinalMovieDto> list = new ArrayList<FinalMovieDto>();
 			return list;
 		}
+	}
+
+	@Override
+	public ResponseDTO getResponse(String name) {
+		return ResponseUtils.getMovieGenre(name);
 	}
 }
