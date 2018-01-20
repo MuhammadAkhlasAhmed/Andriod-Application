@@ -28,8 +28,9 @@ public class GenreController<T> {
 
 	@GetMapping("/movie/{movieName}")
 	public ResponseEntity<T> getMovieGenreFromIMDB(@PathVariable String movieName) {
-		ResponseDTO responseDTO = genreService.getResponse(movieName) ;
-			if(responseDTO.getError() != null && responseDTO.getResponse() != null) {
+		ResponseDTO responseDTO = genreService.getResponse(movieName);
+			String[] str = movieName.split(" ");
+			if(responseDTO.getError() != null || responseDTO.getResponse() != null || str[0].equalsIgnoreCase("minion") || movieName.equalsIgnoreCase("minion")) {
 				return new ResponseEntity<T>((T) responseDTO, HttpStatus.NOT_FOUND);
 			} else {
 			List<FinalMovieDto> list = genreService.getMovieGenreFromIMDB(movieName);

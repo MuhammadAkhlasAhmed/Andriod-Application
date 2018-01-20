@@ -19,4 +19,9 @@ public class MovieTitleServiceImpl implements MoviesTitleService{
 	public List<MoviesTitle> getMoviesAgainstId(List<Long> list) {
 		return moviesTitleDao.getMovieAgainstId(list);
 	}
+
+	@Override
+	public int save(String movieName) {
+		return moviesTitleDao.save(movieName);
+	}
 }

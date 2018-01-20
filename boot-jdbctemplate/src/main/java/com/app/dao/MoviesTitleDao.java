@@ -7,4 +7,5 @@ import com.app.model.MoviesTitle;
 public interface MoviesTitleDao {
 	
 	List<MoviesTitle> getMovieAgainstId(List<Long> list);
+	int save(String movieName);
 }

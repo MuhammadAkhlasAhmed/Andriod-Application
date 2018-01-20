@@ -8,6 +8,7 @@ import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
 
@@ -63,5 +64,12 @@ public class MovieTitleDaoImpl extends JdbcDaoSupport implements MoviesTitleDao{
 			}
 		}
 		return resultSet;
+	}
+
+	@Override
+	public int save(String movieName) {
+		String sql = "insert into movies_title (title) values ("+movieName+")";
+		int row = getJdbcTemplate().update(sql);
+		return row;
 	}
 }
