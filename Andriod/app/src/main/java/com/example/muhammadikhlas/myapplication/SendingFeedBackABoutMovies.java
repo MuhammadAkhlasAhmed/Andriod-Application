@@ -31,7 +31,7 @@ public class SendingFeedBackABoutMovies extends AsyncTask<String,Void,String> {
     URL url = null;
     JSONObject object = null;
     InputStream inStream = null;
-    String   urlString="http://192.168.212.2:8081/api/v1/";
+    String   urlString="http://192.168.1.105:8080/api/v1/";
     String temp, response = "";
     String mname,status;
 
@@ -46,12 +46,13 @@ public class SendingFeedBackABoutMovies extends AsyncTask<String,Void,String> {
             mname=x;
             String y=strings[1].toString();
             status=y;
+String iko=""+urlString+x.replace(" ","%20")+"/"+y;
 
-            url = new URL((urlString.toString()+x)); //ye update hoga abhi link k hisab se
-
+            url = new URL((iko.toString())); //ye update hoga abhi link k hisab se
+Log.d("Query",iko);
 
             urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setRequestMethod("GET");
+            urlConnection.setRequestMethod("POST");
             urlConnection.connect();
             inStream = urlConnection.getInputStream();
             BufferedReader bReader = new BufferedReader(new InputStreamReader(inStream));
@@ -76,6 +77,7 @@ public class SendingFeedBackABoutMovies extends AsyncTask<String,Void,String> {
     @Override
     protected void onPostExecute(String x) {
 
+        Log.d("Responce",x);
         Toast.makeText(context,"Thanks For Giving The Feed Back",Toast.LENGTH_LONG).show();
 
         Intent ais=new Intent(context,LogoutActivity.class);

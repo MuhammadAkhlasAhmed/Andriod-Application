@@ -64,7 +64,7 @@ else{
             infos[0]=value.toString();
             infos[1]=value1.toString();
 
-            new ResponceFromCollaborativeFiltering(FirebaseNotificationResultActivity.this).execute(infos);
+            new SendingFeedBackABoutMovies(FirebaseNotificationResultActivity.this).execute(infos);
 
 
 
