@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import com.facebook.AccessToken;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -49,7 +50,8 @@ import java.util.Arrays;
 
 public class LogoutActivity extends Activity {
 
-    private TextView btnLogout,textView,txt1;
+    private TextView btnLogout,textView;
+    private EditText txt1;
     private ProgressDialog progressDialog;
     public User user;
     private ImageView profileImage;
@@ -70,16 +72,27 @@ int a;
         user=PrefUtils.getCurrentUser(LogoutActivity.this);
         profileImage= (ImageView) findViewById(R.id.profileImage);
         textView=(TextView)findViewById(R.id.hi);
-        txt1=(TextView)findViewById(R.id.nama);
+        txt1=(EditText) findViewById(R.id.nama);
         btn=(Button)findViewById(R.id.button2);
+
+
+        txt1.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                txt1.setText("");
+            }
+        });
 
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                progressDialog = new ProgressDialog(LogoutActivity.this);
-                progressDialog.setMessage("Please wait...");
-                progressDialog.show();
+//                progressDialog = new ProgressDialog(LogoutActivity.this);
+//                progressDialog.setMessage("Please wait...");
+//                progressDialog.show();
+
+
 
                 String[] infos=new String[5];
                 infos[0]=txt1.getText().toString();

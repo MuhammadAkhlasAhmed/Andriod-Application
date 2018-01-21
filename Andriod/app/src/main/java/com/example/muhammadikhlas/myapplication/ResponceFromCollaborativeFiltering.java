@@ -36,7 +36,7 @@ public class ResponceFromCollaborativeFiltering extends AsyncTask<String,Void,St
     URL url = null;
     JSONObject object = null;
     InputStream inStream = null;
-    String   urlString="http://192.168.1.105:8081/api/v1/";
+    String   urlString="http://192.168.212.2:8081/api/v1/";
     String temp, response = "";
     String mname;
 

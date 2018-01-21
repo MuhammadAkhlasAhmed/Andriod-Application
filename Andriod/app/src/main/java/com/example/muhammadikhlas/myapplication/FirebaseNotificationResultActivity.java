@@ -7,10 +7,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class FirebaseNotificationResultActivity extends Activity implements View.OnClickListener{
 public TextView txt;
-    Button b1;
+    Button b1,btnsubmit;
     RatingBar ratingbar1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +29,8 @@ b1=(Button)findViewById(R.id.button18);
 
 
 
-
+btnsubmit=(Button)findViewById(R.id.button19);
+btnsubmit.setOnClickListener(this);
 
 
     }
@@ -41,6 +43,12 @@ b1=(Button)findViewById(R.id.button18);
 
         }
 
-        //if(view==b2){}
+        if(view==btnsubmit){
+
+            int val=Integer.parseInt(String.valueOf(ratingbar1.getRating()));
+            Toast.makeText(this,"Ready to submit"+val,Toast.LENGTH_LONG).show();
+
+
+        }
     }
 }
