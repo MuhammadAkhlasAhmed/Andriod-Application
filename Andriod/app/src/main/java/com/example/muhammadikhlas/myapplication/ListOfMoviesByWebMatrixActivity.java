@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -25,7 +27,7 @@ public class ListOfMoviesByWebMatrixActivity extends Activity {
     private ProgressDialog progressDialog;
     ListView listView;
     StringBuffer responce;
-String name;
+    String name;
 
     List<MoviePojo>   rowItems ;
 
@@ -41,16 +43,34 @@ String name;
 
         rowItems = new ArrayList<MoviePojo>();
 
-       Intent i=getIntent();
-rowItems=(List<MoviePojo>) i.getSerializableExtra("LIST");
+        Intent i=getIntent();
+        rowItems=(List<MoviePojo>) i.getSerializableExtra("LIST");
 
-Log.d("NAME", String.valueOf(rowItems.size()));
+        Log.d("NAME", String.valueOf(rowItems.size()));
 
 
         mylistview = (ListView) findViewById(R.id.list);
-     //   mylistview.setBackgroundColor(Color.BLACK);
+        //   mylistview.setBackgroundColor(Color.BLACK);
         CustomAdapter adapter = new CustomAdapter(this, rowItems);
         mylistview.setAdapter(adapter);
+
+
+        mylistview.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+
+
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                        MoviePojo cities =(MoviePojo) parent.getItemAtPosition(position);
+                        Toast.makeText(ListOfMoviesByWebMatrixActivity.this, cities.name, Toast.LENGTH_LONG).show();
+
+                        new ResponceFromCollaborativeFiltering(ListOfMoviesByWebMatrixActivity.this).execute(cities.name);
+
+
+                    }
+                }
+        );
 
 
 

@@ -313,4 +313,11 @@ public class GenreUtils {
         }
         return listOfMovieName;
     }
+    
+    /**
+     * The method that return list of movie genres.
+     */
+    public List<String> getMovieGenres(List<String> listOfGenres){
+    	return null;
+    }
 }

@@ -40,7 +40,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class TakeDataFromServiceAfterPassingMovieName extends AsyncTask<String,Void,String>  {
 
-   // public AsyncResponse delegate = null;
+    // public AsyncResponse delegate = null;
 
     List<MoviePojo>  movie=new ArrayList<MoviePojo>();
 
@@ -48,7 +48,7 @@ public class TakeDataFromServiceAfterPassingMovieName extends AsyncTask<String,V
     URL url = null;
     JSONObject object = null;
     InputStream inStream = null;
-    String   urlString="http://192.168.5.56:8080/api/v1/movie/";
+    String   urlString="http://192.168.1.105:8080/api/v1/movie/";
     String temp, response = "";
 
 
@@ -78,7 +78,7 @@ public class TakeDataFromServiceAfterPassingMovieName extends AsyncTask<String,V
 
         try {
             Log.d("Starting fetching","Nihal wali service");
-            url = new URL(urlString.toString()+strings[0]);
+            url = new URL((urlString.toString()+strings[0]).replace(" ","%20"));
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();
@@ -109,9 +109,9 @@ public class TakeDataFromServiceAfterPassingMovieName extends AsyncTask<String,V
             JSONArray a=new JSONArray(x);
 
             for(int i=0;i<a.length();i++) {
-             JSONObject obj=a.getJSONObject(i);
+                JSONObject obj=a.getJSONObject(i);
 
-             MoviePojo movieslist=new MoviePojo(obj.getString("rating"),obj.getString("tagline"),obj.getString("name"));
+                MoviePojo movieslist=new MoviePojo(obj.getString("rating"),obj.getString("tagline"),obj.getString("name"));
 
                 movie.add(movieslist);
 
@@ -120,12 +120,12 @@ public class TakeDataFromServiceAfterPassingMovieName extends AsyncTask<String,V
 
             }
 
-    //        delegate.processFinish(movie);
+            //        delegate.processFinish(movie);
 
-Intent ais=new Intent(context,ListOfMoviesByWebMatrixActivity.class);
+            Intent ais=new Intent(context,ListOfMoviesByWebMatrixActivity.class);
             ais.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-           ais.putExtra("LIST",(Serializable)movie);
+            ais.putExtra("LIST",(Serializable)movie);
 
             context.startActivity(ais);
 
@@ -147,7 +147,7 @@ Intent ais=new Intent(context,ListOfMoviesByWebMatrixActivity.class);
         //   context.startActivity(new Intent(context, ListOfMoviesByWebMatrixActivity.class));
 
 
-      //  i.putExtra("Name",""+txt1.getText().toString());
+        //  i.putExtra("Name",""+txt1.getText().toString());
 
     }
 
