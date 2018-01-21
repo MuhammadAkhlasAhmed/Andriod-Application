@@ -1,42 +1,57 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:fillViewport="true" >
+    android:fillViewport="true"
+
+
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="10dip" >
+        android:padding="10dip"
+        android:background="@drawable/z1"
+
+        >
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:text="Wathing And Downloading Links" />
+            android:text="Watching And Downloading Links"
+            android:textSize="24sp"
+            android:textStyle="bold|italic" />
 
         <ListView
             android:id="@+id/listView1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dip"
-            android:background="#B29090" >
-        </ListView>
+            android:background="#4be0f553"
+            android:divider="@drawable/com_facebook_button_like_icon_selected"></ListView>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dip"
             android:gravity="center_vertical"
-            android:text="People Who Like Your Movie Also Like This" />
+            android:text="Peoples Also Like them!"
+            android:textSize="24sp"
+            android:textStyle="bold|italic"/>
 
         <ListView
             android:id="@+id/listView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dip"
-            android:background="#4A9C67" >
-        </ListView>
+            android:background="#4be0f553"
+
+            ></ListView>
+
+
+
     </LinearLayout>
 
 </ScrollView>

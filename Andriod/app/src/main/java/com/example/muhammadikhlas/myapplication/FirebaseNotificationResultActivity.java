@@ -13,6 +13,8 @@ public class FirebaseNotificationResultActivity extends Activity implements View
 public TextView txt;
     Button b1,btnsubmit;
     RatingBar ratingbar1;
+    String value1;
+    String value;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -20,9 +22,8 @@ public TextView txt;
         setContentView(R.layout.firebasenotificationresultactivit);
        txt=(TextView)findViewById(R.id.mytext);
         ratingbar1=(RatingBar)findViewById(R.id.ratingBar);
-        String value=getIntent().getExtras().getString("Moviename");
+        value=getIntent().getExtras().getString("Moviename");
         txt.setText(""+value);
-
 b1=(Button)findViewById(R.id.button18);
         b1.setOnClickListener(this);
 
@@ -45,10 +46,41 @@ btnsubmit.setOnClickListener(this);
 
         if(view==btnsubmit){
 
-            int val=Integer.parseInt(String.valueOf(ratingbar1.getRating()));
-            Toast.makeText(this,"Ready to submit"+val,Toast.LENGTH_LONG).show();
+//double x=Double.parseDouble(String.valueOf(ratingbar1.getRating()));
+  double x=ratingbar1.getRating();
+            Toast.makeText(this,""+x,Toast.LENGTH_LONG).show();
+
+
+
+if(x>3){
+    value1="like";
+
+}
+else{
+    value1="dislike";
+}
+
+            String[] infos=new String[5];
+            infos[0]=value.toString();
+            infos[1]=value1.toString();
+
+            new ResponceFromCollaborativeFiltering(FirebaseNotificationResultActivity.this).execute(infos);
+
+
+
+
 
 
         }
     }
+
+
+
+
+
+
+
+
+
+
 }

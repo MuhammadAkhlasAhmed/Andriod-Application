@@ -126,7 +126,7 @@ int a;
                 URL imageURL = null;
 
                 try {
-                    imageURL = new URL("https://graph.facebook.com/"+user.facebookID+"/picture?type=small&redirect=true&width=100&height=100");
+                    imageURL = new URL("https://graph.facebook.com/"+user.facebookID+"/picture?type=small&redirect=true&width=170&height=170");
 
 
                 } catch (MalformedURLException e) {

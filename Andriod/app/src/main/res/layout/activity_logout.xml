@@ -18,40 +18,40 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="25dp" />
 
-    <TextView android:text="Logout from Facebook"
+    <TextView
         android:id="@+id/btnLogout"
-        android:padding="16dp"
-        android:background="#494949"
-        android:textColor="#fff"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="17dp"
         android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/profileImage"
-        android:layout_toEndOf="@+id/profileImage"
-        android:layout_marginLeft="53dp"
-        android:layout_marginStart="53dp" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:background="#494949"
+        android:padding="16dp"
+        android:text="Logout from Facebook"
+        android:textColor="#fff" />
 
     <TextView
+        android:id="@+id/hi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/nama"
+        android:layout_alignStart="@+id/nama"
+        android:layout_alignTop="@+id/profileImage"
         android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/profileImage"
-        android:layout_alignLeft="@+id/btnLogout"
-        android:layout_alignStart="@+id/btnLogout"
-        android:layout_marginLeft="17dp"
-        android:layout_marginStart="17dp"
-        android:layout_marginBottom="11dp"
-        android:id="@+id/hi" />
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <TextView
-        android:text="Enter Last Movie Name"
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/profileImage"
-        android:layout_toStartOf="@+id/hi"
-        android:layout_marginTop="44dp"
-        android:id="@+id/textView" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/hi"
+        android:layout_marginTop="48dp"
+        android:text="Enter Last Movie Name"
+        android:textSize="18sp"
+        android:textStyle="normal|bold|italic" />
 
     <EditText
         android:id="@+id/nama"
@@ -59,8 +59,8 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView"
         android:layout_alignBottom="@+id/textView"
-        android:layout_alignLeft="@+id/hi"
-        android:layout_alignStart="@+id/hi"
+        android:layout_toEndOf="@+id/textView"
+        android:layout_toRightOf="@+id/textView"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
@@ -70,12 +70,10 @@
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/nama"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignStart="@+id/nama"
         android:layout_below="@+id/nama"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="23dp"
         android:text="Search" />
 
 </RelativeLayout>
