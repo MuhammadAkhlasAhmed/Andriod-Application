@@ -10,18 +10,18 @@ import com.app.model.MoviesTitle;
 import com.app.service.MoviesTitleService;
 
 @Service
-public class MovieTitleServiceImpl implements MoviesTitleService{
-	
-	@Autowired
-	private MoviesTitleDao moviesTitleDao;  
+public class MovieTitleServiceImpl implements MoviesTitleService {
 
-	@Override
-	public List<MoviesTitle> getMoviesAgainstId(List<Long> list) {
-		return moviesTitleDao.getMovieAgainstId(list);
-	}
+    @Autowired
+    private MoviesTitleDao moviesTitleDao;
 
-	@Override
-	public int save(String movieName) {
-		return moviesTitleDao.save(movieName);
-	}
+    @Override
+    public List<MoviesTitle> getMoviesAgainstId(List<Long> list) {
+        return moviesTitleDao.getMovieAgainstId(list);
+    }
+
+    @Override
+    public int save(String movieName) {
+        return moviesTitleDao.save(movieName);
+    }
 }

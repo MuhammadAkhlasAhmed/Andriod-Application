@@ -14,17 +14,17 @@ import com.app.util.GenreUtils;
  * The Class GenreServiceImpl.
  */
 @Service
-public class GenreServiceImpl implements GenreService{
-	
-	@Autowired
-	private ItemReviewService itemReviewService;
+public class GenreServiceImpl implements GenreService {
 
-	@Override
-	public List<String> getMovieGenres(String name) {
-		GenreRatingDTO genreRatingDTO = GenreUtils.getMovieGenreAndRating(name);
-		List<String> listOfGenres = genreRatingDTO.getGenres();	
-		List<String> listOfGenresWithUnderScore = GenreUtils.replaceDashWithUnderScore(listOfGenres);
-		List<String> list = itemReviewService.performCollaborativeFiltering(listOfGenresWithUnderScore);
-		return list;
-	}
+    @Autowired
+    private ItemReviewService itemReviewService;
+
+    @Override
+    public List<String> getMovieGenres(String name) {
+        GenreRatingDTO genreRatingDTO = GenreUtils.getMovieGenreAndRating(name);
+        List<String> listOfGenres = genreRatingDTO.getGenres();
+        List<String> listOfGenresWithUnderScore = GenreUtils.replaceDashWithUnderScore(listOfGenres);
+        List<String> list = itemReviewService.performCollaborativeFiltering(listOfGenresWithUnderScore);
+        return list;
+    }
 }
