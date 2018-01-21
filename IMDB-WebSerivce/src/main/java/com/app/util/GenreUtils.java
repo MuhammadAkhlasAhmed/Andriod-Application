@@ -229,4 +229,68 @@ public class GenreUtils {
 		}
 		return result;
 	}
+	
+    /**
+     * The method that replace movie genre biography to documentary.
+     */
+    public static List<String> replaceGenreBiographyToDocumentary(List<String> listOfGenres){
+    	List<String> listOfMovieGenres = new ArrayList<String>();    
+    	for(String x : listOfGenres) {
+    			if(x.equalsIgnoreCase("biography")) {
+    				String genreDocumentary = x.replaceAll("Biography", "documentary");
+    				listOfMovieGenres.add(genreDocumentary);
+    			} else {
+    				listOfMovieGenres.add(x);
+    			}
+    	   	}
+    	return listOfMovieGenres;
+    }
+    
+    /**
+     * The method that replace movie genre adult to romance.
+     */
+    public static List<String> replaceGenreAdultToRomance(List<String> listOfGenres){
+    	List<String> listOfMovieGenres = new ArrayList<String>();    
+    	for(String x : listOfGenres) {
+    			if(x.equalsIgnoreCase("adult")) {
+    				String genreDocumentary = x.replaceAll("Adult", "romance");
+    				listOfMovieGenres.add(genreDocumentary);
+    			} else {
+    				listOfMovieGenres.add(x);
+    			}
+    	   	}
+    	return listOfMovieGenres;
+    }
+    
+    /**
+     * The method that replace movie genre short to horror.
+     */
+    public static List<String> replaceGenreShortToHorror(List<String> listOfGenres){
+    	List<String> listOfMovieGenres = new ArrayList<String>();    
+    	for(String x : listOfGenres) {
+    			if(x.equalsIgnoreCase("short")) {
+    				String genreDocumentary = x.replaceAll("Short", "horror");
+    				listOfMovieGenres.add(genreDocumentary);
+    			} else {
+    				listOfMovieGenres.add(x);
+    			}
+    	   	}
+    	return listOfMovieGenres;
+    }
+
+    /**
+     * The method that replace movie genre talk show to sci fi.
+     */
+    public static List<String> replaceGenreTalkShowToSciFi(List<String> listOfGenres){
+    	List<String> listOfMovieGenres = new ArrayList<String>();    
+    	for(String x : listOfGenres) {
+    			if(x.equalsIgnoreCase("Talk-Show")) {
+    				String genreDocumentary = x.replaceAll("Talk-Show", "sci_fi");
+    				listOfMovieGenres.add(genreDocumentary);
+    			} else {
+    				listOfMovieGenres.add(x);
+    			}
+    	   	}
+    	return listOfMovieGenres;
+    }
 }

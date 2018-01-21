@@ -34,7 +34,11 @@ public class GenreServiceImpl implements GenreService {
 		GenreDTO genreDTO = GenreUtils.getMovieGenre(name);
 		if (genreDTO.getGenres() != null) {
 			List<String> listOfGenre = genreDTO.getGenres();
-			String genre = GenreUtils.getGenre(listOfGenre);
+	    	List<String> listOfGenresReplaceBiographyToDocumentary = GenreUtils.replaceGenreBiographyToDocumentary(listOfGenre);
+	    	List<String> listOfGenresReplaceAdultToRomance =  GenreUtils.replaceGenreAdultToRomance(listOfGenresReplaceBiographyToDocumentary);
+	    	List<String> listOfGenresReplaceShortToHorror = GenreUtils.replaceGenreShortToHorror(listOfGenresReplaceAdultToRomance);
+	    	List<String> listOfGenresReplaceTalkShowToSciFi = GenreUtils.replaceGenreTalkShowToSciFi(listOfGenresReplaceShortToHorror);
+			String genre = GenreUtils.getGenre(listOfGenresReplaceTalkShowToSciFi);
 			String originalMovieTile = GenreUtils.getOriginalMovieTitle(name);
 			MovieDTO userGivenMovie = movieService.getMovieByName(originalMovieTile);
 			MovieDTO movieDTO = movieService.getMovieByGenre(genre);

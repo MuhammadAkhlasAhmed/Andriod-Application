@@ -36,7 +36,11 @@ public class ItemReviewServiceImpl implements ItemReviewService {
 
     @Override
     public List<String> performCollaborativeFiltering(List<String> listOfGenres) {
-        List<ItemReview> listOfItemReview = itemReviewDao.getRowAgainsGenres(listOfGenres);
+    	List<String> listOfGenresReplaceBiographyToDocumentary = GenreUtils.replaceGenreBiographyToDocumentary(listOfGenres);
+    	List<String> listOfGenresReplaceAdultToRomance =  GenreUtils.replaceGenreAdultToRomance(listOfGenresReplaceBiographyToDocumentary);
+    	List<String> listOfGenresReplaceShortToHorror = GenreUtils.replaceGenreShortToHorror(listOfGenresReplaceAdultToRomance);
+    	List<String> listOfGenresReplaceTalkShowToSciFi = GenreUtils.replaceGenreTalkShowToSciFi(listOfGenresReplaceShortToHorror);
+    	List<ItemReview> listOfItemReview = itemReviewDao.getRowAgainsGenres(listOfGenresReplaceTalkShowToSciFi);
         Map<Long, Integer> map = GenreUtils.getMapAgainstList(listOfItemReview);
         Map<Long, Integer> sortedMapByValue = GenreUtils.sortByValues(map);
         hashmap = new HashMap<Integer, Integer>();
