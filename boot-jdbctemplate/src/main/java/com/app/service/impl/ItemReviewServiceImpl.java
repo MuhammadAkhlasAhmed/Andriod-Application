@@ -56,11 +56,15 @@ public class ItemReviewServiceImpl implements ItemReviewService {
         return listOfMovieName;
     }
 
-//    @Override
-//    public int save(String action, String adventure, String animation, String childrens, String comedy, String crime,
-//                    String documentary, String drama, String fantasy, String filmNoir, String horror, String musical,
-//                    String mystery, String romance, String sciFic, String thriller, String war, String western, String family,
-//                    String history, String realityTv, String music, String foreign) {
-//        return itemReviewDao.save(action, adventure, animation, childrens, comedy, crime, documentary, drama, fantasy, filmNoir, horror, musical, mystery, romance, sciFic, thriller, war, western, family, history, realityTv, music, foreign);
-//    }
+	@Override
+	public int save(List<String> listOfGenres) {
+    	List<String> listOfGenresReplaceBiographyToDocumentary = GenreUtils.replaceGenreBiographyToDocumentary(listOfGenres);
+    	List<String> listOfGenresReplaceAdultToRomance =  GenreUtils.replaceGenreAdultToRomance(listOfGenresReplaceBiographyToDocumentary);
+    	List<String> listOfGenresReplaceShortToHorror = GenreUtils.replaceGenreShortToHorror(listOfGenresReplaceAdultToRomance);
+    	List<String> listOfGenresReplaceTalkShowToSciFi = GenreUtils.replaceGenreTalkShowToSciFi(listOfGenresReplaceShortToHorror);
+		List<String> listOfAllGenres = GenreUtils.getAllGenres();
+		List<String> listOfGenresWithUnderScore = GenreUtils.replaceDashWithUnderScore(listOfGenresReplaceTalkShowToSciFi);
+		List<String> list = GenreUtils.getAllGenres(listOfAllGenres, listOfGenresWithUnderScore);
+    	return itemReviewDao.save(listOfGenresWithUnderScore, list);
+	}
 }

@@ -377,4 +377,47 @@ public class GenreUtils {
     	   	}
     	return listOfMovieGenres;
     }
+    
+    /**
+     * The method that return list of all genres.
+     */
+    public static List<String> getAllGenres() {
+    	List <String> updatelist = new ArrayList<String> ();
+    	updatelist.add("action");
+    	updatelist.add("adventure");
+    	updatelist.add("animation");
+    	updatelist.add("childrens");
+    	updatelist.add("comedy");
+    	updatelist.add("crime");
+    	updatelist.add("documentary");
+    	updatelist.add("drama");
+    	updatelist.add("fantasy");
+    	updatelist.add("film_noir");
+    	updatelist.add("horror");
+    	updatelist.add("musical");
+    	updatelist.add("mystery");
+    	updatelist.add("romance");
+    	updatelist.add("sci_fi");
+    	updatelist.add("thriller");
+    	updatelist.add("war");
+    	updatelist.add("western");
+    	updatelist.add("family");
+    	updatelist.add("history");
+    	updatelist.add("reality_tv");
+    	updatelist.add("music");
+    	return updatelist;
+    }
+    
+    /**
+     * The method that return list of all genres which does not exist in existing genres.
+     */
+    public static List<String> getAllGenres(List<String> allGenres, List<String> existingGenres){
+    	List<String> listOfGenres = new ArrayList<String>();
+    	List<String> list = new ArrayList<String>();
+    	for(String a : existingGenres) {
+    		list.add(a.toLowerCase());
+    	}
+    	listOfGenres = ListUtils.removeAll(allGenres, list);
+    	return listOfGenres;
+    }
 }
