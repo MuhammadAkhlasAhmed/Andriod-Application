@@ -38,8 +38,9 @@ public class ItemReviewController {
         }
     }
 
-//	@PostMapping("/{movieName}/{feature}")
-//	public void save(@PathVariable String movieName, @PathVariable String feature) {
-//		
-//	}
+	@PostMapping("/{movieName}/{feature}")
+	public String save(@PathVariable String movieName, @PathVariable String feature) {
+		movieTitleService.saveMovieNameAndItsReview(movieName, feature);
+		return "review Sucessfully inserted";
+	}
 }

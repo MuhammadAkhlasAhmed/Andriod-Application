@@ -57,7 +57,7 @@ public class ItemReviewServiceImpl implements ItemReviewService {
     }
 
 	@Override
-	public int save(List<String> listOfGenres) {
+	public int save(List<String> listOfGenres, String feature) {
     	List<String> listOfGenresReplaceBiographyToDocumentary = GenreUtils.replaceGenreBiographyToDocumentary(listOfGenres);
     	List<String> listOfGenresReplaceAdultToRomance =  GenreUtils.replaceGenreAdultToRomance(listOfGenresReplaceBiographyToDocumentary);
     	List<String> listOfGenresReplaceShortToHorror = GenreUtils.replaceGenreShortToHorror(listOfGenresReplaceAdultToRomance);
@@ -65,6 +65,6 @@ public class ItemReviewServiceImpl implements ItemReviewService {
 		List<String> listOfAllGenres = GenreUtils.getAllGenres();
 		List<String> listOfGenresWithUnderScore = GenreUtils.replaceDashWithUnderScore(listOfGenresReplaceTalkShowToSciFi);
 		List<String> list = GenreUtils.getAllGenres(listOfAllGenres, listOfGenresWithUnderScore);
-    	return itemReviewDao.save(listOfGenresWithUnderScore, list);
+    	return itemReviewDao.save(listOfGenresWithUnderScore, list, feature);
 	}
 }

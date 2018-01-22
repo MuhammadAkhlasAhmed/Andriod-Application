@@ -9,4 +9,6 @@ public interface MoviesTitleDao {
     List<MoviesTitle> getMovieAgainstId(List<Long> list);
 
     int save(String movieName);
+    
+    boolean getMovieByName(String name);
 }

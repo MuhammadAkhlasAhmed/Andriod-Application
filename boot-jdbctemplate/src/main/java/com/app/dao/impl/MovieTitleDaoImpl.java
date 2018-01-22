@@ -1,5 +1,7 @@
 package com.app.dao.impl;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +11,7 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
 
@@ -70,9 +73,25 @@ public class MovieTitleDaoImpl extends JdbcDaoSupport implements MoviesTitleDao 
 
     @Override
     public int save(String movieName) {
-        String sql = "insert into movies_title (title) values (" + movieName + ")";
-        System.out.println(sql);
+        String sql = "insert into movies_title (title) values ('" + movieName + "')";
         int row = getJdbcTemplate().update(sql);
         return row;
     }
+
+	@Override
+	public boolean getMovieByName(String name) {
+		String sql = "select * from movies_title where title ='"+name+"'";
+		   List<MoviesTitle> listContact = getJdbcTemplate().query(sql, new RowMapper<MoviesTitle>() {
+			   @Override
+			   public MoviesTitle mapRow(ResultSet result, int rowNum) throws SQLException {
+	                MoviesTitle contact = new MoviesTitle();
+	                contact.setTitle(result.getString("title"));
+	                return contact;
+	            }
+	        });
+		if(listContact.isEmpty()) {
+			return false;
+		}
+			return true;
+	}
 }
