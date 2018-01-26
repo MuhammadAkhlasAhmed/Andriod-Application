@@ -1,5 +1,6 @@
 com\app\service\impl\ItemReviewServiceImpl.class
 com\app\util\GenreUtils$1.class
+com\app\dao\impl\MovieTitleDaoImpl$1.class
 com\app\service\ItemReviewService.class
 com\app\SpringBootJdbcApplication.class
 com\app\dao\impl\MovieTitleDaoImpl.class
