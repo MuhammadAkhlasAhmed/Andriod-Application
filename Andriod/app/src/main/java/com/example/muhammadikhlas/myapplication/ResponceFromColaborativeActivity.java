@@ -18,7 +18,7 @@ public class ResponceFromColaborativeActivity extends Activity {
     private ListView mListView1, mListView2;
 
     private String [] data1 ={"www.google.com", "www.youtube.com","dailymotion.com"};
-    private String [] data2 ={"Minions", "Dracola Untold"};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

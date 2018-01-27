@@ -79,6 +79,7 @@ FirebaseDatabase db;
 
 
                                String in = response.getRawResponse();
+                               Log.d("MoviesResponce",in);
                                int i = 0;
                                Pattern p = Pattern.compile("video.movie");
                                Matcher m = p.matcher( in );

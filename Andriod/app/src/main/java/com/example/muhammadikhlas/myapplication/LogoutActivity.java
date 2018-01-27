@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -58,6 +59,7 @@ public class LogoutActivity extends Activity {
     Bitmap bitmap;
 int a;
     Button btn;
+    public ProgressBar spinner;
 
 
 
@@ -74,12 +76,14 @@ int a;
         textView=(TextView)findViewById(R.id.hi);
         txt1=(EditText) findViewById(R.id.nama);
         btn=(Button)findViewById(R.id.button2);
-
+        spinner=(ProgressBar)findViewById(R.id.progressBar2);
+        spinner.setVisibility(View.GONE);
 
         txt1.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
+                spinner.setVisibility(View.GONE);
                 txt1.setText("");
             }
         });
@@ -91,7 +95,7 @@ int a;
 //                progressDialog = new ProgressDialog(LogoutActivity.this);
 //                progressDialog.setMessage("Please wait...");
 //                progressDialog.show();
-
+                spinner.setVisibility(View.VISIBLE);
 
 
                 String[] infos=new String[5];
@@ -175,4 +179,9 @@ int a;
             }
         });
     }
+
+
+
+
+
 }
