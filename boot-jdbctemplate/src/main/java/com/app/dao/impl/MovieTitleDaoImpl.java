@@ -10,7 +10,6 @@ import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
@@ -18,6 +17,9 @@ import org.springframework.stereotype.Repository;
 import com.app.dao.MoviesTitleDao;
 import com.app.model.MoviesTitle;
 
+/**
+ * The Class MovieTitleDaoImpl.
+ */
 @Repository
 public class MovieTitleDaoImpl extends JdbcDaoSupport implements MoviesTitleDao {
 
@@ -33,6 +35,9 @@ public class MovieTitleDaoImpl extends JdbcDaoSupport implements MoviesTitleDao 
         setDataSource(dataSource);
     }
 
+    /**
+     * The method that return movies against id.
+     */
     @Override
     public List<MoviesTitle> getMovieAgainstId(List<Long> list) {
         if (list.size() == 1) {
@@ -45,8 +50,7 @@ public class MovieTitleDaoImpl extends JdbcDaoSupport implements MoviesTitleDao 
                 moviesTitle.setTitle(row.get("title").toString());
                 resultSet.add(moviesTitle);
             }
-        }
-        if (list.size() == 2) {
+        } if (list.size() == 2) {
             String sql = "SELECT * FROM movies_title where movie_id IN (" + list.get(0) + "," + list.get(1) + ")";
             List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
             resultSet = new ArrayList<MoviesTitle>();
@@ -56,8 +60,7 @@ public class MovieTitleDaoImpl extends JdbcDaoSupport implements MoviesTitleDao 
                 moviesTitle.setTitle(row.get("title").toString());
                 resultSet.add(moviesTitle);
             }
-        }
-        if (list.size() == 3 || list.size() > 3) {
+        } if (list.size() == 3 || list.size() > 3) {
             String sql = "SELECT * FROM movies_title where movie_id IN (" + list.get(0) + "," + list.get(1) + "," + list.get(2) + ")";
             List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
             resultSet = new ArrayList<MoviesTitle>();
@@ -71,6 +74,9 @@ public class MovieTitleDaoImpl extends JdbcDaoSupport implements MoviesTitleDao 
         return resultSet;
     }
 
+    /**
+     * The method that save movie that user rate it.
+     */
     @Override
     public int save(String movieName) {
         String sql = "insert into movies_title (title) values ('" + movieName + "')";
@@ -78,6 +84,9 @@ public class MovieTitleDaoImpl extends JdbcDaoSupport implements MoviesTitleDao 
         return row;
     }
 
+    /**
+     * The method that true if movie exists.
+     */
 	@Override
 	public boolean getMovieByName(String name) {
 		String sql = "select * from movies_title where title ='"+name+"'";
@@ -88,8 +97,7 @@ public class MovieTitleDaoImpl extends JdbcDaoSupport implements MoviesTitleDao 
 	                contact.setTitle(result.getString("title"));
 	                return contact;
 	            }
-	        });
-		if(listContact.isEmpty()) {
+	        }); if(listContact.isEmpty()) {
 			return false;
 		}
 			return true;

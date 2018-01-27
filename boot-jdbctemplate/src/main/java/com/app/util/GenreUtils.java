@@ -18,7 +18,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.apache.commons.collections4.ListUtils;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.app.dto.GenreRatingDTO;
@@ -56,15 +55,13 @@ public class GenreUtils {
     public static int count = 0;
 
     /**
-     * The method that return movie genre and rating.
+     * The method that return movie genre.
      */
     public static GenreRatingDTO getMovieGenreAndRating(String name) {
         GenreRatingDTO genreRatingDTO = new GenreRatingDTO();
         if (name.contains(" ")) {
             String movie_name = GenreUtils.replacewith20(name);
             try {
-//				URL url = new URL("http://api.myapifilms.com/imdb/idIMDB?title=" + movie_name
-//						+ "&&token=260407a8-26de-4f38-a226-17cfe4841e1d");
                 URL url = new URL("http://www.omdbapi.com/?t=" + movie_name
                         + "&apikey=a4c03f2c");
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -78,22 +75,6 @@ public class GenreUtils {
                 while ((output = br.readLine()) != null) {
                     try {
                         JSONObject jsonObject = new JSONObject(output);
-
-                        // this is only used for OMDB APIs
-//						JSONObject myResponse = jsonObject.getJSONObject("data");
-//						JSONArray array = myResponse.getJSONArray("movies");
-//						JSONObject obj1 = array.getJSONObject(0);
-//						JSONArray genresArray = obj1.getJSONArray("genres");
-//						ArrayList<String> list = new ArrayList<String>();
-//						for (int i = 0; i < genresArray.length(); i++) {
-//							list.add(genresArray.get(i).toString());
-//						}
-//						genreRatingDTO.setGenres(list);
-
-//						 String rating = obj1.getString("rating");
-//						 genreRatingDTO.setRating(Double.parseDouble(rating)/2);
-
-                        // this is only used for OMDB API
                         String genre = jsonObject.getString("Genre").toString();
                         String[] genreArray = genre.split(", ");
                         ArrayList<String> list = new ArrayList<String>();
@@ -114,8 +95,6 @@ public class GenreUtils {
             return genreRatingDTO;
         } else {
             try {
-//				URL url = new URL("http://api.myapifilms.com/imdb/idIMDB?title=" + name
-//						+ "&&token=260407a8-26de-4f38-a226-17cfe4841e1d");
                 URL url = new URL("http://www.omdbapi.com/?t=" + name
                         + "&apikey=a4c03f2c");
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -129,21 +108,6 @@ public class GenreUtils {
                 while ((output = br.readLine()) != null) {
                     try {
                         JSONObject jsonObject = new JSONObject(output);
-
-//						JSONObject myResponse = jsonObject.getJSONObject("data");
-//						JSONArray array = myResponse.getJSONArray("movies");
-//						JSONObject obj1 = array.getJSONObject(0);
-//						JSONArray genresArray = obj1.getJSONArray("genres");
-//						ArrayList<String> list = new ArrayList<String>();
-//						for (int i = 0; i < genresArray.length(); i++) {
-//							list.add(genresArray.get(i).toString());
-//						}
-//						genreRatingDTO.setGenres(list);
-
-//						 String rating = obj1.getString("rating");
-//						 genreRatingDTO.setRating(Double.parseDouble(rating)/2);
-
-                        // this is only used for OMDB API
                         String genre = jsonObject.getString("Genre").toString();
                         String[] genreArray = genre.split(", ");
                         ArrayList<String> list = new ArrayList<String>();
@@ -246,60 +210,43 @@ public class GenreUtils {
         listOfItemReview.forEach(x -> {
             if (x.getAction().equals("1")) {
                 count++;
-            }
-            if (x.getAdventure().equals("1")) {
+            } if (x.getAdventure().equals("1")) {
+                count++;
+            } if (x.getAnimation().equals("1")) {
+                count++;
+            } if (x.getChildrens().equals("1")) {
+                count++;
+            } if (x.getComedy().equals("1")) {
+                count++;
+            } if (x.getCrime().equals("1")) {
+                count++;
+            } if (x.getDocumentary().equals("1")) {
+                count++;
+            } if (x.getDrama().equals("1")) {
+                count++;
+            } if (x.getFantasy().equals("1")) {
+                count++;
+            } if (x.getFilmNoir().equals("1")) {
+                count++;
+            } if (x.getHorror().equals("1")) {
+                count++;
+            } if (x.getMusical().equals("1")) {
+                count++;
+            } if (x.getMystery().equals("1")) {
+                count++;
+            } if (x.getRomance().equals("1")) {
+                count++;
+            } if (x.getSciFi().equals("1")) {
+                count++;
+            } if (x.getThriller().equals("1")) {
+                count++;
+            } if (x.getWar().equals("1")) {
+                count++;
+            } if (x.getWestern().equals("1")) {
                 count++;
             }
-            if (x.getAnimation().equals("1")) {
-                count++;
-            }
-            if (x.getChildrens().equals("1")) {
-                count++;
-            }
-            if (x.getComedy().equals("1")) {
-                count++;
-            }
-            if (x.getCrime().equals("1")) {
-                count++;
-            }
-            if (x.getDocumentary().equals("1")) {
-                count++;
-            }
-            if (x.getDrama().equals("1")) {
-                count++;
-            }
-            if (x.getFantasy().equals("1")) {
-                count++;
-            }
-            if (x.getFilmNoir().equals("1")) {
-                count++;
-            }
-            if (x.getHorror().equals("1")) {
-                count++;
-            }
-            if (x.getMusical().equals("1")) {
-                count++;
-            }
-            if (x.getMystery().equals("1")) {
-                count++;
-            }
-            if (x.getRomance().equals("1")) {
-                count++;
-            }
-            if (x.getSciFi().equals("1")) {
-                count++;
-            }
-            if (x.getThriller().equals("1")) {
-                count++;
-            }
-            if (x.getWar().equals("1")) {
-                count++;
-            }
-            if (x.getWestern().equals("1")) {
-                count++;
-            }
-            map.put(x.getId(), count);
-            count = 0;
+            	map.put(x.getId(), count);
+            	count = 0;
         });
         return map;
     }
@@ -417,7 +364,7 @@ public class GenreUtils {
     	List<String> list = new ArrayList<String>();
     	for(String a : existingGenres) {
     		list.add(a.toLowerCase());
-    	}
+    		}
     	listOfGenres = ListUtils.removeAll(allGenres, list);
     	return listOfGenres;
     }

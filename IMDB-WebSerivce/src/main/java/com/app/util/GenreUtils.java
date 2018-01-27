@@ -11,7 +11,6 @@ import java.util.List;
 
 import org.hibernate.annotations.common.util.impl.LoggerFactory;
 import org.jboss.logging.Logger;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.app.dto.GenreDTO;
@@ -29,8 +28,7 @@ public class GenreUtils {
 		List<String> list = listOfGenre;
 		if (list.get(0).toString().equalsIgnoreCase("biography")) {
 			return list.get(1).toString();
-		}
-		if (list.get(0).toString().equalsIgnoreCase("Talk-Show")) {
+		} if (list.get(0).toString().equalsIgnoreCase("Talk-Show")) {
 			return "science fiction";
 		} else {
 			return list.get(0).toString();
@@ -43,8 +41,6 @@ public class GenreUtils {
 		if (name.contains(" ")) {
 			String movie_name = GenreUtils.replacewith20(name);
 			try {
-//				URL url = new URL("http://api.myapifilms.com/imdb/idIMDB?title=" + movie_name
-//						+ "&&token=260407a8-26de-4f38-a226-17cfe4841e1d");
 				URL url = new URL("http://www.omdbapi.com/?t=" + movie_name
 						+ "&apikey=a4c03f2c");
 				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -58,19 +54,6 @@ public class GenreUtils {
 				while ((output = br.readLine()) != null) {
 					try {
 						JSONObject jsonObject = new JSONObject(output);
-
-						//this is only used for MyApi
-//						JSONObject myResponse = jsonObject.getJSONObject("data");
-//						JSONArray array = myResponse.getJSONArray("movies");
-//						JSONObject obj1 = array.getJSONObject(0);
-//						JSONArray genresArray = obj1.getJSONArray("genres");
-//						ArrayList<String> list = new ArrayList<String>();
-//						for (int i = 0; i < genresArray.length(); i++) {
-//							list.add(genresArray.get(i).toString());
-//						}
-//						genreDTO.setGenres(list);
-						
-						// this is only used for OMDB API
 						String genre = jsonObject.getString("Genre").toString();
 						String[] genreArray = genre.split(", ");
 						ArrayList<String> list = new ArrayList<String>();
@@ -88,11 +71,9 @@ public class GenreUtils {
 			} catch (IOException e) {
 				logger.info("IOException");
 			}
-			return genreDTO;
+				return genreDTO;
 		} else {
 			try {
-//				URL url = new URL("http://api.myapifilms.com/imdb/idIMDB?title=" + name
-//						+ "&&token=260407a8-26de-4f38-a226-17cfe4841e1d");
 				URL url = new URL("http://www.omdbapi.com/?t=" + name
 						+ "&apikey=a4c03f2c");
 				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -106,19 +87,6 @@ public class GenreUtils {
 				while ((output = br.readLine()) != null) {
 					try {
 						JSONObject jsonObject = new JSONObject(output);
-
-						//this is only used for MyApi
-//						JSONObject myResponse = jsonObject.getJSONObject("data");
-//						JSONArray array = myResponse.getJSONArray("movies");
-//						JSONObject obj1 = array.getJSONObject(0);
-//						JSONArray genresArray = obj1.getJSONArray("genres");
-//						ArrayList<String> list = new ArrayList<String>();
-//						for (int i = 0; i < genresArray.length(); i++) {
-//							list.add(genresArray.get(i).toString());
-//						}
-//						genreDTO.setGenres(list);
-						
-						// this is only used for OMDB API
 						String genre = jsonObject.getString("Genre").toString();
 						String[] genreArray = genre.split(", ");
 						ArrayList<String> list = new ArrayList<String>();
@@ -146,8 +114,6 @@ public class GenreUtils {
 		if (name.contains(" ")) {
 			String movie_name = GenreUtils.replacewith20(name);
 			try {
-//				URL url = new URL("http://api.myapifilms.com/imdb/idIMDB?title=" + movie_name
-//						+ "&&token=260407a8-26de-4f38-a226-17cfe4841e1d");
 				URL url = new URL("http://www.omdbapi.com/?t=" + movie_name
 						+ "&apikey=a4c03f2c");
 				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -161,14 +127,6 @@ public class GenreUtils {
 				while ((output = br.readLine()) != null) {
 					try {
 						JSONObject jsonObject = new JSONObject(output);
-					
-						//this is only used for MyApi
-//						JSONObject myResponse = jsonObject.getJSONObject("data");
-//						JSONArray array = myResponse.getJSONArray("movies");
-//						JSONObject obj1 = array.getJSONObject(0);
-//						movieTitle = obj1.getString("title");
-						
-						// this is only used for OMDB API
 						movieTitle = jsonObject.getString("Title").toString();
 					} catch (Exception e) {
 						logger.info("Not Found");
@@ -183,8 +141,6 @@ public class GenreUtils {
 			return movieTitle;
 		} else {
 			try {
-//				URL url = new URL("http://api.myapifilms.com/imdb/idIMDB?title=" + name
-//						+ "&&token=260407a8-26de-4f38-a226-17cfe4841e1d");
 				URL url = new URL("http://www.omdbapi.com/?t=" + name
 						+ "&apikey=a4c03f2c");
 				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -198,14 +154,6 @@ public class GenreUtils {
 				while ((output = br.readLine()) != null) {
 					try {
 						JSONObject jsonObject = new JSONObject(output);
-						
-						//this is only used for MyApi
-//						JSONObject myResponse = jsonObject.getJSONObject("data");
-//						JSONArray array = myResponse.getJSONArray("movies");
-//						JSONObject obj1 = array.getJSONObject(0);
-//						movieTitle = obj1.getString("title");
-						
-						// this is only used for OMDB API
 						movieTitle = jsonObject.getString("Title").toString();
 					} catch (Exception e) {
 						logger.info("Not Found");

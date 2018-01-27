@@ -62,5 +62,4 @@ public class MovieServiceImpl implements MovieService{
 		return movieRepository.findMovieByName(movieName);
 		
 	}
-	
 }

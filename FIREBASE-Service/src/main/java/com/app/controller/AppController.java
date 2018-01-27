@@ -7,6 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.service.IAppService;
+
+/**
+ * The Class AppController.
+ */
 @RequestMapping("api/v1/")
 @RestController
 public class AppController {
@@ -18,9 +22,4 @@ public class AppController {
 	public int getMoviesCount(@PathVariable String name) {
 		return iAppService.getMoviesCount(name);
 	}
-	
-	
-	
-	
-	
 }

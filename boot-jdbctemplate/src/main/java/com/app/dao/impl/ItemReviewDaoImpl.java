@@ -14,6 +14,9 @@ import org.springframework.stereotype.Repository;
 import com.app.dao.ItemReviewDao;
 import com.app.model.ItemReview;
 
+/**
+ * The Class ItemReviewDaoImpl.
+ */
 @Repository
 public class ItemReviewDaoImpl extends JdbcDaoSupport implements ItemReviewDao {
 
@@ -27,6 +30,9 @@ public class ItemReviewDaoImpl extends JdbcDaoSupport implements ItemReviewDao {
         setDataSource(dataSource);
     }
 
+    /**
+     * The method that return all user reviews.
+     */
     @Override
     public List<ItemReview> getAllItemReviews() {
         String sql = "SELECT * FROM item_review";
@@ -64,8 +70,11 @@ public class ItemReviewDaoImpl extends JdbcDaoSupport implements ItemReviewDao {
         return result;
     }
 
+    /**
+     * The method that return user reviews against genres.
+     */
     @Override
-    public List<ItemReview> getRowAgainsGenres(List<String> list) {
+    public List<ItemReview> getRowAgainstGenres(List<String> list) {
 
         if (list.size() == 1 || list.get(0).equalsIgnoreCase("foreign")) {
         	String genre = "Drama";
@@ -100,7 +109,6 @@ public class ItemReviewDaoImpl extends JdbcDaoSupport implements ItemReviewDao {
                 resultSet.add(itemReview);
             }
         }// end 1st if
-        
         if (list.size() == 2) {
         	if(list.get(0).equalsIgnoreCase("foreign")) {
         		String genre = "Drama";
@@ -232,7 +240,6 @@ public class ItemReviewDaoImpl extends JdbcDaoSupport implements ItemReviewDao {
                     itemReview.setMusic(row.get("music").toString());
                     resultSet.add(itemReview);
                 }
-
         	} if(list.get(1).equalsIgnoreCase("foreign")) {
         		String genre = "Drama";
                 String sql = "SELECT * FROM item_review where (" + list.get(0).toLowerCase() + "='1' and " + genre.toLowerCase() + "='1') or (" + list.get(2).toLowerCase() + "='1') ";
@@ -265,7 +272,6 @@ public class ItemReviewDaoImpl extends JdbcDaoSupport implements ItemReviewDao {
                     itemReview.setMusic(row.get("music").toString());
                     resultSet.add(itemReview);
                 }
-
         	} if(list.get(2).equalsIgnoreCase("foreign")) {
         		String genre = "Drama";
                 String sql = "SELECT * FROM item_review where (" + list.get(0).toLowerCase() + "='1' and " + list.get(1).toLowerCase() + "='1') or (" + genre.toLowerCase() + "='1') ";
@@ -686,12 +692,14 @@ public class ItemReviewDaoImpl extends JdbcDaoSupport implements ItemReviewDao {
                 resultSet.add(itemReview);
               }
             }
-        }
-        else {
-		}
+        } else {
+	}
         return resultSet;
     }
 
+    /**
+     * The method that save user reviews against genres.
+     */
 	@Override
 	public int save(List<String> movieGenres, List<String> allGenres, String feature) {
 		if(feature.equalsIgnoreCase("like")) {
@@ -733,5 +741,4 @@ public class ItemReviewDaoImpl extends JdbcDaoSupport implements ItemReviewDao {
 	}
 	return insert;
 		}
-
 	}

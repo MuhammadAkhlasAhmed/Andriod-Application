@@ -3,6 +3,9 @@ package com.app.dto;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * The Class GenreRatingDTO.
+ */
 public class GenreRatingDTO implements Serializable {
 
     /**
@@ -14,9 +17,6 @@ public class GenreRatingDTO implements Serializable {
      * The list of genres.
      */
     private List<String> genres;
-
-//	/** The rating. */
-//	public double rating;
 
     /**
      * @return the genres
@@ -31,18 +31,4 @@ public class GenreRatingDTO implements Serializable {
     public void setGenres(List<String> genres) {
         this.genres = genres;
     }
-
-//	/**
-//	 * @return the rating
-//	 */
-//	public double getRating() {
-//		return rating;
-//	}
-//
-//	/**
-//	 * @param rating the rating to set
-//	 */
-//	public void setRating(double rating) {
-//		this.rating = rating;
-//	}
 }

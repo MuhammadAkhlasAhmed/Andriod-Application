@@ -41,7 +41,6 @@ public class MovieUtils {
 	 * The method that return MovieDTO.
 	 */
 	public static MovieDTO getMovie(List<Movie> listOfMovie) {
-		
 		MovieDTO movieDTO = new MovieDTO();
 		List<Movie> list = listOfMovie;
 		movieDTO.setName(list.get(0).getName());
@@ -58,7 +57,6 @@ public class MovieUtils {
 	 * The method that return MovieDTO.
 	 */
 	public static MovieDTO MovieToMovieDTO(Movie movie) {
-		
 		MovieDTO movieDTO = new MovieDTO();
 		movieDTO.setName(movie.getName());
 		movieDTO.setRuntime(movie.getRuntime());
@@ -74,7 +72,6 @@ public class MovieUtils {
 	 * The method that return List of MovieDTO.
 	 */
 	public static List<MovieDTO> getListOfMovieDTO(List<Movie> listOfMovie){
-	
 		List<MovieDTO> listOfMovieDTO = new ArrayList<MovieDTO>();
 		for (Movie movielist : listOfMovie) {
 			MovieDTO movieDTO = new MovieDTO();
@@ -86,7 +83,7 @@ public class MovieUtils {
 			movieDTO.setPopularity(movielist.getPopularity());
 			movieDTO.setBudget(movielist.getBudget());
 			listOfMovieDTO.add(movieDTO);
-		}
+			}
 		return listOfMovieDTO;
 	}
 	
@@ -94,7 +91,6 @@ public class MovieUtils {
 	 * The method that return List of MovieRecordDTO.
 	 */
 	public static List<MovieRecordDTO> getListOfMovieRecordDTO(List<Movie> listOfMovie){
-	
 		List<MovieRecordDTO> listOfMovieRecordDTO = new ArrayList<MovieRecordDTO>();
 		for (Movie movielist : listOfMovie) {
 			MovieRecordDTO movieRecordDTO = new MovieRecordDTO();
@@ -105,16 +101,14 @@ public class MovieUtils {
 			movieRecordDTO.setRuntime(movielist.getRuntime());
 			movieRecordDTO.setVoteCount(movielist.getVoteCount());
 			listOfMovieRecordDTO.add(movieRecordDTO);
-		}
+			}
 		return listOfMovieRecordDTO;
 	}
-
 
 	/**
 	 * The method that perform filtering and calculate distance for each movie.
 	 */
 	public static List<String> ContentBasedFiltering(List<MovieDTO> listOFMovieDTO, MovieDTO movieDTO){
-	
 		double popularity = movieDTO.getPopularity();//875.581305
 		int runtime = movieDTO.getRuntime();//91
 		double voteaverage = movieDTO.getVoteAverage();//6.4
@@ -123,34 +117,34 @@ public class MovieUtils {
 		HashMap<String,Double> moviesWithDistance = new HashMap<String,Double>();
 		for(MovieDTO movie : listOFMovieDTO) {
 			map.put(movie.getName(),new MovieFilterDTO(movie.getRuntime(), movie.getRevenue(), movie.getVoteAverage(),movie.getVoteCount(),movie.getPopularity(),movie.getBudget()));
-		}
+				}
 		map.forEach((k,v)->{
 	if(v.voteAverage>voteaverage) {
 		//150,567,000
 	distance=distance+3;
-	if(v.revenue.compareTo(avgRevenue)>0) {
+	  if(v.revenue.compareTo(avgRevenue)>0) {
 		distance=distance+2;
-		if(v.popularity>popularity) {
+		 if(v.popularity>popularity) {
 			distance=distance+0.5;
-		if(v.runtime>runtime) {
+		   if(v.runtime>runtime) {
 			distance=distance-0.5;
-	if(v.voteCount>votecount) {
+	         if(v.voteCount>votecount) {
 		distance=distance+0.5;
-	if(v.budget.compareTo(avgBudget)>0) {
+	           if(v.budget.compareTo(avgBudget)>0) {
 		distance=distance-0.5;
-	}else {
+	} else {
 		distance=distance+0.5;
 	}
-	}else {
+	    } else {
 		distance=distance-0.5;	
 	}
-		}else {
+		} else {
 			distance=distance+0.5;
-		}
-		}else {
+		   }
+		} else {
 			distance=distance-0.5;
 		}
-	}else {
+	} else {
 		distance=distance-1;	
 		if(v.popularity>popularity) {
 			distance=distance+0.5;
@@ -160,51 +154,45 @@ public class MovieUtils {
 					distance=distance+0.5;
 					if(v.budget.compareTo(avgBudget)>0) {
 						distance=distance-0.5;
-					}else {
+					} else {
 						distance=distance+0.5;
 					}
-				}else {
+				} else {
 					distance=distance-0.5;	
 				}
-			}else {
+			} else {
 				distance=distance+0.5;
 			}
-		}else {
+		} else {
 			distance=distance-0.5;
+			}
 		}
-	}
-	}
-	else {
+	} else {
 		//if voteaverage is less then given movie voteaverage check all other field again
 		distance=distance-3;
 		if(v.revenue.compareTo(avgRevenue)>0) {
 		distance=distance+2;
-		if(v.popularity>popularity) {
+			if(v.popularity>popularity) {
 			distance=distance+0.5;
-			if(v.runtime>runtime) {
+				if(v.runtime>runtime) {
 				distance=distance-0.5;
-			if(v.voteCount>votecount) {
+					if(v.voteCount>votecount) {
 				distance=distance+0.5;
-				if(v.budget.compareTo(avgBudget)>0) {
+						if(v.budget.compareTo(avgBudget)>0) {
 					distance=distance-0.5;
-				}
-				else {
+				} else {
 					distance=distance+0.5;
 				}
-			}
-			else {
+			} else {
 				distance=distance-0.5;
 			}
-			}
-			else {
+			    } else {
 				distance=distance+0.5;
 			}
-		}
-		else {
+		} else {
 			distance=distance-0.5;
-		}
-		}
-		else {
+		    }
+		} else {
 			distance=distance-1;
 			if(v.popularity>popularity) {
 				distance=distance+0.5;
@@ -214,27 +202,21 @@ public class MovieUtils {
 						distance=distance+0.5;
 						if(v.budget.compareTo(avgBudget)>0) {
 							distance=distance-0.5;
-						}
-						else {
+						} else {
 							distance=distance+0.5;
 						}
-					}
-					else {
+					} else {
 						distance=distance-0.5;
 					}
-				}
-				else {
+				} else {
 					distance=distance+0.5;
 				}
-			}
-			else {
+			} else {
 				distance=distance-0.5;
 			}	
 		}	
 	}
 	moviesWithDistance.put(k,distance);
-
-		
 		});
 		Set<Entry<String, Double>> set = moviesWithDistance.entrySet();
 		List<Entry<String, Double>> list = new ArrayList<Entry<String,Double>>(set);
@@ -248,7 +230,6 @@ public class MovieUtils {
 		for (Entry<String,Double> entry : list) {
 			aMap2.put(entry.getKey(), entry.getValue());
 		}
-		
 		aMap2.forEach((k,v)->{
 			moviesWithDist.add(k);
 			});
@@ -259,19 +240,16 @@ public class MovieUtils {
 	 * The method that return list of first five movie name.
 	 */
 	public static List<String> getFirstFiveMovieName(List<String> moviesWithDistance){
-		
 		int counter = 0;
 		List<String> listOfFirstFiveMovieName = new ArrayList<String>();
 		for (String eachMovie : moviesWithDistance) {
 			if(counter == 5) {
 				break;
+			} else {	
+		listOfFirstFiveMovieName.add(eachMovie);
 			}
-		else {
-			listOfFirstFiveMovieName.add(eachMovie);
-		}
 			counter++;
 		}
 		return listOfFirstFiveMovieName;
-		
 	}
 }

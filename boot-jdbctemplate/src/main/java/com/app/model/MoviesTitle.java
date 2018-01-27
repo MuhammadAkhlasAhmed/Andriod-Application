@@ -2,6 +2,9 @@ package com.app.model;
 
 import java.io.Serializable;
 
+/**
+ * The Class MoviesTitle.
+ */
 public class MoviesTitle implements Serializable {
 
     /**

@@ -2,9 +2,12 @@ package com.app.service;
 
 import java.util.List;
 
+/**
+ * The Interface IAppService.
+ */
 public interface IAppService {
 	
-	public  List<String> getFireBaseMovies();
+  List<String> getFireBaseMovies();
 	
-	public int getMoviesCount(String Name);
+  int getMoviesCount(String Name);
 }

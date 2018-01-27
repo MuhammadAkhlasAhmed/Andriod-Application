@@ -1,9 +1,9 @@
 package com.app.service;
 
-
-
+/**
+ * The Interface AppService.
+ */
 public interface AppService {
-
-	public void getPageLinks(String URL);
 	
+	void getPageLinks(String URL);
 }

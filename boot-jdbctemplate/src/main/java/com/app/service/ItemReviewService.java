@@ -4,6 +4,9 @@ import java.util.List;
 
 import com.app.model.ItemReview;
 
+/**
+ * The Interface ItemReviewService.
+ */
 public interface ItemReviewService {
 
     List<ItemReview> getAllItemReviews();

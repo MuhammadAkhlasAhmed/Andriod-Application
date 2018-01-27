@@ -12,18 +12,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.service.GenreService;
-import com.app.service.ItemReviewService;
 import com.app.service.MoviesTitleService;
 
+/**
+ * The Class ItemReviewController.
+ */
 @RestController
 @RequestMapping("api/v1")
 public class ItemReviewController {
 
     @Autowired
     private GenreService genreService;
-
-    @Autowired
-    private ItemReviewService itemReviewService;
 
     @Autowired
     private MoviesTitleService movieTitleService;

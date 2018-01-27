@@ -26,5 +26,4 @@ public interface MovieRepository extends JpaRepository<Movie, Long>{
 	public List<Movie> findMovie(int runtime, BigInteger revenue, double voteAverage, int voteCount, double popularity, BigInteger budget, Pageable pageable);
 
 	public Movie findMovieByName(String name);
-	
 }

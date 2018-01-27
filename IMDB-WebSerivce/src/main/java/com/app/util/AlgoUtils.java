@@ -8,39 +8,44 @@ import com.app.dto.FinalMovieDto;
 import com.app.dto.MovieRecordDTO;
 import com.app.model.Movie;
 
+/**
+ * The Class AlgoUtils.
+ */
 public class AlgoUtils {
 	
 	/** The runtime. */
 	public static int runtime;
+
 	/** The revenue. */
 	public static BigInteger revenue;
+	
 	/** The rating. */
 	public static double rating;
+	
 	/** The voteCount. */
 	public static int voteCount;
+	
 	/** The popularity. */
 	public static double popularity;
+	
 	/** The budget. */
 	public static BigInteger budget;
 	
 	// they are used for normalize the value by using formula x-min(x)/max(x)-min(x)
-	static BigInteger max_Revenue = new BigInteger("2787965087");
-	static BigInteger min_Revenue = new BigInteger("1000000");
-	static BigInteger max_Budget = new BigInteger("380000000");
-	static BigInteger min_Budget = new BigInteger("1000000");
-	static BigInteger valuebudget;
-	static BigInteger valuerevenue;
-	static BigInteger valuebudgetafterdivision;
-	static BigInteger valuerevenueafterdivision;
-	static double max_Popularity = 875.581305;
-	static int max_Votecount = 13752;
-	static int max_Runtime = 338;
+	static BigInteger maxRevenue = new BigInteger("2787965087");
+	static BigInteger minRevenue = new BigInteger("1000000");
+	static BigInteger maxBudget = new BigInteger("380000000");
+	static BigInteger minBudget = new BigInteger("1000000");
+	static BigInteger valueBudget;
+	static BigInteger valueRevenue;
+	static double maxPopularity = 875.581305;
+	static int maxVotecount = 13752;
+	static int maxRuntime = 338;
 	static double[][] xMatrix;
 	static double[][] yMatrix;
 	static double[] zMatrix = new double[6];
 	static double[][] weights = new double[6][1];
 	static double  finalEquation;
-  //static List<FinalMovieDto> listOfRecommendedMovie = new ArrayList<FinalMovieDto>();
 	static List<FinalMovieDto> listOfRecommendedMovie;
 	
 	/**
@@ -55,18 +60,18 @@ public class AlgoUtils {
 		for (int i = 0; i < historicalMoviesList.size() - 1; i++) {
 			for (int k = i; k <= i; k++) {
 				zMatrix[0] = 1;
-				zMatrix[1] = (double) historicalMoviesList.get(k).popularity/max_Popularity;
-				zMatrix[2] = (double) historicalMoviesList.get(k).voteCount/max_Votecount;
-				zMatrix[3] = (double) historicalMoviesList.get(k).runtime/max_Runtime;
-				valuebudget = new BigInteger(historicalMoviesList.get(k).budget.toString());
-				valuerevenue = new BigInteger(historicalMoviesList.get(k).revenue.toString());
-				double d = valuebudget.doubleValue() / max_Budget.doubleValue();
-				double d1 = valuerevenue.doubleValue() / max_Revenue.doubleValue();
+				zMatrix[1] = (double) historicalMoviesList.get(k).popularity/maxPopularity;
+				zMatrix[2] = (double) historicalMoviesList.get(k).voteCount/maxVotecount;
+				zMatrix[3] = (double) historicalMoviesList.get(k).runtime/maxRuntime;
+				valueBudget = new BigInteger(historicalMoviesList.get(k).budget.toString());
+				valueRevenue = new BigInteger(historicalMoviesList.get(k).revenue.toString());
+				double d = valueBudget.doubleValue() / maxBudget.doubleValue();
+				double d1 = valueRevenue.doubleValue() / maxRevenue.doubleValue();
 				zMatrix[4] = (double) d;
 				zMatrix[5] = (double) d1;
 				yMatrix[i][0] = (double) historicalMoviesList.get(k).rating;
 			}
-			for (int j = 0; j < zMatrix.length; j++) {
+				for (int j = 0; j < zMatrix.length; j++) {
 				xMatrix[i][j] = zMatrix[j];
 			}
 		}
@@ -97,13 +102,13 @@ public class AlgoUtils {
 			listOfRecommendedMovie = new ArrayList<FinalMovieDto>();
 			for (Movie movie : list) {
 				FinalMovieDto finalMovieDto = new FinalMovieDto();
-				double popularity = movie.getPopularity()/max_Popularity;
-				double votecount = movie.getVoteCount()/max_Votecount;
-				double runtime = movie.getRuntime()/max_Runtime;
+				double popularity = movie.getPopularity()/maxPopularity;
+				double votecount = movie.getVoteCount()/maxVotecount;
+				double runtime = movie.getRuntime()/maxRuntime;
 				BigInteger valueBudget = new BigInteger(movie.getBudget().toString());
 				BigInteger valueRevenue = new BigInteger(movie.getRevenue().toString());
-				double finalBudgetValue = valueBudget.doubleValue() / max_Budget.doubleValue();
-				double finalRevenueValue = valueRevenue.doubleValue() / max_Revenue.doubleValue();
+				double finalBudgetValue = valueBudget.doubleValue() / maxBudget.doubleValue();
+				double finalRevenueValue = valueRevenue.doubleValue() / maxRevenue.doubleValue();
 				finalEquation = roundOff((weights[0][0])+(weights[1][0]*popularity)+(weights[2][0]*votecount)+(weights[3][0]*runtime)+(weights[4][0]*finalBudgetValue)+(weights[5][0]*finalRevenueValue), 1);
 				finalMovieDto.setName(movie.getName());
 				finalMovieDto.setRating(finalEquation);
@@ -172,9 +177,9 @@ public class AlgoUtils {
 				for (int k = 0; k < (N - 1); k++) {
 					m[k] = new double[N - 1];
 				}
-				for (int i = 1; i < N; i++) {
+					for (int i = 1; i < N; i++) {
 					int j2 = 0;
-					for (int j = 0; j < N; j++) {
+						for (int j = 0; j < N; j++) {
 						if (j == j1)
 							continue;
 						m[i - 1][j2] = A[i][j];

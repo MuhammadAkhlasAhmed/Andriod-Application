@@ -26,8 +26,7 @@ public class MovieController {
 		MovieDTO movieDTO = movieService.getMovieByGenre(genreName);
 		if(movieDTO == null) {
 			return new ResponseEntity<MovieDTO>(movieDTO, HttpStatus.NOT_FOUND);
-		}
-		else {
+		} else {
 			return new ResponseEntity<MovieDTO>(movieDTO, HttpStatus.OK);
 		}
 	}

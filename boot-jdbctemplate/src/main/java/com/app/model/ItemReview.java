@@ -2,6 +2,9 @@ package com.app.model;
 
 import java.io.Serializable;
 
+/**
+ * The Class ItemReview.
+ */
 public class ItemReview implements Serializable {
 
     /**

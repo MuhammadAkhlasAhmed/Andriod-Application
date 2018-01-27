@@ -13,15 +13,15 @@ import com.app.util.GenreUtils;
 /**
  * The Class GenreServiceImpl.
  */
-/**
- * The Class GenreServiceImpl.
- */
 @Service
 public class GenreServiceImpl implements GenreService {
 
     @Autowired
     private ItemReviewService itemReviewService;
 
+    /**
+     * The method that return movie genres.
+     */
     @Override
     public List<String> getMovieGenres(String name) {
         GenreRatingDTO genreRatingDTO = GenreUtils.getMovieGenreAndRating(name);

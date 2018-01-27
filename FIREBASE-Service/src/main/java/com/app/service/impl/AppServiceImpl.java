@@ -23,9 +23,15 @@ import org.springframework.stereotype.Service;
 
 import com.app.service.IAppService;
 
+/**
+ * The Class AppServiceImpl.
+ */
 @Service
 public class AppServiceImpl implements IAppService {
 
+	/**
+	 * The method that return firebase movies.
+	 */
 	public List<String> getFireBaseMovies() {
 		List<String> list = new ArrayList<String>();
 		String output;
@@ -55,6 +61,9 @@ public class AppServiceImpl implements IAppService {
 		return list;
 	}
 
+	/**
+	 * The method that return count of firebase movies.
+	 */
 	public int getMoviesCount(String Name) {
 		List<String> movieList = getFireBaseMovies();
 		Hashtable<String, Integer> Hset = new Hashtable<String, Integer>();
@@ -62,7 +71,7 @@ public class AppServiceImpl implements IAppService {
 		Set<String> unique = new HashSet<String>(movieList);
 		for (String key : unique) {
 			Hset.put(key.toLowerCase(), Collections.frequency(movieList, key));
-		}
+			}
 		String a = Name.toLowerCase();
 		String str = a;
 		String[] j = str.split("\\s+");

@@ -12,6 +12,9 @@ import com.app.service.ItemReviewService;
 import com.app.service.MoviesTitleService;
 import com.app.util.GenreUtils;
 
+/**
+ * The Class MovieTitleServiceImpl.
+ */
 @Service
 public class MovieTitleServiceImpl implements MoviesTitleService {
 
@@ -21,21 +24,33 @@ public class MovieTitleServiceImpl implements MoviesTitleService {
     @Autowired
     private ItemReviewService itemReviewService;
     
+    /**
+     * The method that return movies against id.
+     */
     @Override
     public List<MoviesTitle> getMoviesAgainstId(List<Long> list) {
         return moviesTitleDao.getMovieAgainstId(list);
     }
 
+    /**
+     * The method that save movie.
+     */
     @Override
     public int save(String movieName) {
         return moviesTitleDao.save(movieName);
     }
 
+    /**
+     * The method that return true if movie exists.
+     */
 	@Override
 	public boolean getMovieByName(String name) {
 		return moviesTitleDao.getMovieByName(name);
 	}
 
+    /**
+     * The method that save movie and users feedback.
+     */
 	@Override
 	public void saveMovieNameAndItsReview(String movieName, String feature) {
 		boolean count = getMovieByName(movieName);
@@ -47,8 +62,5 @@ public class MovieTitleServiceImpl implements MoviesTitleService {
 			int movieNameInsert = save(movieName);
 			int row = itemReviewService.save(listOfGenres, feature);
 		}
-		
-
 	}
-	
 }

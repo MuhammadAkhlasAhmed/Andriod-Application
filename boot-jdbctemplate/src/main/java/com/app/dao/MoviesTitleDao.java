@@ -4,6 +4,9 @@ import java.util.List;
 
 import com.app.model.MoviesTitle;
 
+/**
+ * The Interface MoviesTitleDao.
+ */
 public interface MoviesTitleDao {
 
     List<MoviesTitle> getMovieAgainstId(List<Long> list);

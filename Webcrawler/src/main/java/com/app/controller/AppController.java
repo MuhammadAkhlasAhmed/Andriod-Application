@@ -7,21 +7,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.app.service.AppService;
 
-
+/**
+ * The Class AppController.
+ */
 @RestController
 @RequestMapping("api/v1/")
 public class AppController {
 
 	@Autowired
-	private AppService AppService;
+	private AppService appService;
 	
 	@GetMapping("{str}")
 	public void getPageLinks(@PathVariable String str) {
-		
-		AppService.getPageLinks(str);
-		
+		appService.getPageLinks(str);
 	}
-	
-	
-	
 }
