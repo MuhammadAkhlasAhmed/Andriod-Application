@@ -87,7 +87,7 @@ int a;
                 txt1.setText("");
             }
         });
-
+txt1.setHint("Enter Any Movie Name");
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
