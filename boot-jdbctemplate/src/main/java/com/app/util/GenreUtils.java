@@ -21,6 +21,7 @@ import org.apache.commons.collections4.ListUtils;
 import org.json.JSONObject;
 
 import com.app.dto.GenreRatingDTO;
+import com.app.dto.WebCrawlerDTO;
 import com.app.model.ItemReview;
 import com.app.model.MoviesTitle;
 
@@ -130,6 +131,78 @@ public class GenreUtils {
     }
 
     /**
+     * The method that return original title and year of the movie.
+     */
+    public static WebCrawlerDTO getMovieNameAndYear(String name) {
+    	WebCrawlerDTO webCrawlerDTO = new WebCrawlerDTO();
+        if (name.contains(" ")) {
+            String movie_name = GenreUtils.replacewith20(name);
+            try {
+                URL url = new URL("http://www.omdbapi.com/?t=" + movie_name
+                        + "&apikey=a4c03f2c");
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setRequestMethod("GET");
+                conn.setRequestProperty("Accept", "application/json");
+                if (conn.getResponseCode() != 200) {
+                    throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
+                }
+                BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
+                String output;
+                while ((output = br.readLine()) != null) {
+                    try {
+                        JSONObject jsonObject = new JSONObject(output);
+                        String movieYear = jsonObject.getString("Year").toString();
+                        String movieTitle = jsonObject.getString("Title").toString();
+                        int year = Integer.parseInt(movieYear);
+                        webCrawlerDTO.setMovieTitle(movieTitle);
+                        webCrawlerDTO.setMovieYear(year);
+                    } catch (Exception e) {
+                        System.out.println("Not Found " + e);
+                    }
+                }
+                conn.disconnect();
+            } catch (MalformedURLException e) {
+                System.out.println("MalformedURLException " + e);
+            } catch (IOException e) {
+                System.out.println("IOException " + e);
+            }
+            return webCrawlerDTO;
+        } else {
+            try {
+                URL url = new URL("http://www.omdbapi.com/?t=" + name
+                        + "&apikey=a4c03f2c");
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setRequestMethod("GET");
+                conn.setRequestProperty("Accept", "application/json");
+                if (conn.getResponseCode() != 200) {
+                    throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
+                }
+                BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
+                String output;
+                while ((output = br.readLine()) != null) {
+                    try {
+                        JSONObject jsonObject = new JSONObject(output);
+                        String movieYear = jsonObject.getString("Year").toString();
+                        String movieTitle = jsonObject.getString("Title").toString();
+                        int year = Integer.parseInt(movieYear);
+                        webCrawlerDTO.setMovieTitle(movieTitle);
+                        webCrawlerDTO.setMovieYear(year);
+                    } catch (Exception e) {
+                        System.out.println("Not Found " + e);
+                    }
+                }
+                conn.disconnect();
+            } catch (MalformedURLException e) {
+                System.out.println("MalformedURLException " + e);
+            } catch (IOException e) {
+                System.out.println("IOException " + e);
+            }
+            return webCrawlerDTO;
+        }
+    }
+
+    
+    /**
      * The method that remove spaces in string and add %20.
      */
     public static String replacewith20(String word) {
@@ -155,7 +228,24 @@ public class GenreUtils {
         }
         return listOfGenresWithUnderscore;
     }
+    
+    /**
+     * The method that replace spaces to dash.
+     */
+    public static String replaceSpaceToDash(String movieName) {
+        String name = movieName.replaceAll(" ", "-");
+             return name;
+    }
 
+    /**
+     * The method that replace spaces to plus.
+     */
+    public static String replaceSpaceToPlus(String movieName) {
+        String name = movieName.replaceAll(" ", "+");
+             return name;
+    }
+
+    
     /**
      * The method that return a sorted hashmap in ascending order.
      */

@@ -14,20 +14,20 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.regex.Pattern;
 import java.util.Map.Entry;
+import java.util.regex.Pattern;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
-import com.app.service.IAppService;
+import com.app.service.FireBaseService;
 
 /**
- * The Class AppServiceImpl.
+ * The Class FireBaseServiceImpl.
  */
 @Service
-public class AppServiceImpl implements IAppService {
+public class FireBaseServiceImpl implements FireBaseService{
 
 	/**
 	 * The method that return firebase movies.

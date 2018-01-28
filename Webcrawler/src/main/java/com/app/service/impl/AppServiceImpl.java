@@ -34,7 +34,7 @@ public class AppServiceImpl implements AppService{
             Elements links = doc.select("a");
             for (Element link : links) {
                 System.out.println("\nlink : " + link.absUrl("href"));
-                System.out.println("text : " + link.text());
+                //System.out.println("text : " + link.text());
             }
         } catch (IOException e) {
             e.printStackTrace();
