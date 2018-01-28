@@ -2,14 +2,18 @@ package com.example.muhammadikhlas.myapplication;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import java.lang.reflect.Array;
 import java.util.List;
 
 public class ResponceFromColaborativeActivity extends Activity {
@@ -25,19 +29,57 @@ public class ResponceFromColaborativeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_responce_from_colaborative);
         Intent i=getIntent();
-        List<String> s=(List<String>) i.getSerializableExtra("LIST");
+        List<String> movies=(List<String>) i.getSerializableExtra("Movies");
+        List<String> links=(List<String>) i.getSerializableExtra("Links");
+
+
+
+String ns=i.getExtras().getString("Name");
+        String count=i.getExtras().getString("Count");
         mListView1 = (ListView)findViewById(R.id.listView1);
         mListView2 = (ListView)findViewById(R.id.listView2);
 
-        mListView1.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, data1));
-        mListView2.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, s));
+        Toast.makeText(this,""+ns.toString()+" "+count+" People Wactch This Movie On Facebook",Toast.LENGTH_LONG).show();
+
+        mListView1.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, movies));
+        mListView2.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, links));
 
 
 
-        Log.d("Agae>", String.valueOf(s));
+
 
         ListUtils.setDynamicHeight(mListView1);
         ListUtils.setDynamicHeight(mListView2);
+
+
+
+
+        mListView2.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+
+
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+Toast.makeText(ResponceFromColaborativeActivity.this,"Heelo"+parent.getItemAtPosition(position),Toast.LENGTH_LONG).show();
+
+                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse((String)parent.getItemAtPosition(position)));
+                        startActivity(browserIntent);
+
+
+                    }
+                }
+        );
+
+
+
+
+
+
+
+
+
+
     }
 
 

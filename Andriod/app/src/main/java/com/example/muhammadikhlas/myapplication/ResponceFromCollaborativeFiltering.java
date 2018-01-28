@@ -39,7 +39,9 @@ public class ResponceFromCollaborativeFiltering extends AsyncTask<String,Void,St
     String   urlString="http://192.168.212.2:8081/api/v1/";
     String temp, response = "";
     String mname;
-
+    ArrayList<String> Linkss;
+    ArrayList<String> Movies;
+    String Count;
 
 
 
@@ -79,19 +81,46 @@ public class ResponceFromCollaborativeFiltering extends AsyncTask<String,Void,St
     @Override
     protected void onPostExecute(String x) {
 
+        Log.d("FINAL RES",x);
+
 ar=new ArrayList<String>();
         //
 //
        // Log.d("ResponceofCol",x.toString());
         try {
-            JSONArray array =new JSONArray(x);
+////            JSONArray array =new JSONArray(x);
+            JSONObject jsonObj = new JSONObject(x);
+            JSONArray CollaborativeList = jsonObj.getJSONArray("listOfMovies");
+            JSONArray Links = jsonObj.getJSONArray("onlineAndDownloadLinks");
+            String X=jsonObj.getString("firebaseMovieCount");
+
+            Linkss=new ArrayList<String>();
+            Movies=new ArrayList<String>();
 
 
-            for(int i=0;i<array.length();i++){
+        for(int i=0;i<Links.length();i++){
 
-                ar.add(array.getString(i));
+            Linkss.add(Links.getString(i).toString());
+
+        }
+
+            for(int i=0;i<CollaborativeList.length();i++){
+
+                Movies.add(CollaborativeList.getString(i).toString());
 
             }
+
+
+            Count=X;
+
+
+
+
+            Log.d("Links",Linkss.get(0));
+            Log.d("SingleValue",Count.toString());
+            Log.d("MOVIES",Movies.get(0).toString());
+
+
 
 
 
@@ -99,11 +128,18 @@ ar=new ArrayList<String>();
             e.printStackTrace();
         }
 
+
+
+
+
         Intent ais=new Intent(context,ResponceFromColaborativeActivity.class);
         ais.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         ais.putExtra("Name",mname);
+//
+        ais.putExtra("Movies",(Serializable)Movies);
+        ais.putExtra("Links",(Serializable)Linkss);
+        ais.putExtra("Count",Count);
 
-        ais.putExtra("LIST",(Serializable)ar);
 
 //     ais.putExtra("LIST",(Serializable)movie);
 //

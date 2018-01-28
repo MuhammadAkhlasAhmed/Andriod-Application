@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:text="Watching And Downloading Links"
+            android:text="Peoples Also Like them!"
             android:textSize="24sp"
             android:textStyle="bold|italic" />
 
@@ -37,9 +37,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dip"
             android:gravity="center_vertical"
-            android:text="Peoples Also Like them!"
+            android:text="Watching And Downloading Links"
             android:textSize="24sp"
-            android:textStyle="bold|italic"/>
+            android:textStyle="bold|italic" />
 
         <ListView
             android:id="@+id/listView2"
