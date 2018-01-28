@@ -27,10 +27,10 @@ public class ItemReviewController {
     @GetMapping("/{movieName}")
     public ResponseEntity<MovieListDTO> takeMovieNameThatUserSelect(@PathVariable String movieName) {
     	MovieListDTO movieListDTO = genreService.getMovieGenres(movieName);
-        if (movieListDTO != null) {
-            return new ResponseEntity<MovieListDTO>(movieListDTO, HttpStatus.NOT_FOUND);
-        } else {
+        if (movieListDTO.getFirebaseMovieCount() != 0 && (!movieListDTO.getListOfMovies().isEmpty()) && (!movieListDTO.getOnlineAndDownloadLinks().isEmpty())) {
             return new ResponseEntity<MovieListDTO>(movieListDTO, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<MovieListDTO>(movieListDTO, HttpStatus.NOT_FOUND);
         }
     }
 
