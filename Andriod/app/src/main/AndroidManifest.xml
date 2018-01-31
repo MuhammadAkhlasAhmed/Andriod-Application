@@ -16,7 +16,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -39,9 +39,10 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
+        <activity android:name=".MainActivity"></activity>
         <activity android:name=".FirebaseNotificationResultActivity" />
-        <activity android:name=".ResponceFromColaborativeActivity"></activity>
+        <activity android:name=".ResponceFromColaborativeActivity" />
+
     </application>
 
 </manifest>
