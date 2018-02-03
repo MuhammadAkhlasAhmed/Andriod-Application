@@ -48,7 +48,7 @@ btnsubmit.setOnClickListener(this);
 
 //double x=Double.parseDouble(String.valueOf(ratingbar1.getRating()));
   double x=ratingbar1.getRating();
-            Toast.makeText(this,""+x,Toast.LENGTH_LONG).show();
+
 
 
 

@@ -1,0 +1,15 @@
+
+=squid:S1604"(Make this anonymous inner class a lambda( œÜÿ
+gsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ñ´¬®
+R
+squid:S106"9Replace this use of System.out or System.err by a logger.(ß×È€þÿÿÿÿ
+nsquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(§Â±­
+Dsquid:S2093"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ
+msquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ëÙí<
+ssquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(¸ÛÏ«üÿÿÿÿ
+nsquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(³·µ“
+ksquid:S1149"VReplace the synchronized class "Hashtable" by an unsynchronized one such as "HashMap".(§Â±­
+ssquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(çâîÀýÿÿÿÿ
+gsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(§Â±­
+msquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÿüÇ
+fsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ëÙí<

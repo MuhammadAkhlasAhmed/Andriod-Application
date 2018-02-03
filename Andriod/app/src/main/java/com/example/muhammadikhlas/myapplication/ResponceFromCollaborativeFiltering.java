@@ -36,7 +36,7 @@ public class ResponceFromCollaborativeFiltering extends AsyncTask<String,Void,St
     URL url = null;
     JSONObject object = null;
     InputStream inStream = null;
-    String   urlString="http://192.168.0.102:8081/api/v1/";
+    String   urlString="http://10.0.2.2:8081/api/v1/";
     String temp, response = "";
     String mname;
     ArrayList<String> Linkss;
@@ -66,7 +66,7 @@ public class ResponceFromCollaborativeFiltering extends AsyncTask<String,Void,St
             while ((temp = bReader.readLine()) != null) {
                 response += temp;
             }
-            //object = (JSONObject) new JSONTokener(response).nextValue();
+
 
 
         } catch (Exception e) {
@@ -84,11 +84,11 @@ public class ResponceFromCollaborativeFiltering extends AsyncTask<String,Void,St
         Log.d("FINAL RES",x);
 
 ar=new ArrayList<String>();
-        //
-//
-       // Log.d("ResponceofCol",x.toString());
+
+
+
         try {
-////            JSONArray array =new JSONArray(x);
+
             JSONObject jsonObj = new JSONObject(x);
             JSONArray CollaborativeList = jsonObj.getJSONArray("listOfMovies");
             JSONArray Links = jsonObj.getJSONArray("onlineAndDownloadLinks");
@@ -116,14 +116,6 @@ ar=new ArrayList<String>();
 
 
 
-            Log.d("Links",Linkss.get(0));
-            Log.d("SingleValue",Count.toString());
-            Log.d("MOVIES",Movies.get(0).toString());
-
-
-
-
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -135,32 +127,18 @@ ar=new ArrayList<String>();
         Intent ais=new Intent(context,ResponceFromColaborativeActivity.class);
         ais.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         ais.putExtra("Name",mname);
-//
         ais.putExtra("Movies",(Serializable)Movies);
         ais.putExtra("Links",(Serializable)Linkss);
         ais.putExtra("Count",Count);
 
 
-//     ais.putExtra("LIST",(Serializable)movie);
-//
+
+
         context.startActivity(ais);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-        //
 
 
 
-        //   context.startActivity(new Intent(context, ListOfMoviesByWebMatrixActivity.class));
 
-
-        //  i.putExtra("Name",""+txt1.getText().toString());
 
     }
 

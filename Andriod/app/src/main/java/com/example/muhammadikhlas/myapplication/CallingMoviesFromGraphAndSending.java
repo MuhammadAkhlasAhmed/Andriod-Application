@@ -86,7 +86,7 @@ FirebaseDatabase db;
                                while (m.find()) {
                                    i++;
                                }
-Log.d("total movie",""+i);
+
 
                                 JSONObject jobj = new JSONObject(response.getRawResponse());
                                data=jobj.getJSONArray("data");
@@ -98,13 +98,12 @@ Log.d("total movie",""+i);
                                 as.add(k,moviename); //ading to my list so then we send it to FIREBASE AT LAST
 
                               }
-Log.d("checking list",""+as.get(0));
+
 
                                mDatabase = FirebaseDatabase.getInstance().getReference();
                                DatabaseReference mRef = mDatabase.getRef();
 
                                mRef.push().setValue(as);
-Log.d("Nahi Jarae","xx");
 
 
 
@@ -116,31 +115,17 @@ Log.d("Nahi Jarae","xx");
 
 
 
-  //      for(int k=0;k<data.length();k++)
 
-    //    {
-
-//            Log.d("Values",""+data.getJSONObject(k).getJSONObject("data").getJSONObject("movie").get("title"));
 
 
                                                                 }
-//                                }
+
 
                             catch (JSONException e) {
                                 e.printStackTrace();
                             }
 
 
-/*
-                            for(int k=0;k<=a;k++){
-                                try {
-
-                            as.add(k,data.getJSONObject(k).getJSONObject("data").getJSONObject("movie").get("title"));
-                                        }}
-
-                                catch (JSONException e) {
-                                    e.printStackTrace();}
-*/
 
                             }
 
@@ -178,6 +163,5 @@ Log.d("Nahi Jarae","xx");
         super.onPostExecute(aVoid);
 
 
-        Log.d("ONPOST","Yes its working Ikhlas oMG.");
     }
 }

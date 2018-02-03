@@ -1,0 +1,39 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/back"
+    >
+
+
+    <EditText
+        android:id="@+id/namax"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_alignBottom="@+id/buttonx"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="55dp"
+        android:ems="10"
+        android:hint="Enter Movie Name"
+        android:inputType="textPersonName"
+
+        android:selectAllOnFocus="true"
+        android:text="Movie Name Here..!"
+        tools:text="@string/app_name" />
+
+    <Button
+        android:id="@+id/buttonx"
+
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="#000000"
+        android:text="Search"
+        android:textColor="#fff"
+        android:layout_height="40dp"
+        android:layout_width="200dp"
+
+
+        />
+
+</RelativeLayout>

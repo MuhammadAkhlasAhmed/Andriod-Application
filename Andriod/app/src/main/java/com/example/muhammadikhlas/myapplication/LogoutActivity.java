@@ -59,7 +59,7 @@ public class LogoutActivity extends Activity {
     Bitmap bitmap;
 int a;
     Button btn;
-    public ProgressBar spinner;
+    private ProgressBar spinner;
 
 
 
@@ -106,21 +106,13 @@ txt1.setHint("Enter Any Movie Name");
 
 
 
-              //  Intent listofmovies=new Intent(LogoutActivity.this,ListOfMoviesByWebMatrixActivity.class);
-                //listofmovies.putExtra("MovieName",infos[0]);
-                //startActivity(listofmovies);
-
-
-                //TakeDataFromServiceAfterPassingMovieName oop=new TakeDataFromServiceAfterPassingMovieName();
-                //oop.view(txt1.getText().toString());
-//new TakeDataFromServiceAfterPassingMovieName(getApplicationContext()).execute(new String[]{txt1.getText().toString()});
 
 
 
 
 
-         /*
-            */}
+
+        }
         });
 
         // fetching facebook's profile picture
@@ -151,7 +143,7 @@ txt1.setHint("Enter Any Movie Name");
                 profileImage.setImageBitmap(bitmap);
                 textView.setText(""+user.name);
 
-                Log.d("Yahan check",""+AccessToken.getCurrentAccessToken().getPermissions());
+
 
 
 

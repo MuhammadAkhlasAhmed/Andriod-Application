@@ -8,6 +8,7 @@ import android.media.tv.TvInputService;
 import android.os.Bundle;
 import android.service.textservice.SpellCheckerService;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,6 +45,7 @@ public class MainActivity extends Activity {
     private LoginButton loginButton;
     private TextView btnLogin;
     private ProgressDialog progressDialog;
+    private Button btnLetsgo;
     User user;
     LoginResult logre;
 
@@ -63,6 +65,13 @@ public class MainActivity extends Activity {
 
             finish();
         }
+
+
+
+
+
+
+
     }
 
     @Override
@@ -81,6 +90,23 @@ public class MainActivity extends Activity {
 
 
         btnLogin= (TextView) findViewById(R.id.btnLogin);
+        btnLetsgo= (Button) findViewById(R.id.button3);
+
+
+
+        btnLetsgo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+            Intent letsgo=new Intent(MainActivity.this,Letsgo.class);
+            startActivity(letsgo);
+
+            }
+        });
+
+
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -127,7 +153,7 @@ public class MainActivity extends Activity {
                                 JSONObject object,
                                 GraphResponse response) {
 
-                            Log.v("response: ", response + "");
+
                             try {
 
                                 user = new User();

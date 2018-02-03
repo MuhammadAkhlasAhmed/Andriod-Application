@@ -61,7 +61,7 @@ String ns=i.getExtras().getString("Name");
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-Toast.makeText(ResponceFromColaborativeActivity.this,"Heelo"+parent.getItemAtPosition(position),Toast.LENGTH_LONG).show();
+
 
                         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse((String)parent.getItemAtPosition(position)));
                         startActivity(browserIntent);
