@@ -40,7 +40,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class TakeDataFromServiceAfterPassingMovieName extends AsyncTask<String,Void,String>  {
 
-
+    // public AsyncResponse delegate = null;
 
     List<MoviePojo>  movie=new ArrayList<MoviePojo>();
 
@@ -48,7 +48,7 @@ public class TakeDataFromServiceAfterPassingMovieName extends AsyncTask<String,V
     URL url = null;
     JSONObject object = null;
     InputStream inStream = null;
-    String   urlString="http://10.0.2.2:8080/api/v1/movie/";
+    String   urlString="http://192.168.0.109:8080/api/v1/movie/";
     String temp, response = "";
 
 
@@ -88,7 +88,7 @@ public class TakeDataFromServiceAfterPassingMovieName extends AsyncTask<String,V
             while ((temp = bReader.readLine()) != null) {
                 response += temp;
             }
-
+            //object = (JSONObject) new JSONTokener(response).nextValue();
 
 
         } catch (Exception e) {
@@ -116,11 +116,11 @@ public class TakeDataFromServiceAfterPassingMovieName extends AsyncTask<String,V
                 movie.add(movieslist);
 
 
-
+                Log.d("Size of List ", String.valueOf(movie.size()));
 
             }
 
-
+            //        delegate.processFinish(movie);
 
             Intent ais=new Intent(context,ListOfMoviesByWebMatrixActivity.class);
             ais.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

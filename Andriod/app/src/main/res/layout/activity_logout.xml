@@ -68,7 +68,7 @@
         android:layout_toRightOf="@+id/textView"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:hint="Enter Movie Name"
         tools:text="@string/app_name" />
 
     <Button

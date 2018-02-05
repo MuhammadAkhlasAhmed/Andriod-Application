@@ -60,7 +60,9 @@ public class ListOfMoviesByWebMatrixActivity extends Activity {
 
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                        progressDialog = new ProgressDialog(ListOfMoviesByWebMatrixActivity.this);
+                        progressDialog.setMessage("Loading, please wait...");
+                        progressDialog.show();
                         MoviePojo cities =(MoviePojo) parent.getItemAtPosition(position);
 
 
@@ -71,12 +73,13 @@ public class ListOfMoviesByWebMatrixActivity extends Activity {
                 }
         );
 
-
-
-
-
     }
-
-
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if(progressDialog!=null && progressDialog.isShowing()){
+            progressDialog.dismiss();
+        }
+    }
 
 }

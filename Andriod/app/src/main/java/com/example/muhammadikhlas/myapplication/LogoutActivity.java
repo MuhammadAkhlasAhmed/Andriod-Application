@@ -57,11 +57,10 @@ public class LogoutActivity extends Activity {
     public User user;
     private ImageView profileImage;
     Bitmap bitmap;
-int a;
+    int a;
     Button btn;
     private ProgressBar spinner;
-
-
+    private String regex = "^\\w+(\\s\\w+)*$";
 
 
 
@@ -79,15 +78,15 @@ int a;
         spinner=(ProgressBar)findViewById(R.id.progressBar2);
         spinner.setVisibility(View.GONE);
 
-        txt1.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                spinner.setVisibility(View.GONE);
-                txt1.setText("");
-            }
-        });
-txt1.setHint("Enter Any Movie Name");
+//        txt1.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View view) {
+//                spinner.setVisibility(View.GONE);
+//                txt1.setText("");
+//            }
+//        });
+//txt1.setHint("Enter Any Movie Name");
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,15 +94,23 @@ txt1.setHint("Enter Any Movie Name");
 //                progressDialog = new ProgressDialog(LogoutActivity.this);
 //                progressDialog.setMessage("Please wait...");
 //                progressDialog.show();
-                spinner.setVisibility(View.VISIBLE);
-
-
+//                spinner.setVisibility(View.VISIBLE);
+//                String[] infos=new String[5];
+//                infos[0]=txt1.getText().toString();
+//                new TakeDataFromServiceAfterPassingMovieName(LogoutActivity.this).execute(infos);
                 String[] infos=new String[5];
                 infos[0]=txt1.getText().toString();
-
-
-                new TakeDataFromServiceAfterPassingMovieName(LogoutActivity.this).execute(infos);
-
+                if(txt1.getText().length() == 0 || txt1.getText() == null){
+                    Toast.makeText(getApplicationContext(), "Please Enter a Movie Name", Toast.LENGTH_SHORT).show();
+                } else if((!txt1.getText().toString().matches(regex))){
+                    Toast.makeText(getApplicationContext(), "Please Enter a Valid Movie Name", Toast.LENGTH_SHORT).show();
+                    txt1.setText("");
+                } else {
+                    progressDialog = new ProgressDialog(LogoutActivity.this);
+                    progressDialog.setMessage("Loading, please wait...");
+                    progressDialog.show();
+                    new TakeDataFromServiceAfterPassingMovieName(LogoutActivity.this).execute(infos);
+                }
 
 
 
@@ -172,8 +179,14 @@ txt1.setHint("Enter Any Movie Name");
         });
     }
 
-
-
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if(progressDialog!=null && progressDialog.isShowing()){
+            progressDialog.dismiss();
+            txt1.setText("");
+        }
+    }
 
 
 }
