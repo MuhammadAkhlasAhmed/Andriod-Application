@@ -1,13 +1,11 @@
 package com.example.muhammadikhlas.myapplication;
 
+import android.content.Context;
+
 /**
  * Created by Muhammad IKHLAS on 9/24/2017.
  */
-
-import android.content.Context;
-
 public class PrefUtils {
-
 
         public static void setCurrentUser(User currentUser, Context ctx){
             ComplexPreferences complexPreferences = ComplexPreferences.getComplexPreferences(ctx, "user_prefs", 0);
@@ -26,14 +24,4 @@ public class PrefUtils {
             complexPreferences.clearObject();
             complexPreferences.commit();
         }
-
-
-
-
-
-
-
-
-
-
 }

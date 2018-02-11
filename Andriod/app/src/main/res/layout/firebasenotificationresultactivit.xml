@@ -60,7 +60,7 @@
         android:layout_alignParentStart="true"
         android:text="Back"
 
-        android:background="#000000"
+        android:background="#394BA0"
         android:textColor="#fff"
         />
 
@@ -75,7 +75,7 @@
         android:layout_alignParentStart="true"
         android:text="Submit"
 
-        android:background="#000000"
+        android:background="#394BA0"
         android:textColor="#fff"
         />
 
@@ -87,7 +87,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="159dp"
 
-        android:background="#000000"
+        android:background="#394BA0"
         android:textColor="#fff"
         />
 

@@ -5,9 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -20,12 +22,13 @@ import java.util.List;
 import static com.facebook.FacebookSdk.getApplicationContext;
 
 /**
- * Created by Muhammad IKHLAS on 12/1/2017.
+ * Created by ahayat on 12-Feb-18.
  */
-public class TakeDataFromServiceAfterPassingMovieName extends AsyncTask<String,Void,String>  {
+
+public class TakeDataFromServiceAfterPassingMovieNameForFacebookUser extends AsyncTask<String,Void,String> {
 
     // public AsyncResponse delegate = null;
-    public List<MoviePojo>  movie=new ArrayList<MoviePojo>();
+    public List<MoviePojo> movie=new ArrayList<MoviePojo>();
     public HttpURLConnection urlConnection = null;
     public URL url = null;
     public JSONObject object = null;
@@ -34,12 +37,12 @@ public class TakeDataFromServiceAfterPassingMovieName extends AsyncTask<String,V
     public String temp, response = "";
     private ProgressDialog progressDialog;
 
-    public TakeDataFromServiceAfterPassingMovieName(){
+    public TakeDataFromServiceAfterPassingMovieNameForFacebookUser(){
 
     }
 
     public Context context;
-    public TakeDataFromServiceAfterPassingMovieName(Context context) {
+    public TakeDataFromServiceAfterPassingMovieNameForFacebookUser(Context context) {
         this.context = context.getApplicationContext();
     }
 
@@ -67,7 +70,7 @@ public class TakeDataFromServiceAfterPassingMovieName extends AsyncTask<String,V
     protected void onPostExecute(String x) {
         if (x == "") {
             Toast.makeText(getApplicationContext(), "Movie Name Not Found !", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(context,Letsgo.class);
+            Intent intent = new Intent(context,LogoutActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             context.startActivity(intent);
         }

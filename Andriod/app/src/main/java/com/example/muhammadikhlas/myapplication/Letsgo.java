@@ -2,39 +2,36 @@ package com.example.muhammadikhlas.myapplication;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.concurrent.ExecutionException;
 
 public class Letsgo extends Activity {
 
-    Button btn;
-    EditText edit;
+    public Button btn;
+    public EditText edit;
     private ProgressDialog progressDialog;
     private String regex = "^\\w+(\\s\\w+)*$";
+    public TakeDataFromServiceAfterPassingMovieName takeDataFromServiceAfterPassingMovieName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_letsgo);
-
         btn=(Button)findViewById(R.id.buttonx);
         edit=(EditText) findViewById(R.id.namax);
         edit.setText("");
-//        edit.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View view) {
-//                edit.setText("");
-//            }
-//        });
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                edit.setHint("");
+            }
+        });
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,11 +46,11 @@ public class Letsgo extends Activity {
                     progressDialog = new ProgressDialog(Letsgo.this);
                     progressDialog.setMessage("Loading, please wait...");
                     progressDialog.show();
-                    new TakeDataFromServiceAfterPassingMovieName(Letsgo.this).execute(infos);
+                    takeDataFromServiceAfterPassingMovieName = new TakeDataFromServiceAfterPassingMovieName(Letsgo.this);
+                    takeDataFromServiceAfterPassingMovieName.execute(infos);
                 }
             }
         });
-
     }
 
     @Override
@@ -62,6 +59,7 @@ public class Letsgo extends Activity {
         if(progressDialog!=null && progressDialog.isShowing()){
             progressDialog.dismiss();
             edit.setText("");
+            edit.setHint("Enter Movie Name");
         }
     }
 }

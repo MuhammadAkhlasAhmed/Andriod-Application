@@ -24,7 +24,7 @@
             android:textSize="24sp"
             android:textStyle="bold|italic"
 
-            android:background="#000000"
+            android:background="#394BA0"
             android:textColor="#fff"
 
             />
@@ -45,7 +45,7 @@
             android:text="Watching And Downloading Links"
             android:textSize="24sp"
             android:textStyle="bold|italic"
-            android:background="#000000"
+            android:background="#394BA0"
             android:textColor="#fff"
 
             />
