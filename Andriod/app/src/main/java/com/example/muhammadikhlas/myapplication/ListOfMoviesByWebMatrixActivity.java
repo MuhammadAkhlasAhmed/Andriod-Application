@@ -32,6 +32,7 @@ public class ListOfMoviesByWebMatrixActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listofmoviesbywebmatrixactivity);
+        setTitle("Movies Recommendation System");
         rowItems = new ArrayList<MoviePojo>();
         Intent i = getIntent();
         rowItems = (List<MoviePojo>) i.getSerializableExtra("LIST");

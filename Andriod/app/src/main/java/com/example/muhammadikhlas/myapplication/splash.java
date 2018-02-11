@@ -13,6 +13,7 @@ public class splash extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        setTitle("Movies Recommendation System");
         getActionBar().hide();
         Thread thread =new Thread(){
 

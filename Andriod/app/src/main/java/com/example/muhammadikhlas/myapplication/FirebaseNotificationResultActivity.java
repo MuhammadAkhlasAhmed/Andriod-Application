@@ -23,6 +23,7 @@ public class FirebaseNotificationResultActivity extends Activity implements View
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.firebasenotificationresultactivit);
+        setTitle("Movies Recommendation System");
         txt = (TextView) findViewById(R.id.mytext);
         ratingbar1 = (RatingBar) findViewById(R.id.ratingBar);
         value = getIntent().getExtras().getString("Moviename");

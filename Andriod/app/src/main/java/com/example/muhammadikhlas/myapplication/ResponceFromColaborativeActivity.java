@@ -25,6 +25,7 @@ public class ResponceFromColaborativeActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_responce_from_colaborative);
+        setTitle("Movies Recommendation System");
         Intent i=getIntent();
         List<String> movies=(List<String>) i.getSerializableExtra("Movies");
         List<String> links=(List<String>) i.getSerializableExtra("Links");

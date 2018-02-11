@@ -39,6 +39,7 @@ public class LogoutActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logout);
+        setTitle("Movies Recommendation System");
         user=PrefUtils.getCurrentUser(LogoutActivity.this);
         profileImage= (ImageView) findViewById(R.id.profileImage);
         textView=(TextView)findViewById(R.id.hi);

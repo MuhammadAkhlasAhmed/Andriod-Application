@@ -23,6 +23,7 @@ public class Letsgo extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_letsgo);
+        setTitle("Movies Recommendation System");
         btn=(Button)findViewById(R.id.buttonx);
         edit=(EditText) findViewById(R.id.namax);
         edit.setText("");

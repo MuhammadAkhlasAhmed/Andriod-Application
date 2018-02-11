@@ -36,6 +36,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setTitle("Movies Recommendation System");
         if(PrefUtils.getCurrentUser(MainActivity.this) != null){
             Intent homeIntent = new Intent(MainActivity.this, LogoutActivity.class);
             startActivity(homeIntent);
