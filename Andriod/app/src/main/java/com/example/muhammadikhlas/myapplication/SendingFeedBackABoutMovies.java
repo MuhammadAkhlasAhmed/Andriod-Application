@@ -41,7 +41,7 @@ public class SendingFeedBackABoutMovies extends AsyncTask<String,Void,String> {
             url = new URL((iko.toString())); //ye update hoga abhi link k hisab se
             //Log.d("Query",iko);
             urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setRequestMethod("POST");
+            urlConnection.setRequestMethod("GET");
             urlConnection.connect();
             inStream = urlConnection.getInputStream();
             BufferedReader bReader = new BufferedReader(new InputStreamReader(inStream));
@@ -59,7 +59,7 @@ public class SendingFeedBackABoutMovies extends AsyncTask<String,Void,String> {
     protected void onPostExecute(String x) {
         //Log.d("Responce",x);
         Toast.makeText(context,"Thanks For Giving The Feed Back",Toast.LENGTH_LONG).show();
-        Intent ais=new Intent(context,LogoutActivity.class);
+        Intent ais=new Intent(context,MainActivity.class);
         ais.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(ais);
     }

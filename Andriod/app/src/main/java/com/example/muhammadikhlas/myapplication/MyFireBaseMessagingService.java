@@ -28,6 +28,8 @@ public class MyFireBaseMessagingService extends FirebaseMessagingService {
     Intent intent =new Intent(this,FirebaseNotificationResultActivity.class);
     intent.putExtra("Moviename",msg);
     intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+    intent.setAction(Intent.ACTION_MAIN);
+    intent.addCategory(Intent.CATEGORY_LAUNCHER);
     //Ye pending ager activity bund hogi tw khol dega
     PendingIntent pd=PendingIntent.getActivity(this,0,intent,PendingIntent.FLAG_ONE_SHOT);
     Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
