@@ -33,15 +33,30 @@ public class GenreServiceImpl implements GenreService {
     @Override
     public MovieListDTO getMovieGenres(String name) {
     	MovieListDTO movieListDTO = new MovieListDTO();
+    	// get list of genres against movie
     	GenreRatingDTO genreRatingDTO = GenreUtils.getMovieGenreAndRating(name);
     	if(genreRatingDTO.getGenres() != null) {
     		List<String> listOfGenres = genreRatingDTO.getGenres();
-            List<String> listOfGenresWithUnderScore = GenreUtils.replaceDashWithUnderScore(listOfGenres);
-            List<String> list = itemReviewService.performCollaborativeFiltering(listOfGenresWithUnderScore);
-            int fireBaseCount = fireBaseService.getMoviesCount(name);
-            List<String> listOfOnlineAndDownloadLinks = webCrawlerService.getOnlineAndDownloadLinks(name);
-            movieListDTO.setFirebaseMovieCount(fireBaseCount);
+            
+    		// remove irrelevant syntax like special characters.
+    		List<String> listOfGenresWithUnderScore = GenreUtils.replaceDashWithUnderScore(listOfGenres);
+            
+    		// perform collaborative filtering and get list of movie name
+    		List<String> list = itemReviewService.performCollaborativeFiltering(listOfGenresWithUnderScore);
+            
+    		// get firebase count
+    		int fireBaseCount = fireBaseService.getMoviesCount(name);
+            
+    		// get online and download links using web crawler
+    		List<String> listOfOnlineAndDownloadLinks = webCrawlerService.getOnlineAndDownloadLinks(name);
+            
+    		// set firebase count in movie list DTO object
+    		movieListDTO.setFirebaseMovieCount(fireBaseCount);
+    		
+    		// set list of movies name in movie list DTO object
             movieListDTO.setListOfMovies(list);
+            
+            // set online and download links in movie list DTO object
             movieListDTO.setOnlineAndDownloadLinks(listOfOnlineAndDownloadLinks);
             return movieListDTO;
     	} 
