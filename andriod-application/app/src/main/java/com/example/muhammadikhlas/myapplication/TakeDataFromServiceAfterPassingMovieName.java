@@ -5,11 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -22,27 +20,26 @@ import java.util.List;
 import static com.facebook.FacebookSdk.getApplicationContext;
 
 /**
- * Created by ahayat on 12-Feb-18.
+ * Created by Muhammad IKHLAS on 12/1/2017.
  */
-
-public class TakeDataFromServiceAfterPassingMovieNameForFacebookUser extends AsyncTask<String,Void,String> {
+public class TakeDataFromServiceAfterPassingMovieName extends AsyncTask<String,Void,String>  {
 
     // public AsyncResponse delegate = null;
-    public List<MoviePojo> movie=new ArrayList<MoviePojo>();
+    public List<MoviePojo>  movie=new ArrayList<MoviePojo>();
     public HttpURLConnection urlConnection = null;
     public URL url = null;
     public JSONObject object = null;
     public InputStream inStream = null;
-    public String   urlString="http://192.168.1.104:8080/api/v1/movie/";
+    public String   urlString="http://192.168.8.102:8080/api/v1/movie/";
     public String temp, response = "";
     private ProgressDialog progressDialog;
 
-    public TakeDataFromServiceAfterPassingMovieNameForFacebookUser(){
+    public TakeDataFromServiceAfterPassingMovieName(){
 
     }
 
     public Context context;
-    public TakeDataFromServiceAfterPassingMovieNameForFacebookUser(Context context) {
+    public TakeDataFromServiceAfterPassingMovieName(Context context) {
         this.context = context.getApplicationContext();
     }
 
@@ -70,7 +67,7 @@ public class TakeDataFromServiceAfterPassingMovieNameForFacebookUser extends Asy
     protected void onPostExecute(String x) {
         if (x == "") {
             Toast.makeText(getApplicationContext(), "Movie Name Not Found !", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(context,LogoutActivity.class);
+            Intent intent = new Intent(context,Letsgo.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             context.startActivity(intent);
         }

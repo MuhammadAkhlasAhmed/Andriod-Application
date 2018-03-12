@@ -26,7 +26,7 @@ public class SendingFeedBackABoutMovies extends AsyncTask<String,Void,String> {
     public URL url = null;
     public JSONObject object = null;
     public InputStream inStream = null;
-    public String   urlString="http://192.168.1.104:8081/api/v1/";
+    public String   urlString="http://192.168.8.102:8081/api/v1/";
     public String temp, response = "";
     public String mname, status;
 
