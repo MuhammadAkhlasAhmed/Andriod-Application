@@ -25,7 +25,7 @@ The configuration of the database is done in `application.properties`:
 ```
 ##### Example Request for content-base-filtering
 ```
-curl -v -H "Content-Type: application/json" -X POST -d '{
+curl -v -H "Content-Type: application/json" -X GET -d '{
 <Request-Json-Here>
 }' http://localhost:8080/api/v1/movie/minions
 ```
