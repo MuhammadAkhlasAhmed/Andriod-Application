@@ -1,1 +1,0 @@
-DROP TABLE `real_time_feedback`, `user_ratings`, `movies_ratings`;

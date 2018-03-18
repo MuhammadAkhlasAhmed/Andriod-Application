@@ -53,16 +53,46 @@ CREATE TABLE `movie_genres` (
   CONSTRAINT `fk_genre_id` FOREIGN KEY (`genre_id`) REFERENCES `genres` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-/*Table structure for table `real_time_feedback` */
+/*Table structure for table `item_review` */
 
-DROP TABLE IF EXISTS `real_time_feedback`;
+DROP TABLE IF EXISTS `item_review`;
 
-CREATE TABLE `real_time_feedback` (
-  `id` INT NOT NULL,
-  `name` VARCHAR(45) NULL DEFAULT NULL,
-  `rating` VARCHAR(45) NULL DEFAULT NULL,
-  `comments` VARCHAR(45) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `item_review`(
+  `item_id` INT(11) NOT NULL AUTO_INCREMENT, 
+  `action` VARCHAR(15) NULL DEFAULT 0 ,
+  `adventure` VARCHAR(45) NULL DEFAULT 0 ,
+  `animation` VARCHAR(45) NULL DEFAULT 0 ,
+  `childrens` VARCHAR(45) NULL DEFAULT 0 ,
+  `comedy` VARCHAR(45) NULL DEFAULT 0 ,
+  `crime` VARCHAR(45) NULL DEFAULT 0 ,
+  `documentary` VARCHAR(45) NULL DEFAULT 0 ,
+  `drama` VARCHAR(45) NULL DEFAULT 0 ,
+  `fantasy` VARCHAR(45) NULL DEFAULT 0 ,
+  `film_noir` VARCHAR(45) NULL DEFAULT 0 ,
+  `horror` VARCHAR(45) NULL DEFAULT 0 ,
+  `musical` VARCHAR(45) NULL DEFAULT 0 ,
+  `mystery` VARCHAR(45) NULL DEFAULT 0 ,
+  `romance` VARCHAR(45) NULL DEFAULT 0 ,
+  `sci_fi` VARCHAR(45) NULL DEFAULT 0 ,
+  `thriller` VARCHAR(45) NULL DEFAULT 0 ,
+  `war` VARCHAR(45) NULL DEFAULT 0 ,
+  `western` VARCHAR(45) NULL DEFAULT 0 ,
+  `family` VARCHAR(45) NULL DEFAULT 0 ,
+  `history` VARCHAR(45) NULL DEFAULT 0 ,
+  `reality_tv` VARCHAR(45) NULL DEFAULT 0 ,
+  `music` VARCHAR(45) NULL DEFAULT 0 ,
+   PRIMARY KEY (`item_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+/*Table structure for table `movies_title` */
+
+DROP TABLE IF EXISTS `movies_title`;
+   
+CREATE TABLE `movies_title`(
+  `movie_id` INT(11) NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(500) NULL DEFAULT NULL,
+     PRIMARY KEY (`movie_id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+	 
+	 
+   
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=0 */;
