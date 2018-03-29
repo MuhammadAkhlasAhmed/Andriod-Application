@@ -1,1 +1,15 @@
+E:\P2_Stuff\project\Movies Recommendation System\recommendation-system\content-based-filtering\src\main\java\com\app\dao\MovieGenreDao.java
+E:\P2_Stuff\project\Movies Recommendation System\recommendation-system\content-based-filtering\src\main\java\com\app\exception\CustomException.java
+E:\P2_Stuff\project\Movies Recommendation System\recommendation-system\content-based-filtering\src\main\java\com\app\dao\GenreDao.java
+E:\P2_Stuff\project\Movies Recommendation System\recommendation-system\content-based-filtering\src\main\java\com\app\dao\config\DataSourceConfig.java
 E:\P2_Stuff\project\Movies Recommendation System\recommendation-system\content-based-filtering\src\main\java\com\app\Application.java
+E:\P2_Stuff\project\Movies Recommendation System\recommendation-system\content-based-filtering\src\main\java\com\app\dao\MovieDaoImpl.java
+E:\P2_Stuff\project\Movies Recommendation System\recommendation-system\content-based-filtering\src\main\java\com\app\dao\MovieGenreDaoImpl.java
+E:\P2_Stuff\project\Movies Recommendation System\recommendation-system\content-based-filtering\src\main\java\com\app\dao\MovieDao.java
+E:\P2_Stuff\project\Movies Recommendation System\recommendation-system\content-based-filtering\src\main\java\com\app\dao\config\DataSource.java
+E:\P2_Stuff\project\Movies Recommendation System\recommendation-system\content-based-filtering\src\main\java\com\app\model\Genre.java
+E:\P2_Stuff\project\Movies Recommendation System\recommendation-system\content-based-filtering\src\main\java\com\app\model\Movie.java
+E:\P2_Stuff\project\Movies Recommendation System\recommendation-system\content-based-filtering\src\main\java\com\app\service\MovieService.java
+E:\P2_Stuff\project\Movies Recommendation System\recommendation-system\content-based-filtering\src\main\java\com\app\logger\CustomLogger.java
+E:\P2_Stuff\project\Movies Recommendation System\recommendation-system\content-based-filtering\src\main\java\com\app\service\MovieServiceImpl.java
+E:\P2_Stuff\project\Movies Recommendation System\recommendation-system\content-based-filtering\src\main\java\com\app\dao\GenreDaoImpl.java

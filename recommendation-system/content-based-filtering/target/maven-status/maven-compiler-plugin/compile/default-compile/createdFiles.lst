@@ -1,1 +1,15 @@
+com\app\dao\config\DataSourceConfig.class
+com\app\service\MovieServiceImpl.class
+com\app\dao\MovieDaoImpl.class
+com\app\dao\GenreDao.class
+com\app\dao\MovieGenreDao.class
+com\app\exception\CustomException.class
+com\app\dao\config\DataSource.class
+com\app\dao\MovieGenreDaoImpl.class
 com\app\Application.class
+com\app\logger\CustomLogger.class
+com\app\service\MovieService.class
+com\app\dao\GenreDaoImpl.class
+com\app\model\Genre.class
+com\app\model\Movie.class
+com\app\dao\MovieDao.class
