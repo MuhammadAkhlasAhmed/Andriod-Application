@@ -13,9 +13,16 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <spring.version>5.0.4.RELEASE</spring.version>
+    <spring.boot.version>2.0.0.RELEASE</spring.boot.version>
+    <spring.test.version>2.0.0.RELEASE</spring.test.version>
+    <spring.jdbc.version>5.0.4.RELEASE</spring.jdbc.version>
+    <hikari.version>2.6.1</hikari.version>
+    <h2.db.version>1.4.197</h2.db.version>
+    <mysql.version>5.1.44</mysql.version>
     <mockito.version>1.10.19</mockito.version>
+    <logger.version>1.7.25</logger.version>
     <junit.version>4.12</junit.version>
-    <java.version>1.8</java.version>
+    <jdk.version>1.8</jdk.version>
     <skipTests>false</skipTests>
     <skipDb>false</skipDb>
   </properties>
