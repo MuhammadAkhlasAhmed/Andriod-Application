@@ -1,21 +1,3 @@
 
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
-j
-:content-based-filtering\src\test\java\com\app\AppTest.java,5\0\5069bcfb67f49bc12348e156ee589f8568088a7a
-f
-6content-based-filtering\src\main\java\com\app\App.java,1\f\1f556865a94e44f836d1d307037a519d75693895
-v
-Fcollaborative-base-filtering\src\main\resources\application.properties,3\f\3fe9058d2373091b80ce5d21b2631e91fddff5d6
-n
->collaborative-base-filtering\src\main\resources\sql.properties,e\e\ee27f98b76b762df2862dc994cf168d3375661e9
-i
-9content-based-filtering\src\main\resources\sql.properties,f\e\fe03163813972f2e68786dd314d19556e625f37a
-v
-Fcontent-based-filtering\src\test\resources\application-test.properties,d\d\dd84dd9f6bbbb1230f45113717e017b98c4369db
-{
-Kcollaborative-base-filtering\src\test\resources\application-test.properties,6\6\66daa2e41fae49e26c22b083e17596269b1fdc10
-T
-$collaborative-base-filtering\pom.xml,0\b\0bfc5c25575cde2e5fd040f1c9ca69997d50b135
-O
-content-based-filtering\pom.xml,6\2\629b0282cfad99141dd19ffe2a86d8637d42a0d8
